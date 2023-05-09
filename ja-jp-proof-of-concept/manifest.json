@@ -1,37 +1,37 @@
 {
-  "workshoptitle": "Building a Proof-of-Concept for Oracle Autonomous Cloud Services",
+  "workshoptitle": "Oracle Autonomous Cloud ServicesでPoCを構築する",
     "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
       {
-        "title": "Getting Started",
+        "title": "はじめに",
         "filename": "../common/1-sign-up-apex/1-sign-up-apex.md"
       },
       {
-        "title": "Introduction",
+        "title": "紹介",
         "filename": "intro/intro.md"
       },
       {
-        "title": "Lab 1: Define New Data Structures",
+        "title": "ラボ1: 新しいデータ構造を定義します",
         "filename": "quick-sql/using-quick-sql.md"
       },
       {
-        "title": "Lab 2: Create the Application",
+        "title": "ラボ2: アプリの構築",
           "filename": "create-app/create-app.md"
       },
       {
-        "title": "Lab 3: Regenerate the Application",
+        "title": "ラボ3: アプリの再生成",
         "filename": "regen-app/regen-app.md"
       },
       {
-        "title": "Lab 4: Improve Tasks",
+        "title": "ラボ4: タスクの改善",
         "filename": "improving-tasks/improving-tasks.md"
       },
       {
-        "title": "Lab 5: Improve To Dos",
+        "title": "ラボ5: TODOの改善",
         "filename": "improving-todos/improving-todos.md"
       },
       {
-        "title": "Lab 6: Improve Links",
+        "title": "ラボ6: リンクの改善",
         "filename": "improving-links/improving-links.md"
       },
       {
