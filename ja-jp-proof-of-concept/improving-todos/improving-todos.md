@@ -174,8 +174,9 @@ To DOSフォームページをレポートの編集アイコンをクリック�
 
 これで、関連する詳細を表示するためにレポートと値クエリのリストを強化する方法を知っています。
 
+
 ## **謝辞**
 
-- **著者**  - サリム・フレイエル、原則プロダクトマネージャー
-- **貢献者**  - オラクル・リベラブチーム（ロビー・ラッペル、機能リード、マリリン・イザベラ・ケシンジャー、QAインターン、アラベラ・ヤオ、プロダクトマネージャーインターン）
-- **最後の更新/日付**  - プリンシプルプロダクトマネージャー、2020年11月SALIM HLAYEL
+  - **著者** - Salim Hlayel, Principle Product Manager
+  - **寄稿者** - LiveLabs QA Team (Arabella Yao, Product Manager Intern | Dylan McLeod, QA Intern)
+  - **最終更新者/日付** - Salim Hlayel, Principle Product Manager, November 2020
