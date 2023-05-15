@@ -16,159 +16,171 @@
 * Oracle Cloudの有料アカウント、Livelabsアカウント、または無料トライアル。
 * 頂点ワークスペースとアプリケーション
 
-## タスク1：レポートに列を追加します。
+## タスク1:レポートに列を追加する  
 
-ランタイム環境では、DOSに移動し、レポートにはタスクが含まれているが、関連するプロジェクトとマイルストーンは含まれていないことに注意してください。
-
-
-1. ランタイムアプリケーションから、To DOSレポートページに移動してから、ページデザイナーに移動します。
-
-   開発者ツールバーでは、[9ページを編集] ** **をクリックします。
-
-   ![](images/dev-toolbar.png " ")
-
-   これで、**ページ9：dos **にロードされたページデザイナーにいる必要があります。
+ランタイム環境でTo Dosに移動すると、レポートにはタスクが含まれていますが、関連するプロジェクトとマイルストーンは含まれていないことに気付きます。レポートでこれらの値を取得するには、プロジェクトとマイルストーンテーブルに関連付けられたSQLを利用する必要があります。これは内部選択または複数のテーブルを結合することで実行できます。シンプルにするために、内部SELECTステートメントを実装します。
 
 
-2. DOSに定義されたクエリを更新する必要があります。
+1. ランタイムアプリケーションから、To Dosレポートページに移動し、Page Designerに移動します。
 
-   ページデザイナー内で、レンダリングツリー（左ペイン）で、**をクリックしてdos **をクリックします。
+    Developer Toolbarの**Edit Page 9**をクリックします。
 
-   プロパティエディター（右ペイン）で、ソース>タイプの場合、** sql query **を選択します。
+    ![](images/dev-toolbar.png " ")
 
-   ソース> SQLクエリの場合、**コードエディター**アイコンをクリックします。
+    Page Designerに**Page 9: To Dos**がロードされているはずです。
 
-   ```
-   <copy>select ID,
-        (select p.name
-         from hol_projects p, hol_tasks t
-         where p.id = t.project_id
-         and t.id = td.task_id
-        ) project,
-        (select m.name
-         from hol_milestones m, hol_tasks t
-         where m.id = t.milestone_id
-         and   t.id = td.task_id
-        ) milestone,
-        TASK_ID,
-        ROW_VERSION,
-        TODO,
-        ASSINGEE,
-        DUE_DATE,
-        DETAILS,
-        CREATED,
-        CREATED_BY,
-        UPDATED,
-        UPDATED_BY
-   from HOL_TO_DOS td</copy>
-   ```
 
-   コードエディターツールバーでは、[**の検証] **をクリックします。
+2. To Dos用に定義されたクエリを更新する必要があります。
 
-   ![](images/set-sql.png " ")
+    Page Designer内で、Rendering tree(左パネル)の**To Dos**をクリックします。
 
-   *{注：2つの内側の選択ステートメントは、プロジェクト /マイルストーンテーブルをタスクテーブルに接続し、タスクテーブルをTODOSテーブルに接続します。}*
+    Property Editor(右パネル)で、Source > Typeの**SQL Query**を選択します。   
+    *{注:SQLクエリが入力されます。SQLステートメントはHOL\_TO\_DOSテーブルのすべての列を選択します。}* 
 
-3. アプリケーションを実行して、新しいプロジェクトとマイルストーン列が正しく表示されるようにします。
+    Source > SQL Queryの**Code Editor**アイコンをクリックします。
+    Code Editorで、次の内容を入力します:
 
-   ページデザイナーツールバーで、[**保存して実行]をクリックします。
+    
+    <copy>select ID, 
+         (select p.name 
+          from hol_projects p, hol_tasks t 
+          where p.id = t.project_id 
+          and t.id = td.task_id 
+         ) project, 
+         (select m.name 
+          from hol_milestones m, hol_tasks t 
+          where m.id = t.milestone_id 
+          and   t.id = td.task_id 
+         ) milestone, 
+         TASK_ID, 
+         ROW_VERSION, 
+         TODO, 
+         ASSINGEE, 
+         DUE_DATE, 
+         DETAILS, 
+         CREATED, 
+         CREATED_BY, 
+         UPDATED, 
+         UPDATED_BY 
+    from HOL_TO_DOS td</copy>
+    
 
-   ![](images/run-report.png " ")
+    Code Editorツールバーの**Validate**をクリックします。
+    **OK**をクリックします。
 
-4. 新しいプロジェクトとマイルストーン列は、レポートの最後の列として配置されますが、最初の列に移動する必要があります。
+    ![](images/set-sql.png " ")
 
-   ランタイム環境では、To DOSレポートメニューで、[**アクション**]をクリックします。
+    *{注:2つの内部選択ステートメントは、プロジェクト/マイルストーンテーブルをタスクテーブルに、タスクテーブルをtodosテーブルに接続します。}*   
 
-   ![](images/go-columns.png " ")
+3. アプリケーションを実行して、新しいプロジェクトとマイルストーンの列が正しく表示されることを確認します。
 
-5. [列の選択]ダイアログで、[**プロジェクト**]をクリックします。
+    Page Designerツールバーの**Save and Run**をクリックします。
 
-   ![](images/select-columns.png " ")
+    ![](images/run-report.png " ")   
 
-6. 改訂されたレポートレイアウトを保存して、他の人が新しく改善された列の配置を見る必要があります。
+4. 新しいプロジェクトとマイルストーンの列はレポートの最後の列に配置されていますが、最初の列に移動する必要があります。   
 
-   ランタイム環境では、To DOSレポートメニューで、[**アクション**]をクリックします。
+    ランタイム環境で、To Dosレポートメニューの**Actions**をクリックします。     
+    ドロップダウンから**Columns**を選択します。
 
-   ![](images/go-save.png " ")
+    ![](images/go-columns.png " ") 
+5. Select Columnsダイアログで、**Project**をクリックします。         
+    [Shift]キーを押しながら**Milestone**をクリックします。     
+    ダイアログの右側のオプションで**Top**をクリックします。        
+    **Apply**をクリックします。
 
-7.  [レポートの保存]ダイアログでは、保存（開発者向けにのみ表示される）の場合、**をデフォルトのレポート設定**として選択します。
+    ![](images/select-columns.png " ")   
 
-    ![](images/go-default.png " ")
+6. 改訂されたレポートレイアウトを保存する必要があります。他のユーザーが新しく改善された列の配置を見ることができます。
 
-8. [デフォルトの保存レポート]ダイアログで、[**を適用] **をクリックします。
+    ランタイム環境で、To Dosレポートメニューの**Actions**をクリックします。      
+    ドロップダウンから**Report**を選択し、**Save Report**をクリックします。
 
-   ![](images/set-default.png " ")
+    ![](images/go-save.png " ")  
 
-   *{注：レポートをプライマリとして保存して、ページに移動するときにエンドユーザーに表示されているように表示されます。}*
+7. Save Reportダイアログで、Save(開発者のみ表示)の**As Default Report Settings**を選択します。
 
-## タスク2：タスクLOVの更新。
+    ![](images/go-default.png " ")  
 
-To DOSフォームページをレポートの編集アイコンをクリックして確認すると、プロジェクトとマイルストーンがフォームページにもないことがわかります。
+8. Save Default Reportダイアログで、**Apply**をクリックします。      
 
-この同じLOVは、リンクフォームページで使用されているため、そこで再利用できます。
+    ![](images/set-default.png " ")  
 
-1. ランタイム環境から、開発者ツールバーでは、[**アプリケーションxxxxx **]をクリックします。
+    *{注:レポートをPrimaryとして保存する必要があります。ユーザーがページに移動すると、現在の表示がエンドユーザーに表示されます。}*
 
-2. アプリケーションのホームページから、**共有コンポーネント**をクリックします。
+## タスク2:タスクのLOVを更新する
+To Dosフォームページをレビューすると、レポートの編集アイコンをクリックすると、フォームページにプロジェクトとマイルストーンがないことがわかります。データ入力を簡素化するために、タスクの選択リストをポップアップLOVに変更し、プロジェクトとマイルストーンを含めます。  
 
-   ![](images/go-shared.png " ")
+同じLOVはLinksフォームページでも使用されているため、そこでも再利用できます。
 
-3. 共有コンポーネントから、他のコンポーネントの下で、[値のリスト] **をクリックします。
+1. ランタイム環境で、Developer Toolbarの**Application xxxxx**をクリックします。   
 
-4. [値のリスト]ページから、[** hol_tasks.name **]をクリックします。
+2. アプリケーションホームページから、**Shared Components**をクリックします。
 
-5. [値のリスト]ページに、以下を入力してください。
-    - ソース>ソースタイプ - クリック** SQLクエリ**
-    - ソース> sqlクエリ - 次を入力します -
+    ![](images/go-shared.png " ")  
 
-      ```
-      <copy>
-      select id
-      ,      (select p.name from hol_projects p where p.id = t.project_id) project
-      ,      (select m.name from hol_milestones m where m.id = t.milestone_id) milestone
-      ,      name
-      from hol_tasks t
-      </copy>
-      ```
+3. Shared Componentsから、Other Componentsの下の**List of Values**をクリックします。   
 
-    - 列マッピング> return -select ** id **
-    - 列マッピング>ディスプレイ -  **名前を選択**
-    - 列マッピング>デフォルトソート -  **名前を選択**
+4. List of Valuesページから、**HOL_TASKS.NAME**をクリックします。   
 
-   ![](images/set-lov.png " ")
+5. List of Valuesページで、次の内容を入力します。  
+    - Source > Source Type -  **SQL Query**をクリックします。
+    - Source > SQL Query - 次の内容を入力します。   
 
-   追加の列を表示するには、[**列を選択] **をクリックします**
+        
+        <copy>
+        select id 
+        ,      (select p.name from hol_projects p where p.id = t.project_id) project 
+        ,      (select m.name from hol_milestones m where m.id = t.milestone_id) milestone 
+        ,      name 
+        from hol_tasks t 
+        </copy>
+        
 
-   追加の表示列で、次のアクションを実行します。
-    - 移動**プロジェクト（varchar2）**
-    - 移動**マイルストーン（varchar2）**
-    - move ** name（varchar2）**右ペインのマイルストーンを下回る
+    - Column Mapping > Return - **ID**を選択します。  
+    - Column Mapping > Display - **NAME**を選択します。 
+    - Column Mapping > Default Sort - **NAME**を選択します。
 
-   **更新**をクリックします。
+    ![](images/set-lov.png " ")
 
-   ![](images/set-add-columns.png " ")
+    追加の列を表示するには、**Select Columns**をクリックします。
 
-   [値]ツールバーのリストで、[変更] **の適用**をクリックします。
+    Select Additional Display Columnsで、次のアクションを実行します。      
+    - **PROJECT (Varchar2)** を右パネルに移動             
+    - **MILESTONE (Varchar2)** を右パネルに移動    
+    - **NAME (Varchar2)** を右パネルのMilestoneの下に移動      
+    *{注:ID列はリストに含める必要がありますが、Visible = Noとしてマークされるため表示されません。}*
 
-5. [フォーム]ページでは、タスクのアイテムタイプを更新する必要があります。
+    **Update**をクリックします。
 
-   共有コンポーネントから、パン粉内で、[**アプリケーションxxxxx **]をクリックします。
+    ![](images/set-add-columns.png " ")
 
-   ![](images/go-page10.png " ")
+    List of Valuesツールバーの**Apply Changes**をクリックします。
 
-7. ページデザイナー内で、レンダリングツリー（左ペイン）で、** p10 \ _task_id **をクリックします。
+5. To Doフォームページでは、タスクのアイテムタイプを更新する必要があります。    
 
-   ![](images/set-task-lov.png " ")
+    Shared Componentsから、ブレッドクランブ内で、**Application xxxxx**をクリックします。  
+    アプリケーションホームページから、ページのリストで**10 - To Dos**をクリックします。  
 
-7. ページデザイナーツールバーで、**保存**をクリックします。
+    ![](images/go-page10.png " ")   
 
-8. 完成したフォームページを確認する時間。
+7. Page Designer内で、Rendering tree(左パネル)の**P10_TASK_ID**をクリックします。
+    Property Editor(右パネル)で、Identification > Typeの**Popup LOV**を選択します。
 
-   [ランタイム環境]タブまたはブラウザに移動します。
+    ![](images/set-task-lov.png " ")   
 
-   タスクの場合は、ダウン矢印をクリックして、タスクポップアップLOVを表示します。
+7. Page Designerツールバーの**Save**をクリックします。   
 
-   ![](images/form-runtime.png " ")
+8. 完成したフォームページをレビューする時間です。   
+
+    ランタイム環境タブまたはブラウザに移動します。
+    **To Dos**に移動し、ページをリフレッシュします。
+    To Doの編集アイコンをクリックします。
+
+    Taskの下向き矢印をクリックしてタスクのポップアップLOVを表示します。  
+    検索条件を入力して[Enter]キーを押します。
+
+    ![](images/form-runtime.png " ") 
 
 ## **まとめ**
 
