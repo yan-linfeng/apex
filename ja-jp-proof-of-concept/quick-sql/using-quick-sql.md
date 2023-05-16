@@ -1,260 +1,250 @@
-# クイックSQLを使用して新しいデータ構造を定義します
+# Quick SQLを使用した新しいデータ構造の定義
 
-## 序章
+## はじめに
 
-データベース・オブジェクトを作成し、維持するためのSQLを記憶することは難しいかもしれません。しかし、省略記法やグラフィカル・ユーザー・インターフェースに基づいてコードを生成してくれるツールが存在します。このラボでは、Quick SQL でデータ構造を定義してテーブルとビューを作成する方法を学びます。
+データベースオブジェクトを作成および管理するSQLを覚えるのは難しい場合があります。ただし、ショートカット構文やグラフィカルユーザーインターフェイスに基づいてコードを生成するツールがあります。このラボでは、Quick SQLでデータ構造を定義することによってテーブルとビューを作成する方法を学びます。  
 
-推定時間：15分
+推定時間: 15分  
 
-### 問題の定義
+### 問題定義
+ほとんどの組織では、スプレッドシートの使用が膨大です。スプレッドシートは単純なデータレビューと個人データの追跡を行うのに優れていますが、たとえばチームメンバー間でデータを収集するのには非常に適していません。  
 
-ほとんどの組織で、スプレッドシートが盛んに使われています。スプレッドシートは、簡単なデータの確認や個人的なデータの追跡には適していますが、例えば、チームメンバー間のデータを収集するには非常に不向きです。
+非常に一般的な使用事例は、マネージャーがチームが取り組んでいるさまざまなプロジェクトを追跡する必要があるということです。マネージャーは重要なデータ要素を持つスプレッドシートを作成しました。ただし、チームが成長するにつれて、スプレッドシートの更新を管理するのが難しくなり、単一の真実の情報源を得るのはほぼ不可能になっています。
 
-よくある使用例として、マネージャーが自分のチームが取り組んでいるさまざまなプロジェクトを追跡する必要がある場合があります。マネージャーは、重要なデータ要素を含むスプレッドシートを作成しました。しかし、チームが成長した現在、スプレッドシートの更新を管理することは不可能になりつつあり、単一の真実のソースを得ることはほとんど不可能になっています。
-
-以下は、マネージャーがチームに送信しているスプレッドシートからの抜粋です：
+以下は、マネージャーがチームに送信しているスプレッドシートの抜粋です:
 
 ![](images/spreadsheet.png " ")
 
-### Napkin Design-プロジェクトのデータモデルの改善
+### ナプキンデザイン-プロジェクトの改善されたデータモデル
+スプレッドシートに基づいて単一のプロジェクトタスクテーブルだけを作成する代わりに、関係性をより適切にモデル化し、価値のある追加情報を収集するためのデータ構造のコレクションを定義できます。
 
-スプレッドシートに基づいて単一のプロジェクト・タスク・テーブルを作成するのではなく、データ構造のコレクションを定義することで、関係をよりよくモデル化し、価値のある追加情報を収集することができます。
+以下はプロジェクト情報を収集するためのナプキンデザインです:
 
-以下は、プロジェクト情報を収集するためのナプキンデザインです：
+![](images/napkin.png " ")  
 
-![](images/napkin.png " ")
+新しいモデルでは、プロジェクトにチームメンバーを割り当てることができるだけでなく、オプションとしてタスクとToDoにも割り当てることができることに注意してください。マイルストーンを持つプロジェクトの概念が導入されましたが、タスクがマイルストーンに関連付けられるのはオプションです。さらに、ToDoとリンクがタスクに追加されました。
 
-新しいモデルでは、チームメンバーをプロジェクトに割り当てられるだけでなく、オプションでタスクやToDoに割り当てることができることにお気づきでしょうか。プロジェクトはマイルストーンを持つという概念が導入されましたが、タスクがマイルストーンに関連付けられるかどうかは任意です。さらに、ToDoとリンクがタスクに追加されました。
+### 目的  
+- Oracle APEXワークスペースにテーブルを追加し、データを挿入する
 
-### 目的
-
-- Oracle APEX Workspaceにテーブルを追加し、データを挿入する。
-
-### あなたは何が必要ですか？
-
-- Oracle Cloudの有料アカウント、Livelabsアカウント、または無料トライアル。
+### 必要なもの  
+- Oracle Cloudの有料アカウント、LiveLabsアカウント、またはフリートライアル。
 - APEXワークスペース
 
-## タスク1：クイックSQLを開きます
+## タスク1: Quick SQLを開く
+1. ワークスペースにログインします
+2. **SQL Workshop**をクリックします
+3. **SQL Scripts**をクリックします
 
-1. ワークスペースにログインします。
-2. **SQLワークショップ**をクリックします。
-3. **SQLスクリプト**をクリックします。
-
-   ![](images/go-sql-scripts.png " ")
+    ![](images/go-sql-scripts.png " ")  
 
 4. **Quick SQL**をクリックします
 
-   ![](images/go-quick-sql.png " ")
+    ![](images/go-quick-sql.png " ")  
 
-## タスク2：表には速記を入力します
+## タスク2:テーブルのショートカットを入力する
+Quick SQLは、インデントされたテキスト文書から関係データモデルを作成するために必要なSQLを生成する簡単な方法を提供します。このツールは、SQLテーブル、トリガー、インデックス構造を作成するために必要な時間と労力を削減するように設計されています。
 
-Quick SQLは、インデントされたテキスト文書からリレーショナルデータモデルを作成するために必要なSQLを簡単に生成する方法を提供します。このツールは、SQLテーブル、トリガー、インデックス構造の作成に必要な時間と労力を削減するように設計されています。
+*{注:テーブルの一部と各テーブルのいくつかの列のみを入力します。この演習はQuick SQLの概念を教えるためのものであり、タイピングの演習ではありません。後で完了したスクリプトが提供されます。}*  
 
-*{注意：入力するのは、テーブルの一部と各テーブルのカラムの一部だけです。この演習は、Quick SQL の概念を学ぶためのものであり、入力の練習ではありません。完成したスクリプトは、このラボの後半で提供されます。}*
+1. 最初のテーブルといくつかの列を入力します。  
 
-1. 最初のテーブルといくつかの列を入力します。
+    Quick SQL(左パネル)にテーブル名を入力します。  
+    <code>Team Members</code>  
 
-   クイックSQL（左ペイン）で、テーブル名を入力してください。  
-   <code>Team Members</code>
+    2つ以上のスペースをインデントして、複数の列名を入力します。  
+    <code>username</code>    
+    <code>full name</code>   
+    <code>email</code>  
 
-   2つ以上のスペースをインデントし、いくつかの列名を入力します。  
-   <code>  username</code>     
-   <code>  full name</code>    
-   <code>  email</code>
+    ![](images/enter-team-members.png " ")  
 
-   ![](images/enter-team-members.png " ")
+   *{注:各行を入力するにつれて、SQL(右パネル)は定義しているテーブルを作成するために必要なSQLで更新されます。出力が画像のように見えない場合は、usernameなどの列を正しくインデントしていることを確認してください。}*  
 
-   *{注：各行を入力すると、SQL（右ペイン）は定義しているテーブルを作成するために必要なSQLで更新されます。出力が画像のようにならない場合は、ユーザー名などのカラムを正しくインデントしているかどうかを確認してください。}*
+2. 2番目のテーブルといくつかの列を入力します。 
 
-2. 2番目のテーブルといくつかの列を入力します。
+    Quick SQL(左パネル)の最初の列にテーブル名を入力します。
+    <code>Projects</code>  
 
-   クイックSQL（左ペイン）で、最初の列にテーブル名を入力します。  
-   <code>Projects</code>
+    2つ以上のスペースをインデントして、列名を入力します。 
+    <code>name</code>      
+    <code>project lead</code>    
+    <code>budget</code>  
+    <code>status</code>
 
-   2つ以上のスペースをインデントして、列名を入力します。  
-   <code>  name</code>     
-   <code>  project lead</code>     
-   <code>  budget</code>   
-   <code>  status</code>
+    ![](images/enter-projects.png " ") 
 
-   ![](images/enter-projects.png " ")
+## タスク3:ショートカットを改善する
+これまでに基本的なテーブルを定義し、デフォルトを使用してきましたが、生成されたSQLを改善するためにショートカットに追加できる数多くのディレクティブとデータ型があります。
 
-## タスク3：速記を改善します
+1. **Help**をクリックします。  
+    **Table Directives**をクリックします。
 
-これまでのところ、いくつかの基本的なテーブルを定義し、デフォルトを使用していますが、速記に追加できる多くのディレクティブとデータ型があり、生成されたSQLを改善できます。
+    ![](images/table-directives.png " ")  
 
-1. **ヘルプ**をクリックします**
+2. **Column Directives**をクリックします。
 
-   ![](images/table-directives.png " ")
+    ![](images/column-directives.png " ")  
 
-2. **列のディレクティブ**をクリックします。  
-   **テーブルディレクティブ**をクリックします。
+3. **Data Types**をクリックします。
 
-   ![](images/column-directives.png " ")
+    ![](images/data-types.png " ")  
 
-3. **データ型**をクリックします。
+4. **Help**を閉じます。
+5. Quick SQL(左パネル)で、Team Membersテーブルを以下のように更新します。  
+    - テーブル:team members - **/insert 10**を追加*{これにより10件のサンプルレコードが挿入されます}* 
+    - 列: username - **/nn /upper**を追加*{これにより列が大文字になり必須になります}*  
+    - 列: email - **/nn**を追加  
 
-   ![](images/data-types.png " ")
+    Projectsテーブルを以下のように更新します。  
+    - テーブル:projects - **/insert 20**を追加*{これにより20件のサンプルレコードが挿入されます}*   
+    - 列: name - **/nn**を追加    
+    - 列: project lead - **/references team_members**を追加      
+    *{これによりTeam Membersテーブルへの外部キー関係が追加されます}*  
+    - 列: budget - **num**を追加*{これにより列が数値になります}*    
+    - 列: status - **vc30 /nn /check ASSIGNED,IN_PROGRESS,COMPLETED**を追加    *{これにより必須列の長さが定義され、3つの指定値を使用してチェック制約が追加されます}*
 
-4. **ヘルプ**を閉じる。
-5. クイックSQL（左ペイン）で、チームメンバーのテーブルを次のもので更新します。
-    - 表：team members - **/insert 10** を追加する。 *{これは10のサンプルレコードを挿入します}*
-    - 列：username - **/nn /upper** を追加する。 *{これにより、列が大文字と必須になります}*
-    - 列：email -  **/nn** を追加する。
+    ![](images/set-directives.png " ")
 
-   以下のプロジェクトテーブルを更新してください。
-    - 表: projects - **/insert 20** を追加する。 *{Tこれにより、20個のサンプルレコードが挿入されます。}*   
-    - 列: name - **/nn** を追加する。   
-    - 列: project lead -  **/references team_members** を追加する。      
-    *{これにより、Team Members テーブルに外部キー関係が追加されます。}*  
-    - 列: budget - **num** を追加する。 *{This will make the column numeric}*    
-    - 列: status - **vc30 /nn /check ASSIGNED,IN_PROGRESS,COMPLETED** を追加する。   *{これは、必須カラムの長さを定義し、与えられた3つの値を使ってチェック制約を追加します。}*
+    *{注:_username_の_/_upper_の実装をレビューするには、SQL(右パネル)内をスクロールダウンする必要があります。さらに下にスクロールすると、すべてのinsert文が表示されます。}*
 
-   ![](images/set-directives.png " ")
-
-   *{注： _username_に_/upper_を実装するためのチームメンバートリガーを確認するには、SQL（右ペイン）内で下にスクロールする必要があります。さらにスクロールダウンすると、すべての挿入ステートメントが表示されます。}*
-
-## タスク4：子テーブルを入力します
-
-テーブル名をインデントすることにより、新しいテーブルを上のテーブルの子テーブルとして定義でき、SQLは2つのテーブル間に外部キー関係を生成します。
-
-1. プロジェクトに関連する子テーブルを入力します。
-
-   クイックSQL（左ペイン）で、テーブル名と指令を入力してください。
-
-   2つ以上のスペースをインデントして、列名とディレクティブを入力します。
-
-   ![](images/enter-milestones.png " ")
-
-   *{注：MilestonesテーブルのSQLには、Project_id列と、親テーブルとの外部キー関係が含まれます。プロジェクト。}*
-
-2. プロジェクトに関連する別のチャイルドテーブルを入力します。
-
-   クイックSQL（左ペイン）で、テーブル名と指令を入力してください。
-
-   2つ以上のスペースをインデントして、列名とディレクティブを入力します。
-
-   ![](images/enter-tasks.png " ")
-
-## タスク5：設定を更新します
-
-生成されたSQLをさらに改善するために、多数の設定を定義できます。
+## タスク4:子テーブルを入力する
+テーブル名をインデントすることで、新しいテーブルを上にあるテーブルの子テーブルとして定義でき、SQLは2つのテーブル間に外部キー関係を生成します。
 
 1. Projectsに関連する子テーブルを入力します。
 
-    Quick SQL（左ペイン）で、Table NameとDirectiveを入力します：  
+    Quick SQL(左パネル)にテーブル名とディレクティブを入力します。  
     <code>Milestones /insert 30</code>
-    *{Projectsテーブルの列と同じインデントを使用します。}*
+    *{Projectsテーブルの列と同じインデントを使用します}*
 
-    2つ以上のスペースをインデントし、Column Namesとディレクティブを入力します：  
+    2つ以上のスペースをインデントして、列名とディレクティブを入力します。  
     <code>name /nn</code>   
-    <code>due_date /nn</code> *{アンダースコアを含めない場合、カラムは_due_date_の代わりに_due_と呼ばれます。}*   
+    <code>due_date /nn</code> *{アンダースコアを含めない場合、列は_due_ではなく_due\_date_と呼ばれます。}*   
     <code>description</code>    
 
     ![](images/enter-milestones.png " ")
 
-    *{注：MilestonesテーブルのSQLには、project_idカラムと親テーブルであるProjectsとの外部キー関係が含まれています。}*
+    *{注:MilestonesテーブルのSQLにはproject_id列と親テーブルProjectsへの外部キー関係が含まれています。}*  
 
 2. Projectsに関連する別の子テーブルを入力します。
 
-    Quick SQL（左ペイン）で、Table NameとDirectiveを入力します：  
-    <code>Tasks /insert 100</code>  
-    *{この新しいテーブルが、上のテーブルの親ではなく、Projectsの親になるように、インデントはMilestonesテーブルで使用したものと同じにする必要があります。}*
+    Quick SQL(左パネル)にテーブル名とディレクティブを入力します。  
+    <code>Tasks /insert 100</code>
+    *{インデントはMilestonesテーブルと同じであるべきです。これにより、この新しいテーブルはProjectsの親であり、上のテーブルの親ではないことが保証されます。}*
 
-    2つ以上のスペースをインデントし、Column Namesとディレクティブを入力します：  
+    2つ以上のスペースをインデントして、列名とディレクティブを入力します。  
     <code>name /nn</code>   
     <code>assignee /references team_members</code>   
     <code>milestone id /references milestones</code>   
 
     ![](images/enter-tasks.png " ")
 
-## タスク6：完全な速記でコピーします
+## タスク5:設定を更新する
+生成されたSQLをさらに改善するために数多くの設定を定義できます。スクリプトを1回のみ実行する場合は、SQL(右パネル)のツールバーの**Settings**をクリックできます。**Help**に記載されているように、Quick SQL(左パネル)でも設定を定義できます。Quick SQLで定義された設定は、以前に実行されたスクリプトを再実行するためにQuick SQLに戻るたびに再入力する必要はありません。
 
-1. クイックSQL（左ペイン）で、既存の速記のすべてを以下に置き換えます。
+1. SQL(右パネル)のツールバーで**Settings**をクリックします。
 
+    Settingsダイアログに以下を入力します。
+    - オブジェクトプレフィックス - **hol**と入力します。
+    - 削除時 - **Restrict**を選択します。
+    - プライマリキー - **Identity Column**を選択します。 
+    - 日付データ型 - **TIMESTAMP WITH LOCAL TIME ZONE**を選択します。
+    - 監査列 - **Check**を選択します。  
+    - 行バージョン番号 - **Check**を選択します。  
 
-   ```
-   <copy>
-   # settings = { prefix: "hol", ondelete: "restrict", pk: "identity" }
-   # date: "timestamp with local time zone"
-   # auditcols: true
-   # rowVersion: true
+    **Save Changes**をクリックします。
 
-   team_members /insert 10
-     username /nn /upper
-     full name
-     email /nn
-     phone_number
-     profile
-     photo file
-   projects /insert 20
-     name /nn
-     project_lead /nn /references team_members
-     budget num
-     status vc30 /nn /check ASSIGNED, IN-PROGRESS, COMPLETED
-     completed_date
-     description
-     milestones /insert 30
-       name /nn
-       due_date /nn
-       description
-     tasks /insert 100
-       name /nn
-       assignee /references team_members
-       milestone_id /references milestones
-       start_date /nn
-       end_date
-       cost num
-       description
-       is_complete_yn /check Y, N
-       to dos /insert 20
-         todo vc(255) /nn
-         assingee /references team_members
-         due_date
-         details
-       links /insert 10
-         url vc(255) /nn /lower
-         name
-         description
+    ![](images/settings.png " ")
 
-   view project_tasks projects tasks
-   </copy>
-   ```
+    生成されたSQLは大幅に変更されています。テーブル名が更新され、追加の列と更新されたトリガーがあります。  
 
-   **SQLの生成** をクリックします
+    ![](images/post-settings.png " ")
+
+## タスク6:完全な略記法をコピーする  
+
+1. Quick SQL(左パネル)で、既存の略記法をすべて以下の内容に置き換えます。
+
+    ```
+    <copy>
+    # settings = { prefix: "hol", ondelete: "restrict", pk: "identity" }
+    # date: "timestamp with local time zone"
+    # auditcols: true
+    # rowVersion: true
+
+    team_members /insert 10
+      username /nn /upper
+      full name
+      email /nn
+      phone_number
+      profile
+      photo file
+    projects /insert 20
+      name /nn
+      project_lead /nn /references team_members
+      budget num
+      status vc30 /nn /check ASSIGNED, IN-PROGRESS, COMPLETED
+      completed_date
+      description
+      milestones /insert 30
+        name /nn
+        due_date /nn
+        description
+      tasks /insert 100
+        name /nn
+        assignee /references team_members
+        milestone_id /references milestones
+        start_date /nn
+        end_date
+        cost num
+        description
+        is_complete_yn /check Y, N
+        to dos /insert 20
+          todo vc(255) /nn
+          assingee /references team_members
+          due_date
+          details
+        links /insert 10
+          url vc(255) /nn /lower
+          name
+          description
+
+    view project_tasks projects tasks
+    </copy>
+    ```
+    
+   **Generate SQL**をクリックします。
 
    ![](images/copy-paste.png " ")
 
-   *{注：完全な省略形は、必要な設定をすべて定義しています。また、多くのテーブルでカラムが追加され、ディレクティブやデータ型も追加されます。また、ビューも定義されています。}*
+   *{注:完全な略記法は、必要なすべての設定を定義しています。また、多くのテーブルに追加の列を含み、追加のディレクティブとデータ型があります。ビューも定義されています。}*
 
-## タスク7：スクリプトを実装します
+## タスク7:スクリプトを実装する
+この段階で、SQLステートメントのリストを作成しました。ただし、まずステートメントをスクリプトファイルとして保存し、その後スクリプトを実行する必要があります。これにより、データベースオブジェクトが作成され、データが挿入されます。
 
-この段階で、あなたはSQL文のリストを作成しました。ただし、最初にステートメントをスクリプト ファイルとして保存し、スクリプトを実行する必要があります。これにより、データベース・オブジェクトが作成され、データが挿入されます。
+1. SQL(右パネル)のツールバーで**Save SQL Script**をクリックします。
+2. Save Scriptダイアログで、Script Nameに**hol**と入力します。  
+   **Save Script**をクリックします。
 
-1. SQL（右ペイン）ツールバーで、**Save SQL Script**をクリックします。
-2. [スクリプトの保存]ダイアログで、スクリプト名については、 **hol** を入力します。
+   ![](images/save-script.png " ")  
 
-   ![](images/save-script.png " ")
+3. SQL(右パネル)のツールバーで**Review and Run**をクリックします。    
+   スクリプトは**Script Editor**内のSQL Scriptsに表示されます。
 
-3. SQL（右ペイン）ツールバーで、**レビューと実行**をクリックします。
+   **Run**をクリックします。
 
-   **実行**  をクリックします。
+   ![](images/run-script.png " ")  
 
-   ![](images/run-script.png " ")
+4. Run Scriptページで**Run Now**をクリックします。
 
-4. 実行ページで、**今すぐ実行** をクリックします。
-
-   ![](images/lcdlab2step7part4.png " ")
-5. スクリプト結果ページが表示され、処理され、成功したステートメント、エラーが表示されます。
+   ![](images/lcdlab2step7part4.png " ")  
+5. Script Resultsページに処理されたステートメント、正常に完了したもの、エラーのあるものをリストした結果が表示されます。
 
    ![](images/results.png " ")
 
-   *{注：217個のステートメントが処理されない場合は、Quick SQLに戻り、_Generate SQL_をクリックし、スクリプトを再保存して再度実行します。217の成功が表示されない場合は、結果内のフィードバックに表示されるエラーを確認してください。}*
+   *{注:217個のステートメントが処理されていない場合は、Quick SQLに戻り、_Generate SQL_をクリックし、スクリプトを再保存してから再実行します。217個の正常完了していない場合は、結果内のFeedbackに表示されているエラーを確認してください。}*  
 
-## **まとめ**
-
-これで、クイックSQLを使用して複雑なデータ構造を構築し、サンプルデータを完成させる方法を知っています。
+## **まとめ**  
+今では、サンプルデータを含む複雑なデータ構造をQuick SQLを使用して構築する方法を知っています。
 
 ## **謝辞**
 
