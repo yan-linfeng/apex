@@ -1,114 +1,110 @@
-# アプリケーションを再生します
+# アプリケーションを再生成する
 
-## 紹介
+## はじめに
 
-このラボでは、アプリケーションを再生成して、開発の出発点をより良いものにします。
+このラボでは、開発のためのより良い出発点を作成するためにアプリケーションを再生成します。  
 
-マイルストーンのレポートとフォームを確認すると、4つの項目しかないことがわかります。次に、エンドユーザーと話したところ、あるプロジェクトで多くのマイルストーンを一度に入力したいことがよくあることがわかりました。
+Milestonesレポートとフォームをレビューすると、わずか4項目しかありません。次に、エンドユーザーと話をすると、特定のプロジェクトに対して一度に多くのマイルストーンを入力したいとよく言われることが分かります。
 
 ![](images/milestones.png " ")
 
-そのため、現在のレポートやフォームをインタラクティブグリッドに置き換えることが望ましいと考えられます。インタラクティブグリッドは、スプレッドシートに似ていて、1つのページで複数のレコードを管理することができます。
+したがって、現在のレポートとフォームをInteractive Gridに置き換えることが望ましいでしょう。Interactive Gridはスプレッドシートに似ており、1ページで複数のレコードを管理できます。  
 
-今回生成したアプリケーションでは、追加の開発が行われていないため、現在のアプリケーションを削除し、新しいアプリケーションを再生成するのが最も迅速かつ簡単です。
+生成したばかりのアプリケーションで追加の開発が行われていないため、現在のアプリケーションを削除してから新しいアプリケーションを再生成するのが最も迅速で簡単な方法です。  
 
-*{注：アプリケーションで開発が行われていた場合、再生成時に変更内容が失われます。これを避けるには、ページの作成ウィザードを使用して新しいインタラクティブグリッドページを作成し、既存のレポートとフォームを削除して、新しいページを指すようにナビゲーションリストを変更します。}*
+*{注:アプリケーションで開発が行われていた場合、再生成すると変更が失われます。これを避けるには、Create Page Wizardを使用して新しいInteractive Gridページを作成し、既存のレポートとフォームを削除した後、ナビゲーションリストを新しいページを指すように変更できます。}*  
 
-推定時間：5分
+推定所要時間:5分  
 
 ### 目的
+- 開発者に優しい環境のためにアプリケーションを再生成する  
+- アプリケーションのステップを更新する  
 
-- 開発者に優しい環境のアプリケーションを再生します
-- アプリケーションのステップを更新します
+### 必要なもの  
 
-### 前提条件
+- Oracle Cloudの有料アカウントまたは無料トライアル。30日間$300のクレジットを含むトライアルアカウントにサインアップするには、[こちら](http://oracle.com/cloud/free)をクリックしてください。  
+- APEXアプリケーション
 
-- Oracle Cloudの有料アカウント、Livelabsアカウント、または無料トライアル。
-- 一つのAPEXアプリケーション
-
-## タスク1: 既存のアプリケーションの削除
-同じ名前の2つのアプリケーションが存在するのを避けるために、たった今生成したアプリケーションを削除することが重要です。
+## タスク1:既存のアプリケーションを削除する
+同じ名前の2つのアプリケーションがあることに起因する混乱を避けるために、作成したばかりのアプリケーションを削除することが重要です。
 
 1. アプリケーションのホームページに戻ります。  
 
-    APEX App Builderを使用してこのアプリを実行した場合、画面下部にDeveloper Toolbarが表示されます。     
-    *{注意:アプリに直接ログインするエンドユーザーはこのツールバーを表示しません。*
+   APEX App Builderからこのアプリを実行したため、画面下部にDeveloper Toolbarが表示されます。     
+   *{注:アプリに直接ログインするエンドユーザーはこのツールバーは見えません。}*
 
-    Developer Toolbarで**Application xxxxx**をクリックします。
+   Developer Toolbarの**Application xxxxx**をクリックします。
 
-    ![](images/dev-toolbar.png " ")
+   ![](images/dev-toolbar.png " ")  
 
-    または、適切なブラウザータブやウィンドウを選択することにより、手動でブラウザのAPEX App Builderタブに戻ることもできます。
+   または、ブラウザのタブまたはウィンドウを選択してAPEX App Builderタブに手動で戻ることもできます。
 
 2. 開発環境から、アプリケーションのホームページで、右パネルのTasksの下にある**Delete Application**をクリックします。
 
-    ![](images/delete-app.png " ")  
+   ![](images/delete-app.png " ")  
 
-3.**Permanently Delete Now** をクリックします。
+3. Confirm Deleteページで、**Permanently Delete Now**をクリックします。
 
-    ![](images/perm-delete-now.png " ")
+   ![](images/perm-delete-now.png " ")  
 
-
-## タスク2: ブループリントの読み込み 
-Create Application Wizardを使用すると、開発者は以前に生成されたアプリケーション定義である_Blueprints_を読み込むことができます。この機能を利用すると、前のProjectsアプリケーションブループリントを読み込み、マイルストーンページを修正してからアプリを再生成できます。
+## タスク2:ブループリントをロードする 
+Create Application Wizardを使用すると、開発者は以前に生成されたアプリケーション定義(_Blueprints_と呼ばれる)をロードできます。この機能を利用すると、以前のProjectsアプリケーションのブループリントをロードし、マイルストーンページを変更してからアプリケーションを再生成できます。
 
 1. App Builderのホームページから、**App Builder**メニューを開き、**Create**をクリックします。
 
-    ![](images/go-create-app.png " ")  
+   ![](images/go-create-app.png " ")  
 
-2. Create an Applicationページで、**New Application** をクリックします。  
+2. Create an Applicationページで、**New Application**をクリックします。
 
 3. Create App Wizardで、**Load Blueprint**をクリックします。
 
-    Quick Projectsの場合は、**Load**をクリックします。
+   Quick Projectsに対して、**Load**をクリックします。
 
-    ![](images/load-blueprint.png " ")
+   ![](images/load-blueprint.png " ")
 
-## タスク3: マイルストーンページの更新
-元のページを再読み込みしたので、今度は古いマイルストーンページを削除し、新しいページタイプを追加し、新しいページを並べ替えるだけのことです。
+## タスク3:マイルストーンページを更新する
+元のページを再ロードしたので、古いマイルストーンページを削除し、新しいページタイプを追加して、新しいページの順序を再設定するだけです。
 
-1. Create an Applicationページで、Pagesの下のMilestonesの横にある**Edit**をクリックします。  
+1. Create an Applicationページで、Pagesの下のMilestonesに対して**Edit**をクリックします。  
 
-    Add Report Pageで、**Delete**をクリックします。
+   Add Report Pageで、**Delete**をクリックします。
 
-    ![](images/delete-page.png " ")  
+   ![](images/delete-page.png " ")
 
 2. **Add Page**をクリックします。  
 
-    Add Pageダイアログで、**Interactive Grid**をクリックします。
+   Add Pageダイアログで、**Interactive Grid**をクリックします。
 
-    ![](images/select-ig.png " ")
+   ![](images/select-ig.png " ")  
 
-3. Add Interactive Grid Pageダイアログで、以下を入力します。
-    - Page Name - **Milestones**と入力します。
-    - Table or View - **HOL_MILESTONES**を選択します。  
+3. Add Interactive Grid Pageダイアログで、次の内容を入力します。
+   - Page Name - Milestonesと入力します。  
+   - Table or View - HOL_MILESTONESを選択します。  
 
-    **Add Page**をクリックします。
+   **Add Page**をクリックします。
 
-    ![](images/add-page.png " ")
+   ![](images/add-page.png " ")  
 
-4. **Milestones – Interactive Grid**ページのハンバーガーをマウスオーバーしているときにマウスをクリックして押し続けます。  
-    Projectsの下までドラッグします。マウスを離します。
+4. **Milestones – Interactive Grid**ページのハンバーガーをホバーしたときにマウスをクリックし、 Projectsの下までドラッグします。マウスを離します。
 
-    ![](images/drag-page.png " ")  
+   ![](images/drag-page.png " ")  
 
 5. 新しいアプリケーションを生成するには、**Create Application**をクリックします。  
 
-## タスク4: 新しいアプリケーションの実行
+## タスク4:新しいアプリケーションを実行する
 
-1. Page Designerで、**Run Application**をクリックします。
+1. Page Designerで、**Run Application**をクリックします。  
 
-2. 新しいアプリケーションでMilestonesに移動し、ページを確認します。
+2. 新しいアプリケーションでMilestonesに移動し、ページを確認します。  
 
-    既存のレコードをダブルクリックするか、Add Rowをクリックして新しいレコードを挿入します。
+   既存のレコードをダブルクリックするか、Add Rowをクリックして新しいレコードを挿入します。
 
-    ![](images/new-page.png " ")
+   ![](images/new-page.png " ")  
 
-    *{注意:レコードはInteractive Grid内で直接挿入、更新、削除できます。ウィザードはProjectsの値のリストを生成し、期日はポップアップカレンダーを使用し、他の2つのフィールドはページに直接データを維持するためのテキスト領域を使用します。}*
-    
-## **まとめ**
+   *{注:レコードをInteractive Grid内から直接挿入、更新、削除できます。ウィザードはProjectsのリスト値を生成し、Due Dateはポップアップカレンダーを使用し、他の2つのフィールドではテキストエリアを使用してデータをページ上で直接維持します。}*   
 
-ここで、青写真を利用して以前のアプリケーション定義を作成アプリケーションウィザードにロードする方法を知っています。
+## **まとめ**  
+blueprintを使用して以前のアプリケーション定義をCreate Application ウィザードにロードする方法を知っています。
 
 ## **謝辞**
 
