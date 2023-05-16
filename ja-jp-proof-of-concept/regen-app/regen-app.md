@@ -46,6 +46,7 @@ Milestonesレポートとフォームをレビューすると、わずか4項目
 3. Confirm Deleteページで、**Permanently Delete Now**をクリックします。
 
    ![](images/perm-delete-now.png " ")  
+ 
 
 ## タスク2:ブループリントをロードする 
 Create Application Wizardを使用すると、開発者は以前に生成されたアプリケーション定義(_Blueprints_と呼ばれる)をロードできます。この機能を利用すると、以前のProjectsアプリケーションのブループリントをロードし、マイルストーンページを変更してからアプリケーションを再生成できます。

@@ -131,10 +131,10 @@
 
 6. List of Values編集ページで、Where Clauseに次の内容を入力します:
 
-    
+    ```
     <copy> project_id = :P8_PROJECT_ID
     </copy>
-    
+    ```   
       
 
     *{注:これにより、プロジェクトアイテム_P8\_PROJECT\_ID_で現在選択されている値に基づいて返されるマイルストーンが制限されます。}*

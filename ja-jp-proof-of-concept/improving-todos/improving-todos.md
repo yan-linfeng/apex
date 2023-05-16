@@ -40,30 +40,30 @@
     Source > SQL Queryの**Code Editor**アイコンをクリックします。
     Code Editorで、次の内容を入力します:
 
-    
-    <copy>select ID, 
-         (select p.name 
-          from hol_projects p, hol_tasks t 
-          where p.id = t.project_id 
-          and t.id = td.task_id 
-         ) project, 
-         (select m.name 
-          from hol_milestones m, hol_tasks t 
-          where m.id = t.milestone_id 
-          and   t.id = td.task_id 
-         ) milestone, 
-         TASK_ID, 
-         ROW_VERSION, 
-         TODO, 
-         ASSINGEE, 
-         DUE_DATE, 
-         DETAILS, 
-         CREATED, 
-         CREATED_BY, 
-         UPDATED, 
-         UPDATED_BY 
+    ```
+    <copy>select ID,
+         (select p.name
+          from hol_projects p, hol_tasks t
+          where p.id = t.project_id
+          and t.id = td.task_id
+         ) project,
+         (select m.name
+          from hol_milestones m, hol_tasks t
+          where m.id = t.milestone_id
+          and   t.id = td.task_id
+         ) milestone,
+         TASK_ID,
+         ROW_VERSION,
+         TODO,
+         ASSINGEE,
+         DUE_DATE,
+         DETAILS,
+         CREATED,
+         CREATED_BY,
+         UPDATED,
+         UPDATED_BY
     from HOL_TO_DOS td</copy>
-    
+    ```
 
     Code Editorツールバーの**Validate**をクリックします。
     **OK**をクリックします。
@@ -127,14 +127,15 @@ To Dosフォームページをレビューすると、レポートの編集ア�
     - Source > Source Type -  **SQL Query**をクリックします。
     - Source > SQL Query - 次の内容を入力します。   
 
-        
+        ```
         <copy>
-        select id 
-        ,      (select p.name from hol_projects p where p.id = t.project_id) project 
-        ,      (select m.name from hol_milestones m where m.id = t.milestone_id) milestone 
-        ,      name 
-        from hol_tasks t 
+        select id
+        ,      (select p.name from hol_projects p where p.id = t.project_id) project
+        ,      (select m.name from hol_milestones m where m.id = t.milestone_id) milestone
+        ,      name
+        from hol_tasks t
         </copy>
+        ```
         
 
     - Column Mapping > Return - **ID**を選択します。  

@@ -37,30 +37,31 @@ To Dosレポートを変更したのと同様に、Linksレポートを更新し
 
     Source > SQL Queryに次の内容を入力します:
 
-    
+    ```
     <copy>
-    select ID, 
-       (select p.name 
-        from hol_projects p, hol_tasks t 
-        where p.id = t.project_id 
-        and t.id = l.task_id 
-       ) project, 
-       (select m.name 
-        from hol_milestones m, hol_tasks t 
-        where m.id = t.milestone_id 
-        and   t.id = l.task_id 
-       ) milestone, 
-       TASK_ID, 
-       ROW_VERSION, 
-       URL, 
-       NAME, 
-       DESCRIPTION, 
-       CREATED, 
-       CREATED_BY, 
-       UPDATED, 
-       UPDATED_BY 
+    select ID,
+       (select p.name
+        from hol_projects p, hol_tasks t
+        where p.id = t.project_id
+        and t.id = l.task_id
+       ) project,
+       (select m.name
+        from hol_milestones m, hol_tasks t
+        where m.id = t.milestone_id
+        and   t.id = l.task_id
+       ) milestone,
+       TASK_ID,
+       ROW_VERSION,
+       URL,
+       NAME,
+       DESCRIPTION,
+       CREATED,
+       CREATED_BY,
+       UPDATED,
+       UPDATED_BY
   from HOL_LINKS l
   </copy>
+    ```
     
   
 
