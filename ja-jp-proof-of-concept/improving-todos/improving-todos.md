@@ -20,18 +20,18 @@
 ランタイム環境でTo Dosに移動すると、レポートにはタスクが含まれていますが、関連するプロジェクトとマイルストーンは含まれていないことに気付きます。レポートでこれらの値を取得するには、プロジェクトとマイルストーンテーブルに関連付けられたSQLを利用する必要があります。これは内部選択または複数のテーブルを結合することで実行できます。シンプルにするために、内部SELECTステートメントを実装します。
 
 
-1. ランタイムアプリケーションから、To Dosレポートページに移動し、Page Designerに移動します。
+1. ランタイムアプリケーションから、To Dosレポートページに移動し、ページ・デザイナーに移動します。
 
-    Developer Toolbarの**Edit Page 9**をクリックします。
+    開発者ツールバーの**Edit Page 9**をクリックします。
 
     ![](images/dev-toolbar.png " ")
 
-    Page Designerに**Page 9: To Dos**がロードされているはずです。
+    ページ・デザイナーに**Page 9: To Dos**がロードされているはずです。
 
 
 2. To Dos用に定義されたクエリを更新する必要があります。
 
-    Page Designer内で、Rendering tree(左パネル)の**To Dos**をクリックします。
+    ページ・デザイナー内で、Rendering tree(左パネル)の**To Dos**をクリックします。
 
     Property Editor(右パネル)で、Source > Typeの**SQL Query**を選択します。   
     *{注:SQLクエリが入力されます。SQLステートメントはHOL\_TO\_DOSテーブルのすべての列を選択します。}* 
@@ -73,7 +73,7 @@
 
 3. アプリケーションを実行して、新しいプロジェクトとマイルストーンの列が正しく表示されることを確認します。
 
-    Page Designerツールバーの**Save and Run**をクリックします。
+    ページ・デザイナーツールバーの**Save and Run**をクリックします。
 
     ![](images/run-report.png " ")   
 
@@ -112,7 +112,7 @@ To Dosフォームページをレビューすると、レポートの編集ア�
 
 同じLOVはLinksフォームページでも使用されているため、そこでも再利用できます。
 
-1. ランタイム環境で、Developer Toolbarの**Application xxxxx**をクリックします。   
+1. ランタイム環境で、開発者ツールバーの**Application xxxxx**をクリックします。   
 
 2. アプリケーションホームページから、**Shared Components**をクリックします。
 
@@ -164,12 +164,12 @@ To Dosフォームページをレビューすると、レポートの編集ア�
 
     ![](images/go-page10.png " ")   
 
-7. Page Designer内で、Rendering tree(左パネル)の**P10_TASK_ID**をクリックします。
+7. ページ・デザイナー内で、Rendering tree(左パネル)の**P10_TASK_ID**をクリックします。
     Property Editor(右パネル)で、Identification > Typeの**Popup LOV**を選択します。
 
     ![](images/set-task-lov.png " ")   
 
-7. Page Designerツールバーの**Save**をクリックします。   
+7. ページ・デザイナーツールバーの**Save**をクリックします。   
 
 8. 完成したフォームページをレビューする時間です。   
 

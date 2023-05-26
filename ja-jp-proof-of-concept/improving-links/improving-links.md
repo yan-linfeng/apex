@@ -20,17 +20,17 @@
 
 To Dosレポートを変更したのと同様に、Linksレポートを更新してプロジェクトとマイルストーンの列を含める必要があります。
 
-1. ランタイムアプリケーションから、Linksレポートページに移動し、Page Designerに移動します。
+1. ランタイムアプリケーションから、Linksレポートページに移動し、ページ・デザイナーに移動します。
 
-    Developer Toolbarの**Edit Page11**をクリックします。
+    開発者ツールバーの**Edit Page11**をクリックします。
     ![](images/edit-page11.png " ")
 
-    Page Designerで**Page 11: Links**がロードされているはずです。
+    ページ・デザイナーで**Page 11: Links**がロードされているはずです。
 
 
 2. Links用に定義されたクエリを更新する必要があります。
 
-    Page Designer内で、Rendering tree(左パネル)の**Links**をクリックします。
+    ページ・デザイナー内で、Rendering tree(左パネル)の**Links**をクリックします。
 
     Property Editor(右パネル)で、Source > Typeの**SQL Query**を選択します。
     *{注:SQLクエリが入力されます。SQLステートメントはHOL_LINKSテーブルのすべての列を選択します。}*
@@ -69,7 +69,7 @@ To Dosレポートを変更したのと同様に、Linksレポートを更新し
 
 3. レポート内のURL列を更新する必要があります。
 
-    Page Designerで、Rendering tree(左パネル)のLinks領域の下で、**Columns**を展開します。
+    ページ・デザイナーで、Rendering tree(左パネル)のLinks領域の下で、**Columns**を展開します。
 
     列のリストで、**URL**をクリックします。
     Property Editor(右パネル)に次の内容を入力します。
@@ -90,7 +90,7 @@ To Dosレポートを変更したのと同様に、Linksレポートを更新し
 
 4. ページをレビューする時間です。
 
-    Page Designerツールバーの**Save and Run**をクリックします。  
+    ページ・デザイナーツールバーの**Save and Run**をクリックします。  
 
     ![](images/run-report.png " ")
 
@@ -130,13 +130,13 @@ To Dosレポートを変更したのと同様に、Linksレポートを更新し
 ## タスク2:フォームページを更新する
 Linksフォームページをレビューすると、レポートの編集アイコンをクリックすると、Taskアイテムにプロジェクトとマイルストーンが表示されないことがわかります。以前のラボでタスクのLOVを更新して追加の表示列を含めました。したがって、現在する必要があるのはタスクアイテムをポップアップLOVに更新するだけです。
 
-1. ランタイム環境で、Developer Toolbarの**Edit Page 12**をクリックします。
+1. ランタイム環境で、開発者ツールバーの**Edit Page 12**をクリックします。
 ![](images/edit-page12.png " ")  
 
-2. Page Designer内で、Rendering tree(左パネル)の**P12_TASK_ID**をクリックします。
+2. ページ・デザイナー内で、Rendering tree(左パネル)の**P12_TASK_ID**をクリックします。
     Property Editor(右パネル)で、Identification > Typeの**Popup LOV**を選択します。
 
-    Page Designerツールバーの**Save**をクリックします。
+    ページ・デザイナーツールバーの**Save**をクリックします。
 
     ![](images/set-task-lov.png " ")   
 

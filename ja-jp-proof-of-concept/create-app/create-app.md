@@ -14,49 +14,49 @@
 
 ## タスク1:アプリ作成ウィザードを実行する
 
-1. SQLスクリプト > Resultsから、**Create App**をクリックします。
+1. SQLスクリプト > 結果から、**アプリケーションの作成**をクリックします。
 
     ![](images/go-create-app.png " ")
 
-    *注:* "Create App"ボタンが表示されない場合は、次の手順を実行します:
-    - *Results列内で、たった今実行したスクリプトの"1"をクリックします。*
+    *注:* "アプリケーションの作成"ボタンが表示されない場合は、次の手順を実行します:
+    - *結果列内で、たった今実行したスクリプトの"1"をクリックします。*
 
     ![](images/alt-create-app.png " ")  
 
-    - *View Resultsの下にある拡大鏡アイコンをクリックします。*
+    - *結果の表示の下にある拡大鏡アイコンをクリックします。*
 
     ![](images/alt-create-app2.png " ")
 
     *上記に示した結果ページが再度表示されるはずです。*
 
-2. Create App from Scriptダイアログで、**Create Application**をクリックします。
+2. スクリプトからアプリケーションを作成ダイアログで、アプリケーションの作成をクリックします。
 
     ![](images/app-from-script.png " ")  
 
-3. Create an Applicationページで、Nameに**Quick Projects**と入力します。
-   **Appearance**をクリックします。    
-   Theme Styleで**Vita-Slate**を選択します。     
-   **Save Changes**をクリックします。
+3. アプリケーションの作成ページで、Nameに**Quick Projects**と入力します。
+   **外観**をクリックします。    
+   Theme Styleで**Redwood Light**を選択します。     
+   **変更の保存**をクリックします。
 
    ![](images/name-app.png " ")
 
-4. Featuresで**Check All**をクリックします。   
-   **Create Application**をクリックします。
+4. 機能で**すべでをチェック**にチェクを入れます。   
+   アプリケーションの作成をクリックします。
 
    ![](images/all-features.png " ")
 
 ## タスク2:アプリケーションを実行する
 
-1. 新しいアプリケーションがPage Designerに表示されます。
+1. 新しいアプリケーションがページ・デザイナーに表示されます。
 
-   **Run Application**をクリックします。
+   **アプリケーションの実行**をクリックします。
 
    ![](images/pd.png " ")
 
 2. ランタイム環境では、ログインページが表示されます。
 
-   **Username**と**Password**を入力します(UsernameはDemo)。   
-   **Sign In**をクリックします。
+   **ユーザー名**と**パスワード**を入力します(ユーザー名はDemo)。   
+   **サインイン**をクリックします。
 
    新しいアプリケーションが表示されます。
 
@@ -69,7 +69,7 @@
    ![](images/show-team-members.png " ")  
 
 ## **まとめ**  
-今では、SQLスクリプトから直接Create Application ウィザードを使用してアプリケーションの最初の切り取りを作成する方法を知っています。
+今では、SQLスクリプトから直接アプリケーション作成ウィザードを使用してアプリケーションの最初の切り取りを作成する方法を知っています。
 
 ## **謝辞**
 
