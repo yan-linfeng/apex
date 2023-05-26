@@ -14,7 +14,7 @@
 
 ## タスク1:アプリ作成ウィザードを実行する
 
-1. SQL Scripts > Resultsから、**Create App**をクリックします。
+1. SQLスクリプト > Resultsから、**Create App**をクリックします。
 
     ![](images/go-create-app.png " ")
 
@@ -69,7 +69,7 @@
    ![](images/show-team-members.png " ")  
 
 ## **まとめ**  
-今では、SQL Scriptsから直接Create Application ウィザードを使用してアプリケーションの最初の切り取りを作成する方法を知っています。
+今では、SQLスクリプトから直接Create Application ウィザードを使用してアプリケーションの最初の切り取りを作成する方法を知っています。
 
 ## **謝辞**
 
