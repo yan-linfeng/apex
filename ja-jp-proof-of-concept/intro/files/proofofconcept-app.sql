@@ -39,7 +39,7 @@ prompt APPLICATION 117 - Quick Projects
 --       Regions:                 79
 --       Buttons:                 65
 --       Dynamic Actions:         25
---     Shared Components:
+--     共有コンポーネント:
 --       Logic:
 --         App Settings:           2
 --         Build Options:          6
@@ -58,7 +58,7 @@ prompt APPLICATION 117 - Quick Projects
 --           Region:              16
 --           Label:                7
 --           List:                13
---           Popup LOV:            1
+--           ポップアップLOV:            1
 --           Calendar:             1
 --           Breadcrumb:           1
 --           Button:               3

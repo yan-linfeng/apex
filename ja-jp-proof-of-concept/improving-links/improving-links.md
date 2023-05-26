@@ -30,9 +30,9 @@ To Dosレポートを変更したのと同様に、Linksレポートを更新し
 
 2. Links用に定義されたクエリを更新する必要があります。
 
-    ページ・デザイナー内で、Rendering tree(左パネル)の**Links**をクリックします。
+    ページ・デザイナー内で、レンダリング・ツリー (左パネル)の**Links**をクリックします。
 
-    Property Editor(右パネル)で、Source > Typeの**SQL Query**を選択します。
+    プロパティ・エディター(右パネル)で、Source > Typeの**SQL Query**を選択します。
     *{注:SQLクエリが入力されます。SQLステートメントはHOL_LINKSテーブルのすべての列を選択します。}*
 
     Source > SQL Queryに次の内容を入力します:
@@ -69,10 +69,10 @@ To Dosレポートを変更したのと同様に、Linksレポートを更新し
 
 3. レポート内のURL列を更新する必要があります。
 
-    ページ・デザイナーで、Rendering tree(左パネル)のLinks領域の下で、**Columns**を展開します。
+    ページ・デザイナーで、レンダリング・ツリー (左パネル)のLinks領域の下で、**Columns**を展開します。
 
     列のリストで、**URL**をクリックします。
-    Property Editor(右パネル)に次の内容を入力します。
+    プロパティ・エディター(右パネル)に次の内容を入力します。
     - Identification > Type  - **Link**を選択します。
     - Link > Target - **No Link Defined**をクリックし、次の内容を入力します。  
         - Target > Type - **URL**を選択します。
@@ -133,10 +133,10 @@ Linksフォームページをレビューすると、レポートの編集アイ
 1. ランタイム環境で、開発者ツールバーの**Edit Page 12**をクリックします。
 ![](images/edit-page12.png " ")  
 
-2. ページ・デザイナー内で、Rendering tree(左パネル)の**P12_TASK_ID**をクリックします。
-    Property Editor(右パネル)で、Identification > Typeの**Popup LOV**を選択します。
+2. ページ・デザイナー内で、レンダリング・ツリー (左パネル)の**P12_TASK_ID**をクリックします。
+    プロパティ・エディター(右パネル)で、Identification > Typeの**ポップアップLOV**を選択します。
 
-    ページ・デザイナーツールバーの**Save**をクリックします。
+    ページ・デザイナーツールバーの**保存**をクリックします。
 
     ![](images/set-task-lov.png " ")   
 

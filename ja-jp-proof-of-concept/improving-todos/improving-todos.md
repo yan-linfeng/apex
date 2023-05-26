@@ -31,9 +31,9 @@
 
 2. To Dos用に定義されたクエリを更新する必要があります。
 
-    ページ・デザイナー内で、Rendering tree(左パネル)の**To Dos**をクリックします。
+    ページ・デザイナー内で、レンダリング・ツリー (左パネル)の**To Dos**をクリックします。
 
-    Property Editor(右パネル)で、Source > Typeの**SQL Query**を選択します。   
+    プロパティ・エディター(右パネル)で、Source > Typeの**SQL Query**を選択します。   
     *{注:SQLクエリが入力されます。SQLステートメントはHOL\_TO\_DOSテーブルのすべての列を選択します。}* 
 
     Source > SQL Queryの**Code Editor**アイコンをクリックします。
@@ -114,15 +114,15 @@ To Dosフォームページをレビューすると、レポートの編集ア�
 
 1. ランタイム環境で、開発者ツールバーの**Application xxxxx**をクリックします。   
 
-2. アプリケーションホームページから、**Shared Components**をクリックします。
+2. アプリケーションホームページから、**共有コンポーネント**をクリックします。
 
     ![](images/go-shared.png " ")  
 
-3. Shared Componentsから、Other Componentsの下の**List of Values**をクリックします。   
+3. 共有コンポーネントから、Other Componentsの下の**LOV**をクリックします。   
 
-4. List of Valuesページから、**HOL_TASKS.NAME**をクリックします。   
+4. LOVページから、**HOL_TASKS.NAME**をクリックします。   
 
-5. List of Valuesページで、次の内容を入力します。  
+5. LOVページで、次の内容を入力します。  
     - Source > Source Type -  **SQL Query**をクリックします。
     - Source > SQL Query - 次の内容を入力します。   
 
@@ -155,21 +155,21 @@ To Dosフォームページをレビューすると、レポートの編集ア�
 
     ![](images/set-add-columns.png " ")
 
-    List of Valuesツールバーの**Apply Changes**をクリックします。
+    LOVツールバーの**Apply Changes**をクリックします。
 
 5. To Doフォームページでは、タスクのアイテムタイプを更新する必要があります。    
 
-    Shared Componentsから、ブレッドクランブ内で、**Application xxxxx**をクリックします。  
+    共有コンポーネントから、ブレッドクランブ内で、**Application xxxxx**をクリックします。  
     アプリケーションホームページから、ページのリストで**10 - To Dos**をクリックします。  
 
     ![](images/go-page10.png " ")   
 
-7. ページ・デザイナー内で、Rendering tree(左パネル)の**P10_TASK_ID**をクリックします。
-    Property Editor(右パネル)で、Identification > Typeの**Popup LOV**を選択します。
+7. ページ・デザイナー内で、レンダリング・ツリー (左パネル)の**P10_TASK_ID**をクリックします。
+    プロパティ・エディター(右パネル)で、Identification > Typeの**ポップアップLOV**を選択します。
 
     ![](images/set-task-lov.png " ")   
 
-7. ページ・デザイナーツールバーの**Save**をクリックします。   
+7. ページ・デザイナーツールバーの**保存**をクリックします。   
 
 8. 完成したフォームページをレビューする時間です。   
 
