@@ -1,57 +1,42 @@
-# REST Enabling Database Objects
-
-## Introduction
-In this lab, you will learn how to REST enable a schema and database objects.
-
-Estimated Time: 10 minutes
-
-### Background Information
-In this lab you will be creating the EMP and DEPT tables, REST enabling them, and then building an application all in the same schema. Normally, you would REST enable database objects in a remote database schema, and then utilize those REST endpoints to define REST Data Sources in an application, where APEX is installed, within the local database, as outlined below.
-
+# データベースオブジェクトのREST有効化
+## はじめに
+このラボでは、スキーマとデータベースオブジェクトをRESTで有効にする方法を学びます。
+推定時間: 10分 
+### 背景情報
+このラボでは、EMPとDEPTテーブルを作成し、それらをRESTで有効にし、同じスキーマ内でアプリケーションを構築します。通常、リモートデータベーススキーマ内のデータベースオブジェクトをRESTで有効にし、それらのRESTエンドポイントを使用して、RESTデータソースを定義します。
 ![](images/rest-arch.png " ")
+APEXアプリケーションでRESTデータソースが定義されると、APEXエンジンはローカルデータベースオブジェクトを呼び出す代わりに、リモートデータベースからデータを検索するRESTエンドポイントを呼び出します。 PUT、POST、DELETEハンドラも定義されている場合、APEXアプリケーションはリモートデータベースオブジェクトで更新、挿入、削除も実行できます。
+## タスク1: サンプルテーブルの作成
+このラボでは一般的なEMPとDEPTテーブルを使用しています。これらは簡単にサンプルデータセットを使用してインストールできます。
+1. ワークスペースにログインします。  
+2. メインメニューで、**SQLワークショップ**を選択し、**ユーティリティ**を選択し、**サンプルデータセット**をクリックします。
+     ![](images/go-samples.png " ")
+3. サンプルデータセットのリストで、**EMP / DEPT**行の**インストール**をクリックします。
+     ![](images/install-empdept.png " ")
+4. **サンプルデータセット管理**ダイアログで、**次へ**をクリックします。
+     ![](images/manage-sample-dataset.png " ")
+5. **サンプルデータセットの読み込み**ダイアログで、**データセットのインストール**をクリックします。
+     ![](images/install-dataset.png " ")
+6. **サンプルデータセットの読み込み - 結果**ダイアログで、**終了**をクリックします。
+     注意: テーブルに直接アプリケーションを作成する必要はありません。 
+     ![](images/load-results.png " ") 
 
-Once the REST Data Source is defined in an APEX application, rather than calling a local database object, the APEX Engine calls the REST endpoint, to retrieve the data from the remote database. If the PUT, POST, and DELETE handlers have also been defined, then APEX applications can also perform updates, inserts, and deletes on the remote database objects.
+## タスク2: データベースオブジェクトのREST有効化  
+次のSQLスクリプトを実行すると、スキーマをRESTで有効にし、EMPおよびDEPTテーブルとEMP\_DEPT\_Vビューのモジュールと適切なハンドラーを作成します。
 
-## Task 1: Creating the Sample Tables
-This lab utilizes the common EMP and DEPT tables. These can easily be installed using Sample Datasets.
+または、SQLワークショップ> RESTfulサービスに移動してスキーマをRESTで有効にすることもできます。次に、SQLワークショップ>オブジェクトブラウザーに移動し、各テーブル/ビューをクリックし、RESTを選択してRESTサービスを定義します。ただし、SQLワークショップ>オブジェクトブラウザーを使用して作成されたハンドラーは、呼び出されるたびにデータディクショナリ検索を利用します。これは、手動で作成されたサービス、特にapex.oracle.comのようなサービスよりも効率的ではありません。 極めて大きなデータディクショナリを持っています。apex.oracle.comには20,000以上のスキーマがあります。
 
-1. Log into your workspace.
-2. In the main menu, select **SQL Workshop**, select **Utilities**, click **Sample Datasets**.
+1. メインメニューで、**SQLワークショップ**を選択し、**SQLスクリプト**をクリックします。 
 
-    ![](images/go-samples.png " ")
+     ![](images/go-scripts.png " ")  
 
-3. In the list of Sample Datasets, on the EMP / DEPT row, click **Install**.
+2. **SQL Scripts**ページで、**作成**をクリックします。
 
-    ![](images/install-empdept.png " ")
+     ![](images/create-script.png " ")  
 
-4. On the Manage Sample Dataset dialog, click **Next**.
-
-    ![](images/manage-sample-dataset.png " ")
-5. On the Load Sample Dataset dialog, click **Install Dataset**.
-
-    ![](images/install-dataset.png " ")
-6. On the Load Sample Dataset - Results dialog, click **Exit**.
-
-    *Note: We do not want to create an application directly on the tables.*
-
-    ![](images/load-results.png " ")
-
-## Task 2: REST Enabling the Database Objects
-Running the SQL Script below will REST Enable the schema and also create modules for the EMP and DEPT tables and the EMP\_DEPT\_V view, together with the appropriate handlers.
-
-Alternatively, you could go to SQL Workshop > RESTful Services and REST enabled the schema. Then go to SQL Workshop > Object Browser, clicked on each table/view and then selected REST to define the REST services. However, the handlers created using the SQL Workshop > Object Browser will utilize Data Dictionary lookups each time they are called. This is less efficient then the manually created services you will create, especially on services, such as apex.oracle.com, which have an extremely large data dictionary. On apex.oracle.com there are over 20,000 schemas.
-
-1. In the main menu, select **SQL Workshop**, click **SQL Scripts**.
-
-    ![](images/go-scripts.png " ")
-
-2. On the SQL Scripts page, click **Create**.
-
-    ![](images/create-script.png " ")
-
-3. In the Script Editor, enter the following.
-    - **Script Name:** Enter **Define REST Endpoints for EMP and DEPT**.
-    - **Script Editor:** Cut and paste the following.
+3. **スクリプトエディタ**に次の内容を入力します。
+    - **スクリプト名:** **EMPおよびDEPTのRESTエンドポイントの定義**と入力します。
+    - **スクリプトエディター:** 次の内容を切り取って貼り付けます。
 
     ```
     <copy>begin
@@ -188,41 +173,41 @@ Alternatively, you could go to SQL Workshop > RESTful Services and REST enabled 
     end;
     /<copy>
     ```
-     *Note: You can also cut and paste the script from the following URL -* [https://www.oracle.com/technetwork/developer-tools/apex/application-express/apex-hol-rest-enable-5478504.txt](https://www.oracle.com/technetwork/developer-tools/apex/application-express/apex-hol-rest-enable-5478504.txt)
+     *注意: スクリプトを次のURLからも切り取って貼り付けることができます。*  [https://www.oracle.com/technetwork/developer-tools/apex/application-express/apex-hol-rest-enable-5478504.txt](https://www.oracle.com/technetwork/developer-tools/apex/application-express/apex-hol-rest-enable-5478504.txt)
 
-    Click **Run**.
+    **実行**をクリックします。
 
     ![](images/set-scripts.png " ")
 
-4. On the Run Script page, click **Run Now**.
-5. Results should show 4 statements processed successfully.
+4. **スクリプトの実行**ページで、**今すぐ実行**をクリックします。
+5. 結果は4つのステートメントが成功裏に処理されたことを示すはずです。
 
-    ![](images/script-results.png " ")
+     ![](images/script-results.png " ")
 
-## Task 3: Reviewing the REST Services
+## タスク3: RESTサービスの確認  
 
-1. In the main menu, select **SQL Workshop**, click **RESTful Services**.
+1. メインメニューで、**SQLワークショップ**を選択し、**RESTfulサービス**をクリックします。
 
-    ![](images/go-restful.png " ")
+     ![](images/go-restful.png " ")  
 
-3. In the ORDS RESTful Services page, expand **Modules**, expand **emp.rest**, and then expand **hol/**.        
-    Click on **GET**.
+3. **ORDS RESTful Services**ページで、**Modules**を展開し、**emp.rest**を展開し、**hol/**を展開します。         
+     **GET**をクリックします。
 
-    Click on the Copy to Clipboard icon (or manually copy the Full URL).
+     コピー先のクリップボードアイコン(または手動で完全なURLをコピー)をクリックします。
 
-    ![](images/show-get.png " ")
+     ![](images/show-get.png " ")  
 
-4. Open a new tab/window in your browser and paste the Full URL. Keep this tab open or make a note of this URL because you will need it later.
+4. ブラウザーで新しいタブ/ウィンドウを開き、完全なURLを貼り付けます。このタブを開いたままにするか、後で必要になるためこのURLに注目してください。
 
-    ![](images/show-data.png " ")
+     ![](images/show-data.png " ")  
 
-    *Note: Depending on your browser you may just see the raw JSON document rather than the formatted output displayed above.*
+     *注意: ブラウザーによっては、上記の形式で表示される代わりに生のJSONドキュメントのみが表示される場合があります。*  
 
-## **Summary**
-This completes Lab 2. You now know how to REST enable database objects include all of the necessary handlers. [Click here to navigate to Lab 3](?lab=lab-3-defining-rest-data-sources).
+## **まとめ**
+これでLab 2が完了しました。データベースオブジェクトをRESTで有効にし、必要なすべてのハンドラーを含める方法を知っています。[Lab 3に移動するにはここをクリック](?lab=lab-3-defining-rest-data-sources)。  
 
-## **Acknowledgements**
+## **謝辞**
 
- - **Author/Contributors** -  Salim Hlayel, Principal Product Manager
- - **Contributors** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
- - **Last Updated By/Date** - Ankita Beri ,Product Manager, June 2023
+ - **作成者/投稿者** -  Salim Hlayel, Principal Product Manager
+ - **投稿者** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
+ - **最終更新日** - Ankita Beri ,Product Manager, June 2023

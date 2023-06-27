@@ -1,123 +1,124 @@
-# Defining REST Data Sources
+# RESTデータソースの定義
 
-## Introduction
-In this lab, you will learn how to utilize the REST APIs you created in the previous lab as the basis for REST Data Sources.
+## はじめに
+このラボでは、前のラボで作成したREST APIをRESTデータソースの基礎として使用する方法を学びます。  
 
-Estimated Time: 10 minutes
+推定時間: 10分  
 
-## Task 1: Create an App  
-In a normal development environment, rather than in a lab, at this point you would log out of the remote database, where you defined the REST APIs, and log into your local database where you want to build the application. However, given for this lab you are using the same workspace for both, there is no need to log out and log back in.
+## タスク1: アプリの作成   
+通常の開発環境では、REST APIを定義したリモートデータベースからログアウトし、アプリケーションを構築するローカルデータベースにログインします。ただし、このラボでは同じワークスペースを使用しているため、ログアウトして再ログインする必要はありません。
 
-1. Return to the APEX Builder tab or window.
-2. In the App Builder toolbar, click **App Builder**, and click **Create**.
+1. **APEX Builder**タブまたはウィンドウに戻ります。  
 
-    ![](images/go-create.png " ")
+2. **App Builder**ツールバーで、**App Builder**をクリックし、**Create**をクリックします。  
 
-3. On the Create Application page, click **New Application**.
+     ![](images/go-create.png " ")  
 
-    ![](images/new-app.png " ")
+3. **Create Application**ページで、**New Application**をクリックします。  
 
-4. On the Create an Application page, for Name, enter **REST Employees**.
+     ![](images/new-app.png " ")  
 
-    Click **Create Application**.
+4. **Create an Application**ページで、**Name**に**REST Employees**と入力します。  
 
-    ![](images/create-app.png " ")
+     **Create Application**をクリックします。  
 
-    *Note: At this stage you do not want to add any pages as you have not yet defined the REST Data Source.*
+     ![](images/create-app.png " ")  
 
-## Task 2: Add REST Data Source for EMP
+     *注意: この段階では、RESTデータソースをまだ定義していないため、ページを追加する必要はありません。*
 
-1. In the Application home page, click **Shared Components**.
+## タスク2: EMPのRESTデータソースの追加
 
-    ![](images/go-shared.png " ")
+1. アプリケーションのホームページで、**Shared Components**をクリックします。  
 
-2. Under **Data Sources**, click **REST Data Sources**.
+     ![](images/go-shared.png " ")  
 
-    ![](images/go-rest-data-source.png " ")
+2. **Data Sources**の下で、**REST Data Sources**をクリックします。  
 
-3. On the REST Data Sources page, click **Create**.
+     ![](images/go-rest-data-source.png " ")  
 
-    ![](images/create-rest-data-source.png " ")
+3. **REST Data Sources**ページで、**作成**をクリックします。  
 
-4. For Method, click **Next**. *Default: From Scratch*
+     ![](images/create-rest-data-source.png " ")  
 
-    ![](images/create-rest-data-source2.png " ")
+4. **メソッド**をクリックします。*デフォルト: スクラッチから*
 
-5. In the Create REST Data Source wizard, on the General dialog, enter the following:
-    - **REST Data Source Type:** select **ORACLE REST Data Services**
-    - **Name:** enter **REST EMP Source**
-    - **URL Endpoint:** enter the REST URI you tested previously
+     ![](images/create-rest-data-source2.png " ")  
 
-    *Note: Your URL endpoint will be similar to https://{cloud\_url}/ords/{{your_schema}}/emp/hol/*
+5. **RESTデータソースウィザード**で、**General**ダイアログに次の内容を入力します。  
+    - **RESTデータソースタイプ:** **ORACLE REST Data Services**を選択します。  
+    - **名前:** **REST EMPソース**と入力します。  
+    - **URLエンドポイント:** 前にテストしたREST URIを入力します。  
 
-    Click **Next**.
+     *注意: URLエンドポイントは、https://{cloud_url}/ords/{{your_schema}}/emp/hol/*のようになります。  
 
-    ![](images/set-url.png " ")
+     **次へ**をクリックします。  
 
-6. On the Remote Server dialog, review the Base URL and Service URL Path.   
-    Click **Next**.
+     ![](images/set-url.png " ")
 
-    ![](images/review-urls.png " ")
+6. **リモートサーバー**ダイアログで、**ベースURL**と**サービスURLパス**を確認します。  
+     **次へ**をクリックします。  
 
-7. On the Authentication dialog, click **Discover**.
+     ![](images/review-urls.png " ")  
 
-    - **Authentication Required:** Disabled/Grayed out
+7. **認証**ダイアログで、**検出**をクリックします。  
 
-  ![](images/discover.png " ")
+     - **認証が必要:** 無効化/グレーアウト  
 
-8. On the Preview dialog, click **Create REST Data Source**.
+       ![](images/discover.png " ")  
 
-    ![](images/create-rest-data-source3.png " ")
+8. **プレビュー**ダイアログで、**RESTデータソースの作成**をクリックします。 
 
-## Task 3: Adding Operations
-Given the URL Endpoint used above, the **Create REST Data Source** operation determined that the **GET** and **POST** operations have been defined. You also defined handlers for **GET**, **PUT**, and **DELETE** for a specific employee record. Therefore, it is important to add additional operations for these handlers. If you do not add the operations then the relevant functionality will not be included, such as selecting a single record, updating a record, or deleting a record.
+     ![](images/create-rest-data-source3.png " ")  
 
-1. On the REST Data Sources page, click **REST EMP Source**.
+## タスク3: オペレーションの追加
+上記で使用したURLエンドポイントの場合、**RESTデータソースの作成**操作により、**GET**および**POST**操作が定義されていることが判明しました。個々の従業員レコードの**GET**、**PUT**、**DELETE**のハンドラーも定義しました。したがって、これらのハンドラーのための追加操作を追加することが重要です。操作を追加しないと、選択レコードの選択、レコードの更新、レコードの削除などの関連機能が含まれない可能性があります。  
 
-    ![](images/edit-rest-data-source.png " ")
+1. **REST Data Sources**ページで、**REST EMP Source**をクリックします。  
 
-2. On REST EMP Source page, click **Add Operation**. You may need to scroll down to see operations.
+     ![](images/edit-rest-data-source.png " ")  
 
-    ![](images/add-operation.png " ")
+2. **REST EMP Source**ページで、**Add Operation**をクリックします。操作を表示するにはスクロールダウンが必要な場合があります。  
 
-3. In the REST Source Operation page, enter the following.
-    - **URL Pattern:** enter **:empno** (including the leading colon!)
-    - **HTTP Method:** select **GET**
-    - **Database Operation:** select **Fetch single row**
+     ![](images/add-operation.png " ")
 
-    Click **Create**.
+3. **RESTソースオペレーション**ページで、次の内容を入力します。  
+     - **URLパターン:** **:empno**と入力します(先頭のコロンを含む!)  
+     - **HTTPメソッド:** **GET**を選択します。  
+     - **データベース操作:** **Fetch single row**を選択します。  
 
-    ![](images/add-get.png " ")
+    **作成**をクリックします。  
 
-4. On REST EMP Source page, click **Add Operation**.
+     ![](images/add-get.png " ")  
 
-    In the REST Source Operation page, enter the following.
-    - **URL Pattern:** enter **:empno** (including the leading colon!)
-    - **HTTP Method:** select **PUT**
-    - **Database Operation:** select **Update row**
+4. **REST EMP Source**ページで、**Add Operation**をクリックします。  
 
-  Click **Create**.
+     **RESTソース操作**ページで、次の内容を入力します。  
+     - **URLパターン:** **:empno**(先頭のコロンを含む!)と入力します。  
+     - **HTTPメソッド:** **PUT**を選択します。  
+     - **データベース操作:** **Update row**を選択します。  
 
-    ![](images/update-put.png " ")
+   **作成**をクリックします。  
 
-5. On REST EMP Source page, click **Add Operation**.
+     ![](images/update-put.png " ")  
 
-    In the REST Source Operation page, enter the following.
-     - **URL Pattern:** enter **:empno** (including the leading colon!)
-     - **HTTP Method:** select **DELETE**
-     - **Database Operation:** select **Delete row**
+5. **REST EMP Source**ページで、**Add Operation**をクリックします。  
 
-   Click **Create**.
+     **RESTソース操作**ページで、次の内容を入力します。  
+     - **URLパターン:** **:empno**(先頭のコロンを含む!)と入力します。  
+     - **HTTPメソッド:** **DELETE**を選択します。  
+     - **データベース操作:** **Delete row**を選択します。  
 
-    ![](images/delete-delete.png " ")
-    ![](images/all-ops.png " ")
+   **作成**をクリックします。  
+
+     ![](images/delete-delete.png " ")  
+     ![](images/all-ops.png " ")
 
 
-## **Summary**
-This completes Lab 3. You now know how to define a REST Data Source within an application and add the required operations for full CRUD operations. [Click here to navigate to Lab 4](?lab=lab-4-creating-pages).
+## **まとめ**
+これでLab 3が完了しました。アプリケーション内でRESTデータソースを定義し、完全なCRUD操作に必要な操作を追加する方法を知っています。[Lab 4に移動するにはここをクリック](?lab=lab-4-creating-pages)。 
 
-## **Acknowledgements**
+## **謝辞**
 
- - **Author/Contributors** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
- - **Last Updated By/Date** - Ankita Beri, Product Manager, June 2023
+ - **作成者/投稿者** -  Salim Hlayel, Principle Product Manager
+ - **投稿者** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
+ - **最終更新日** - Ankita Beri, Product Manager, June 2023

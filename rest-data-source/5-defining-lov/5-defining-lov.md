@@ -1,210 +1,210 @@
-# Defining a List of Values
+# 値のリストの定義  
 
-## Introduction
-In this lab, you will learn how to utilize REST Data Sources as the basis for list of values for use within an application.
+## はじめに  
+このラボでは、アプリケーション内で使用するためのリストの値の基礎としてRESTデータソースを利用する方法を学びます。  
 
-Estimated Time: 10 minutes
+推定時間: 10分  
 
-### Information
+### 情報  
 
-When you ran the script in your first workspace you created a REST
-handler for both the EMP and DEPT tables. You have already created a REST Data Source for the EMP table. If you also create a REST Data Source for the DEPT table, you can readily define List of Values for each in Shared Components. These can then be utilized within your pages to improve the data displayed and significantly improve data entry and quality.
+最初のワークスペースでスクリプトを実行したときに、EMPとDEPTの両方のテーブルに対するRESTハンドラーを作成しました。すでにEMPテーブルのRESTデータソースを作成しています。DEPTテーブルのRESTデータソースも作成すると、Shared Componentsにそれぞれのリストの値を簡単に定義できます。これらはページ内で表示されるデータを改善し、データ入力と品質を大幅に改善するために利用できます。  
 
-## Task 1: Add REST Data Source for DEPT
+## タスク1: DEPTのRESTデータソースの追加  
 
-1. Return to the Application Builder.
-2. Go to the App Builder Home Page.
-3. Select your application.
-4. On the application home page, click **Shared Components**.
+1. アプリケーションビルダーに戻ります。  
+2. App Builderのホームページに移動します。  
+3. アプリケーションを選択します。  
+4. アプリケーションのホームページで、**Shared Components**をクリックします。    
 
-    ![](images/go-shared1.png " ")
+     ![](images/go-shared1.png " ")  
 
-5. On the Shared Components page, under Data Sources, click **REST Data Sources**.
+5. **Shared Components**ページで、**Data Sources**の下の**REST Data Sources**をクリックします。  
 
-    ![](images/go-ws.png " ")
+     ![](images/go-ws.png " ")
 
-6. On the REST Data Sources page, click **Create**.
+6. **REST Data Sources**ページで、**作成**をクリックします。  
 
-    On the Create REST Data Source - Method dialog, click **Next**. *Default: From Scratch*
+    **Create REST Data Source - Method**ダイアログで、**次へ**をクリックします。*デフォルト: スクラッチから*  
 
-    ![](images/set-method.png " ")
+    ![](images/set-method.png " ")  
 
-7. On the Create REST Data Source - General dialog, enter the following.
+7. **Create REST Data Source - General**ダイアログで、次の内容を入力します。  
 
-    - **REST Data Source Type:** select **ORACLE REST Data Services**
-    - **Name:** enter **REST DEPT Source**
-    - **URL Endpoint:** enter the REST URI for the dept.rest handler Similar to https://{cloud\_url}/ords/{your_workspace}/**dept**/hol/
+    - **RESTデータソースタイプ:** **ORACLE REST Data Services**を選択します。  
+    - **名前:** **REST DEPT Source**と入力します。  
+    - **URLエンドポイント:** dept.restハンドラーのREST URIを入力します。https://{cloud\_url}/ords/{your_workspace}/**dept**/hol/のようなものです。  
 
-    The URL Endpoint is the same URL you entered in Lab 2 Step 3 exept `emp` is replaced with `dept`.
+    URLエンドポイントは、Lab 2のステップ3で入力したURLと同じですが、`emp`が`dept`に置き換えられています。  
 
-    Click **Next**.
+    **次へ**をクリックします。  
 
-    ![](images/set-name.png " ")
+    ![](images/set-name.png " ")  
 
-8. On the Remote Server dialog, review the Base URL and Service URL Path.
-    Click **Next**.
+8. **リモートサーバー**ダイアログで、**ベースURL**と**サービスURLパス**を確認します。  
+     **次へ**をクリックします。  
 
-    ![](images/review-urls1.png " ")
+     ![](images/review-urls1.png " ")  
 
-    *Note: As you have already defined a REST Data Source with the same base path, for the REST EMP Source, then the Base URL is not updateable.*
+     *注意: 同じベースパスを持つRESTデータソースをすでに定義しているため、REST EMPソースの場合はベースURLを更新できません。*  
 
-9. On the Authentication dialog, click **Discover**.
-    Authentication Required = No
-10. On the Preview dialog, click **Create REST Data Source**
+9. **認証**ダイアログで、**検出**をクリックします。  
+     認証が必要 = いいえ  
 
-    ![](images/create-ws.png " ")
+10. **プレビュー**ダイアログで、**RESTデータソースの作成**をクリックします。  
 
-## Task 2: Creating List of Values
-You now have the REST Data Sources which can be used as the basis for List of Values.
+     ![](images/create-ws.png " ")
 
-1. From the REST Data Sources page, in the breadcrumbs, click **Shared Components**.
+## タスク2: 値のリストの作成  
+リストの値の基礎として使用できるRESTデータソースがあります。  
 
-    ![](images/go-from-breadcrumbs.png " ")
+1. **REST Data Sources**ページから、パンくずリストで、**Shared Components**をクリックします。  
 
-2. On the Shared Components page, under Other Components, click **List of Values**.
+     ![](images/go-from-breadcrumbs.png " ")  
 
-    ![](images/go-lov.png " ")
+2. **Shared Components**ページで、**Other Components**の下の**List of Values**をクリックします。  
 
-3. On the List of Values page, click **Create**.
+     ![](images/go-lov.png " ")  
 
-    On the Create List of Values - Source dialog, click **Next**.       
-    *Default: From Scratch*
+3. **List of Values**ページで、**作成**をクリックします。  
 
-    ![](images/set-source.png " ")
+     **Create List of Values - Source**ダイアログで、**次へ**をクリックします。       
+     *デフォルト: スクラッチから*  
 
-4. On the Name and Type dialog, for Name, enter **REST EMP LOV**.       
-    Click **Next**.
+     ![](images/set-source.png " ")  
 
-    ![](images/set-lov-name.png " ")
+4. **名前とタイプ**ダイアログで、**名前**に**REST EMP LOV**と入力します。       
+     **次へ**をクリックします。  
 
-5. On the List of Values Source dialog, enter the following.
+     ![](images/set-lov-name.png " ")  
 
-    - **Data Source:** click **REST Data Source**
-    - **REST Data Source:**  select **REST EMP Source**
+5. **リストの値のソース**ダイアログで、次の内容を入力します。  
 
-    Click **Next**.
+     - **データソース:** **RESTデータソース**をクリックします。  
+     - **RESTデータソース:** **REST EMP Source**を選択します。  
 
-    ![](images/set-ws-source.png " ")
+     **次へ**をクリックします。  
 
-6. On the Column Mappings dialog, enter the following.
+     ![](images/set-ws-source.png " ")
 
-    - **Return Column:** select **EMPNO**
-    - **Display Column:** select **ENAME**
+6. **列のマッピング**ダイアログで、次の内容を入力します。  
 
-    Click **Create**.
+     - **返還列:** **EMPNO**を選択します。  
+     - **表示列:** **ENAME**を選択します。  
 
-    ![](images/set-columns1.png " ")
+     **作成**をクリックします。  
 
-7. To create the List of Values for Departments is the same as above.
+     ![](images/set-columns1.png " ")  
 
-    On the List of Values page, click **Create**.   
-    On the Create List of Values - Source dialog, click **Next**.     
-    *Default: From Scratch*
+7. 部署のリストの値を作成するには、上記と同じです。  
 
-8. On the Name and Type dialog, for Name, enter **REST DEPT LOV**.       
-    Click **Next**.
+     **List of Values**ページで、**作成**をクリックします。       
+     **Create List of Values - Source**ダイアログで、**次へ**をクリックします。       
+     *デフォルト: スクラッチから*  
 
-9. On the List of Values Source dialog, enter the following.
+8. **名前とタイプ**ダイアログで、**名前**に**REST DEPT LOV**と入力します。       
+     **次へ**をクリックします。  
 
-    - **Data Source:** click **REST Data Source**
-    - **REST Data Source**:  select **REST DEPT Source**
+9. **リストの値のソース**ダイアログで、次の内容を入力します。  
 
-    Click **Next**.
+     - **データソース:** **RESTデータソース**をクリックします。  
+     - **RESTデータソース:** **REST DEPT Source**を選択します。  
 
-10. On the Column Mappings dialog, enter the following.
+     **次へ**をクリックします。  
 
-    - **Return Column:** select **DEPTNO**
-    - **Display Column:** select **DNAME**
+10. **列のマッピング**ダイアログで、次の内容を入力します。  
 
-    Click **Create**.
+     - **返還列:** **DEPTNO**を選択します。  
+     - **表示列:** **DNAME**を選択します。  
 
-## Task 3: Update the Form
-If you review the Maintain Employee form page more closely you will see that the Department Number (DEPTNO) and the Manager (MGR) item are both numeric items and expect the end user to know the relevant numbers, rather than select from a list of names.
+     **作成**をクリックします。
 
-1. From the Lists of Values page, in the Application Builder toolbar, click **Edit Page 3**.
+## タスク3: フォームの更新  
+従業員の管理フォームページをよく確認すると、部署番号(DEPTNO)と管理者(MGR)のアイテムが数値のアイテムであり、エンドユーザーに名前のリストから選択する代わりに関連する数値を知っていることを期待していることがわかります。  
 
-    ![](images/go-page3.png " ")
+1. **Lists of Values**ページから、アプリケーションビルダーのツールバーで、**ページ3の編集**をクリックします。  
 
-2. From Page Designer, in the Rendering tree (left pane), click **P3_DEPTNO**.
+     ![](images/go-page3.png " ")  
 
-    In the Property Editor (right pane), enter the following.
+2. ページデザイナーから、レンダリングツリー(左パネル)で**P3_DEPTNO**をクリックします。  
 
-    - **Identification > Type:** select **Select List**
-    - **List of Values > Type:** select **Shared Component**
-    - **List of Values > List of Values:** select **REST DEPT LOV**
-    - **List of Values > Display Extra Values:** Uncheck
+     プロパティエディター(右パネル)で、次の内容を入力します。  
 
-    ![](images/set-deptno.png " ")
+     - **Identification>Type:** **Select List**を選択します。  
+     - **List of Values>Type:** **Shared Component**を選択します。  
+     - **List of Values>List of Values:** **REST DEPT LOV**を選択します。  
+     - **List of Values>Display Extra Values:** チェックを外します。  
 
-3. From Page Designer, in the Rendering tree (left pane), click **P3_MGR**.
+     ![](images/set-deptno.png " ")  
 
-    In the Property Editor (right pane), enter the following.
+3. ページデザイナーから、レンダリングツリー(左パネル)で**P3_MGR**をクリックします。  
 
-    - **Identification > Type:** select **Select List**
-    - **List of Values > Type:** select **Shared Component**
-    - **List of Values > List of Values:** select **REST EMP LOV**
-    - **List of Values > Display Extra Values:** Uncheck
+     プロパティエディター(右パネル)で、次の内容を入力します。  
 
-4. In the Page Designer toolbar, click **Save**.
+     - **Identification>Type:** **Select List**を選択します。  
+     - **List of Values>Type:** **Shared Component**を選択します。  
+     - **List of Values>List of Values:** **REST EMP LOV**を選択します。  
+     - **List of Values>Display Extra Values:** チェックを外します。  
 
-    ![](images/set-mgr.png " ")
+4. ページデザイナーツールバーで、**保存**をクリックします。  
 
-## Task 4: Update the Report
-Similarly, the Employees report shows numerical values rather than names.
+     ![](images/set-mgr.png " ")
 
-1. Navigate to Page 2 in Page Designer.     
-    In the Page Designer toolbar, use the Page Selector or the down arrow next to the page number.
+## タスク4: レポートの更新  
+同様に、従業員レポートには名前ではなく数値が表示されます。  
 
-    ![](images/go-page2.png " ")
+1. ページデザイナーでページ2に移動します。       
+     ページデザイナーツールバーで、ページセレクターまたはページ番号の横の下矢印を使用します。  
 
-2. Given this is a report you will need to modify columns instead of items.
+     ![](images/go-page2.png " ")  
 
-    In the Rendering tree (left pane), click Columns, click **MGR**.
+2. これはレポートであるため、アイテムではなく列を修正する必要があります。  
 
-    In the Property Editor (right pane), enter the following.
+     レンダリングツリー(左パネル)で、列をクリックし、**MGR**をクリックします。  
 
-    - **Type:** select **Plain Text (based on List of Values)**
-    - **List of Values:** select **REST EMP LOV**
-    - **Heading > Alignment:** click **Align Left**
-    - **Layout > Column Alignment:** click **Align Left**
+     プロパティエディター(右パネル)で、次の内容を入力します。  
 
-    ![](images/set-mgr-col.png " ")
+     - **タイプ:** **プレーンテキスト(リストの値に基づく)**を選択します。  
+     - **リストの値:** **REST EMP LOV**を選択します。  
+     - **ヘッディング>配置:** **左寄せ**をクリックします。  
+     - **レイアウト>列の配置:** **左寄せ**をクリックします。  
 
-3. In the Rendering tree (left pane), under Columns, click **DEPTNO**.
+     ![](images/set-mgr-col.png " ")  
 
-    In the Property Editor (right pane), enter the following.
+3. レンダリングツリー(左パネル)で、列の下の**DEPTNO**をクリックします。  
 
-    - **Type:** select **Plain Text (based on List of Values)**
-    - **List of Values:** select **REST DEPT LOV**
-    - **Heading > Alignment:** click **Align Left**
-    - **Layout > Column Alignment:** click **Align Left**
+     プロパティエディター(右パネル)で、次の内容を入力します。  
 
-    Click **Save**.
+     - **タイプ:** **プレーンテキスト(リストの値に基づく)**を選択します。  
+     - **リストの値:** **REST DEPT LOV**を選択します。  
+     - **ヘッディング>配置:** **左寄せ**をクリックします。  
+     - **レイアウト>列の配置:** **左寄せ**をクリックします。  
 
-4. Navigate to the application Runtime Environment.
-5. Refresh your browser.
+     **保存**をクリックします。   
 
-    ![](images/runtime-report.png " ")
+4. アプリケーションのランタイム環境に移動します。  
+5. ブラウザを更新します。  
 
-6. Click on the edit icon for any record.       
-    Select a department.        
-    Select a manager.
+     ![](images/runtime-report.png " ")  
 
-    ![](images/runtime-for.png " ")
+6. 任意のレコードの編集アイコンをクリックします。       
+     部署を選択します。        
+     管理者を選択します。  
 
-## **Summary**
-This completes Lab 5 and the workshop. You now know how to define List of Values against REST endpoints and then utilize those within an application.
+     ![](images/runtime-for.png " ")  
 
-## Learn More - Useful Links
+## **まとめ**  
+これでLab 5とワークショップが完了しました。RESTエンドポイントに対してリストの値を定義し、アプリケーション内でそれらを利用する方法を知っています。  
 
-- [APEX on Autonomous](https://apex.oracle.com/autonomous)
-- [APEX Collateral](https://apex.oracle.com)
-- [Tutorials](https://apex.oracle.com/en/learn/tutorials)
-- [Community](https://apex.oracle.com/community)
-- [External Site + Slack](http://apex.world)
+## さらに詳しく - 役立つリンク
 
-## **Acknowledgements**
+- [APEX on Autonomous](https://apex.oracle.com/autonomous)  
+- [APEXコラテラル](https://apex.oracle.com)  
+- [チュートリアル](https://apex.oracle.com/en/learn/tutorials)  
+- [コミュニティ](https://apex.oracle.com/community)  
+- [外部サイト+ Slack](http://apex.world)
 
- - **Author/Contributors** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
- - **Last Updated By/Date** - Ankita Beri, Product Manager, June 2023
+## **謝辞**
+
+ - **作成者/投稿者** -  Salim Hlayel, Principal Product Manager
+ - **投稿者** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
+ - **最終更新日** - Ankita Beri ,Product Manager, June 2023

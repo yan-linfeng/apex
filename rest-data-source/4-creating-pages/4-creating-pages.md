@@ -1,200 +1,200 @@
-# Creating Pages
+# ページの作成
 
-## Introduction
-In this lab, you will learn how to utilize REST Data Sources as the basis for creating reports and forms within the application.
+## はじめに
+このラボでは、アプリケーション内のレポートとフォームの作成の基礎としてRESTデータソースを使用する方法を学びます。
 
-Estimated Time: 15 minutes
+推定時間: 15分  
 
-## Task 1: Use the Create Page Wizard
+## タスク1: ページ作成ウィザードの使用  
 
-1. Return to the Application Home Page.     
-    Click **Create Page**.
+1. アプリケーションのホームページに戻ります。     
+     **ページ作成**をクリックします。  
 
-    On the Create a Page dialog, click **Interactive Report**.
+     **ページの作成**ダイアログで、**インタラクティブレポート**をクリックします。  
 
-    ![](images/create-rpt.png " ")
+     ![](images/create-rpt.png " ")  
 
-2. In Interactive Report dialog, for Page Attributes, enter the following.
-    - **Name:** enter **Employees**
-    - **Include Form Page:** Enable
-    - **Form Page Name:** enter **Maintain Employee**
-    - **Form Page Mode:** click **Modal Dialog**
-    - **Data Source:** Select REST Data Source
-    - **REST Data Source:** Select REST EMP Source
+2. **インタラクティブレポート**ダイアログで、**ページ属性**に次の内容を入力します。
+     - **名前:** **従業員**と入力します。  
+     - **フォームページを含める:** 有効にします。  
+     - **フォームページ名:** **従業員の管理**と入力します。  
+     - **フォームページモード:** **モーダルダイアログ**をクリックします。  
+     - **データソース:** **RESTデータソース**を選択します。  
+     - **RESTデータソース:** **REST EMPソース**を選択します。  
 
-    Click **Next**.
+     **次へ**をクリックします。  
 
-    ![](images/set-page.png " ")
+     ![](images/set-page.png " ")  
 
-3. On Interactive Report dialog, for Primary Key Column, select **EMPNO (Number)** and Click **Create**.
+3. **インタラクティブレポート**ダイアログで、**主キーコラム**で**EMPNO(数値)**を選択し、**作成**をクリックします。  
 
-    ![](images/set-pk.png " ")
+     ![](images/set-pk.png " ")
 
-## Task 2: Improve the Report
-The default column order will not be optimal when the page is generated. You can readily reorder the columns and save the report layout.
+## タスク2: レポートの改善
+生成されたページの場合、デフォルトの列順序は最適ではありません。列を簡単に並べ替えてレポートのレイアウトを保存できます。  
 
-1. From Page Designer, click the **Save and Run** button in the top right.
+1. ページデザイナーから、右上の**保存して実行**ボタンをクリックします。  
 
-    ![](images/go-runtime.png " ")
+     ![](images/go-runtime.png " ")  
 
-2. On the Login Page, enter your user credentials.
-    * **Username:** `DEMO`
-    * **Password:** `SecretPassw0rd `
+2. **ログインページ**で、ユーザー資格情報を入力します。  
+     * **ユーザー名:** `DEMO`  
+     * **パスワード:** `SecretPassw0rd `  
 
-3. Review the Employees.
+3. **従業員**を確認します。  
 
-    ![](images/runtime.png " ")
+     ![](images/runtime.png " ")  
 
-4. On the Employees report page, click **Actions**, click **Columns**.
+4. **従業員レポート**ページで、**アクション**をクリックし、**列**をクリックします。 
 
-    ![](images/go-columns.png " ")
+     ![](images/go-columns.png " ")  
 
-5. On the Select Columns dialog, shuffle the columns such that ENAME, and DEPTNO are the first two columns, by selecting the columns and using the **Top** arrow.
-    Click **Apply**.
+5. **Select Columns**ダイアログで、ENAMEとDEPTNOが最初の2つの列になるように列をシャッフルします。列を選択して**Top**矢印を使用します。  
+     **適用**をクリックします。  
 
-    ![](images/set-columns.png " ")
+     ![](images/set-columns.png " ")  
 
-6. You need to save the report layout so that it displays this way for all users.
+6. レポートレイアウトを保存して、すべてのユーザーにこのように表示されるようにする必要があります。  
 
-    Click **Actions**, select **Report**, click **Save Report**.
+     **アクション**をクリックし、**レポート**を選択し、**レポートの保存**をクリックします。  
 
-    ![](images/go-save.png " ")
+     ![](images/go-save.png " ")  
 
-7. On the Save Report dialog, for Save (Only displayed for developers), select **As Default Report Settings**.
+7. **レポートの保存**ダイアログで、**開発者のみに表示される**保存の場合は、**デフォルトのレポート設定として**を選択します。  
 
-    ![](images/set-save.png " ")
+     ![](images/set-save.png " ")  
 
-8. On the Save Default Report dialog, select **Primary** and click **Apply**.
+8. **デフォルトのレポート保存**ダイアログで、**Primary**を選択して**適用**をクリックします。  
 
-    ![](images/save-primary.png " ")
+     ![](images/save-primary.png " ")
 
-## Task 3: Update the Form Page
-The form page for editing records also needs some improvement.
+## タスク3: フォームページの更新
+レコードを編集するためのフォームページもいくつか改善が必要です。  
 
-1. Click the edit icon on a row.
-    The Form Page is displayed.
+1. 行の編集アイコンをクリックします。  
+     フォームページが表示されます。  
 
-    In the Developer Toolbar, click **Edit Page 3**.     
-    Page Designer will be displayed for the current page.
+     デベロッパーツールバーで、**ページ3の編集**をクリックします。       
+     ページデザイナーが現在のページの場合に表示されます。  
 
-    ![](images/go-pd.png " ")
+     ![](images/go-pd.png " ")  
 
-    *Note: The Developer Toolbar is only displayed when you run apps from App Builder, so is never visible to end users.*
+     *注意: デベロッパーツールバーはApp Builderからアプリを実行する場合にのみ表示されるため、エンドユーザーには表示されません。*  
 
-2. The Employee Number (EMPNO) item is currently hidden, as it is defined as the primary key for the table. However, users should be able to enter a value when inserting a record.
+2. 従業員番号(EMPNO)アイテムは現在隠されています。これはテーブルの主キーとして定義されているためです。ただし、ユーザーはレコードを挿入するときに値を入力できる必要があります。  
 
-    Within Page Designer, in the Rendering tab (left pane), click item **P3\_EMPNO**.
+     ページデザイナー内で、レンダリングタブ(左パネル)でアイテム**P3\_EMPNO**をクリックします。  
 
-    In the Property Editor (right pane), enter the following.
+     プロパティエディター(右パネル)で、次の内容を入力します。  
 
-    - **Identification > Type:** select **Number Field**
-    - **Label > Label:** enter **Employee Number**
+     - **Identification>Type:** **Number Field**を選択します。  
+     - **Label>Label:** **Employee Number**と入力します。  
 
-    ![](images/set-empno.png " ")
+     ![](images/set-empno.png " ")  
 
-3. Employee Number should only be entered and should not be updated, as it is the primary key for the table. Therefore, you should make the item read only if displaying an existing record.
+3. 従業員番号はテーブルの主キーであるため、既存のレコードを表示する場合にのみ読み取り専用である必要があります。したがって、アイテムを読み取り専用にする必要があります。  
 
-    In the Property Editor (right pane), with **P3\_EMPNO** selected, enter the following.
-    - **Read Only > Type:** select **Item is NOT NULL**
-    - **Read Only > Item:** select **P3\_EMPNO**
+     プロパティエディター(右パネル)で、**P3\_EMPNO**が選択されている場合は、次の内容を入力します。  
+     - **Read Only>Type:** **Item is NOT NULL**を選択します。 
+     - **Read Only>Item:** **P3\_EMPNO**を選択します。  
 
-    ![](images/set-empno-ro.png " ")
+     ![](images/set-empno-ro.png " ")   
 
-4. The Job and Name items are currently defined as a Textarea, yet neither will be that large a value. Therefore, they should be changed to be a Text Field.
+4. ジョブと名前のアイテムは現在テキストエリアとして定義されていますが、どちらもそれほど大きな値にはなりません。したがって、テキストフィールドに変更する必要があります。  
 
-    In the Rendering tab (left pane), click item **P3\_JOB**.        
-    Hold the {Control} Key and click **P3\_NAME**.
+     レンダリングタブ(左パネル)で、アイテム**P3\_JOB**をクリックします。        
+     {Control}キーを押しながら**P3\_NAME**をクリックします。  
 
-    In the Property Editor (right pane), for Identification > Type, select **Text Field**.
+     プロパティエディター(右パネル)で、**Identification>Type**で**Text Field**を選択します。  
 
-    ![](images/set-job-name.png " ")
+     ![](images/set-job-name.png " ")  
 
-5. The order of the items should be improved. This can easily be achieved by dragging and dropping items in either the Rendering tree or the Layout.
+5. アイテムの順序を改善する必要があります。これはレンダリングツリーまたはレイアウトのいずれかでアイテムをドラッグアンドドロップすることで簡単に実現できます。  
 
-    In the Rendering tree, click item **P3\_ENAME**.      
-    Drag **P3\_ENAME** up to be under **P3\_EMPNO**.  
+     レンダリングツリーで、アイテム**P3\_ENAME**をクリックします。       
+     **P3\_ENAME**を**P3\_EMPNO**の下にドラッグします。  
 
-    ![](images/drag-name.png " ")
+     ![](images/drag-name.png " ") 
 
-6. In the Rendering tab (left pane), click item **P3\_DEPTNO**.      
-    Drag **P3\_DEPTNO** up to be under **P3\_ENAME**.
+6. レンダリングタブ(左パネル)で、アイテム**P3\_DEPTNO**をクリックします。       
+     **P3\_DEPTNO**を**P3\_ENAME**の下にドラッグします。  
 
-7. The Commission (COMM) item should be placed on the same line as Salary (SAL).
+7. 手数料(COMM)アイテムは給与(SAL)と同じ行に配置する必要があります。  
 
-    In Layout (middle pane), select **P3\_COMM**.        
-    Drag it up next to **P3\_SAL**.
+     レイアウト(中央パネル)で、**P3\_COMM**を選択します。        
+     既存のアイテムの右側に大きな暗黄色の箱が表示されるまでアイテムをドロップしないでください。**P3\_SAL**の隣にドラッグします。  
 
-    *Note: Do not drop the item until a large dark yellow box appears to the right of the existing items.*    
+     *注意: 既存のアイテムの右側に大きな暗黄色の箱が表示されるまでアイテムをドロップしないでください。*    
 
-    ![](images/drag-comm.png " ")
+     ![](images/drag-comm.png " ")  
 
-8. In the Toolbar, click **Save**.
+8. ツールバーで、**保存**をクリックします。  
 
-    ![](images/save.png " ")
+     ![](images/save.png " ")  
 
-## Task 4: Insert a Record
+## タスク4: レコードの挿入  
 
-1. Navigate back to the Runtime environment.
+1. ランタイム環境に戻ります。  
 
-    ![](images/runtime1.png " ")
+     ![](images/runtime1.png " ")  
 
-2. Refresh the browser.
+2. ブラウザを再読み込みします。
 
-3. On the Employees report page, click **Create**.
+3. **従業員レポート**ページで、**作成**をクリックします。  
 
-    On the Maintain Employee page, enter the following.
+     **従業員の管理**ページで、次の内容を入力します。  
 
-    - **Employee Number:** enter **1234**
-    - **Ename:** enter **PETERS**
-    - **Deptno:** enter **10**
-    - **Job:** enter **SALESMAN**
-    - **Mgr:** enter **7839**
-    - **Sal:** enter **1500**
-    - **Comm:** enter **500**
-    - **Hiredate:** select any date
+     - **従業員番号:** **1234**と入力します。  
+     - **エナメ:** **PETERS**と入力します。  
+     - **Deptno:** **10**と入力します。  
+     - **仕事:** **SALESMAN**と入力します。  
+     - **Mgr:** **7839**と入力します。  
+     - **給与:** **1500**と入力します。  
+     - **手数料:** **500**と入力します。  
+     - **雇用日:** 任意の日付を選択します。  
 
-    Click **Create**.
+     **作成**をクリックします。  
 
-    ![](images/insert.png " ")
+     ![](images/insert.png " ")  
 
-4. On the Employees report page, find the new record.
+4. **従業員レポート**ページで、新しいレコードを見つけます。  
 
-    ![](images/show-insert.png " ")
+     ![](images/show-insert.png " ")  
 
-## Task 5: Update a Record
+## タスク5: レコードの更新  
 
-1. On the Employees report page, find **BLAKE**, and click the edit icon.
+1. **従業員レポート**ページで、**BLAKE**を見つけ、編集アイコンをクリックします。  
 
-    On the Maintain Employee dialog, update the following.
+     **従業員の管理**ダイアログで、次の内容を更新します。  
 
-    - **Deptno:** enter **40**
-    - **Sal:** enter **3500**
+     - **Deptno:** **40**と入力します。  
+     - **Sal:** **3500**と入力します。  
 
-    Click **Apply Changes**.
+     **変更の適用**をクリックします。  
 
-    ![](images/update.png " ")
+     ![](images/update.png " ")  
 
-2. On the Employees report page, review BLAKE's **Deptno** and **Sal**.
+2. **従業員レポート**ページで、BLAKEの**Deptno**と**Sal**を確認します。
 
 
-## Task 6: Delete a Record
+## タスク6: レコードの削除  
 
-1. On the Employees report page, find **TURNER**, and click the edit icon.
+1. **従業員レポート**ページで、**TURNER**を見つけ、編集アイコンをクリックします。  
 
-    On the Maintain Employee dialog, click **Delete**.
-    On the delete confirmation dialog, click **Delete**.
+     **従業員の管理**ダイアログで、**削除**をクリックします。  
+     削除確認ダイアログで、**削除**をクリックします。  
 
-    ![](images/delete.png " ")
+     ![](images/delete.png " ")  
 
-2. On the Employees report page, review the records to ensure TURNER is no longer visible.
+2. **従業員レポート**ページで、レコードを確認してTURNERが表示されなくなったことを確認します。  
 
-    ![](images/show-delete.png " ")
+     ![](images/show-delete.png " ")  
 
-## **Summary**
-This completes Lab 4. You now know how to utilize a REST endpoint to develop a report and form to allow full CRUD operations. [Click here to navigate to Lab 5](?lab=lab-5-defining-list-values).
+## **まとめ**
+これでLab 4が完了しました。RESTエンドポイントを利用してレポートとフォームを開発し、完全なCRUD操作を可能にする方法を知っています。[Lab 5に移動するにはここをクリック](?lab=lab-5-defining-list-values)。
 
-## **Acknowledgements**
+## **謝辞**
 
- - **Author/Contributors** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
- - **Last Updated By/Date** - Ankita Beri, Product Manager, June 2023
+ - **作成者/投稿者** -  Salim Hlayel, Principal Product Manager
+ - **投稿者** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
+ - **最終更新日** - Ankita Beri ,Product Manager, June 2023

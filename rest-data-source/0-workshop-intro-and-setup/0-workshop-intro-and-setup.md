@@ -1,47 +1,47 @@
-# Introduction
+# はじめに
 
-## Workshop Overview
-This workshop REST enables database objects, and then uses those REST endpoints as the basis for REST Data Sources within an application. Application components are then defined against these REST Data Sources, instead of being defined on local database objects.
+## ワークショップの概要
+このワークショップでは、データベースオブジェクトをRESTで有効にします。そのRESTエンドポイントをアプリケーション内のRESTデータソースの基礎として使用します。アプリケーションコンポーネントは、次にこれらのRESTデータソースに対して定義され、ローカルデータベースオブジェクトに定義されなくなります。
 
-Estimated Time: 45 minutes
+推定時間: 45分
 
-### Objectives
+### 目的
 
-* Obtain a free development environment
-* REST enabling tables and views
-* Define REST Data Sources against REST endpoints
-* Build an application utilizing REST Data Sources
+* 無料開発環境の入手
+* テーブルとビューのREST有効化 
+* RESTエンドポイントに対するRESTデータソースの定義
+* RESTデータソースを利用したアプリケーションの構築
 
-*Note: This lab assumes you are using Oracle APEX 23.1.*
+*注意: このラボではOracle APEX 23.1を使用していることを前提としています。*
 
-### Labs
+### ラボ
 
-| # | Module | Est. Time |
+| # | モジュール | 推定時間 |
 | --- | --- | --- |
-| 1 | [Signing up for an APEX Workspace](?lab=lab-1-sign-up-for-apex-workspace) | 5 minutes |
-| 2 | [REST Enabling Database Objects](?lab=lab-2-rest-enabling-database-objects) | 10 minutes |
-| 3 | [Defining REST Data Sources](?lab=lab-3-defining-rest-data-sources) | 10 minutes |
-| 4 | [Creating Pages](?lab=lab-4-creating-pages) | 15 minutes |
-| 5 | [Defining a List of Values](?lab=lab-5-defining-list-values) | 10 minutes |
+| 1 | [APEXワークスペースへのサインアップ](?lab=lab-1-sign-up-for-apex-workspace) | 5分 |
+| 2 | [データベースオブジェクトのREST有効化](?lab=lab-2-rest-enabling-database-objects)  | 10分 | 
+| 3 | [RESTデータソースの定義](?lab=lab-3-defining-rest-data-sources) | 10分 |
+| 4 | [ページの作成](?lab=lab-4-creating-pages) | 15分 |
+| 5 | [リストの値の定義](?lab=lab-5-defining-list-values) | 10分 |
 
-### **Let's Get Started!**
+### **はじめましょう!**  
 
-If the menu is not displayed, you can open by clicking the menu button (![Menu icon](./images/menu-button.png)) at the top of the page.
+メニューが表示されない場合は、ページの上部にあるメニューボタン(![メニューアイコン](./images/menu-button.png))をクリックして開くことができます。
 
-## Downloads
+## ダウンロード
 
-[Click here](files/restdatasource-app.sql) to download the completed application.
+[ここをクリック](files/restdatasource-app.sql)して完成したアプリケーションをダウンロードします。
 
-## Learn More - Useful Links
+## さらに詳しく - 役立つリンク
 
 - [APEX on Autonomous](https://apex.oracle.com/autonomous)
-- [APEX Collateral](https://apex.oracle.com)
-- [Tutorials](https://apex.oracle.com/en/learn/tutorials)
-- [Community](https://apex.oracle.com/community)
-- [External Site + Slack](http://apex.world)
+- [APEX コラテラル](https://apex.oracle.com) 
+- [チュートリアル](https://apex.oracle.com/en/learn/tutorials) 
+- [コミュニティ](https://apex.oracle.com/community)
+- [外部サイト + Slack](http://apex.world)
 
-## Acknowledgements
+## 謝辞
 
- - **Author/Contributors** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
- - **Last Updated By/Date** - Ankita Beri, Product Manager, June 2023
+ - **作成者/投稿者** -  Salim Hlayel, Principle Product Manager
+ - **投稿者** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
+ - **最終更新日** - Ankita Beri, Product Manager, June 2023
