@@ -182,6 +182,9 @@ APEXアプリケーションでRESTデータソースが定義されると、APE
     ![](images/set-scripts.png " ")
 
 4. **スクリプトの実行**ページで、**即時実行**をクリックします。
+
+    ![](images/run-now.png " ")
+
 5. 結果には、4つのステートメントが正常に処理されたことが表示されます。
 
      ![](images/script-results.png " ")
