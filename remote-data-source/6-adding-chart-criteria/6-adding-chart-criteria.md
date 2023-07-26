@@ -1,35 +1,36 @@
-# Adding Chart Criteria
+# チャートの条件を追加する
 
-## Introduction
+## はじめに
 
-In this lab, you will learn how to add an item to a page, utilize the page item in chart series, and define client-side interactivity.
+このラボでは、ページアイテムを追加し、ページアイテムをチャートのデータシリーズで利用し、クライアントサイドのインタラクティブ性を定義する方法を学びます。
 
-Estimated Time: 5 minutes
+所要時間: 5分 
 
-### Background Information
-The chart currently has the ISO code for Australia (AUS) hardcoded. By adding a select list with a list of the countries, and then modifying the chart series to utilize this page item you can easily make it easy to review the exchange rate history for any country.
+### 背景情報
 
-To refresh the chart whenever the country in the select list is changed, you need to utilize a Dynamic Action. A Dynamic Action defines client-side interactivity, and based on a specific action(change in the select list), performs specified functions (refresh), on specified elements (chart region).
+チャートには現在、オーストラリアのISOコード(AUS)がハードコーディングされています。国のリストを持つ選択リストを追加し、チャートのデータシリーズをこのページアイテムを利用するように変更することで、任意の国の為替レート履歴を簡単に確認できるようになります。
 
-In order for the chart to properly utilize the updated value in the select list, then it is necessary to submit that page item when rendering the chart.
+選択リストでの国の変更時にチャートを更新するには、ダイナミックアクションを利用する必要があります。ダイナミックアクションは、特定のアクション(選択リストの変更)に基づいて、指定された機能(更新)を、指定された要素(チャート領域)で実行するクライアントサイドのインタラクティブ性を定義します。
 
-## Task 1: Add a Page Item
+チャートが選択リストの更新された値を適切に利用するためには、そのページアイテムをチャートのレンダリング時に送信する必要があります。
 
-1. From the Runtime environment, in the Developer Toolbar (bottom of the screen), click **Edit Page X**.
+## タスク1: ページアイテムを追加する
 
-2. Within Page Designer, in the Gallery (center pane, below Layout), click **Country Chart**, click **Items**.
-    Click **Select List** and hold the mouse down.
-    Drag the item up until it is in the Items section within the Country Chart region.
-    Once the Items section expands and the dark yellow box appears, drop the item (release the mouse).
+1. ランタイム環境で、開発者ツールバー(画面下部)の**ページXを編集**をクリックします。
 
-    *Note: Make sure that you drag the select list into the Country Chart region.*
+2. ページデザイナーで、ギャラリー(中央パネルのレイアウトの下)の**Country Chart**、**アイテム**をクリックします。
+   **選択リスト**をクリックしてマウスボタンを押したままにします。
+   アイテムをCountry Chartリージョン内のアイテムセクションに来るまでドラッグします。
+   アイテムセクションが展開され濃い黄色のボックスが表示されたら、アイテムをドロップします(マウスボタンを離します)。
 
-    ![](images/drop-item.png " ")
+   *注: 選択リストをCountry Chartリージョンにドラッグすることを確認してください。*
 
-3. In the Property Editor (right panel), update the following.
-    - **Identification > Name:** enter **P3_COUNTRY**
-    - **List of Values > Type:** select **SQL Query**
-    - **List of Values > SQL Query:** cut and paste the following.
+   ![](images/drop-item.png " ")
+   
+3. プロパティエディタ(右パネル)で、以下を更新します。
+   - **識別 > 名前:** **P3_COUNTRY**と入力
+   - **リストオブバリュー > タイプ:** **SQLクエリ**を選択
+   - **リストオブバリュー > SQLクエリ:** 次のSQLを切り取り&ペースト
 
       ```
       <copy>select distinct country_name d, country_iso r  
@@ -37,94 +38,92 @@ In order for the chart to properly utilize the updated value in the select list,
       order by 1</copy>
       ```
 
-     - **List of Values > Display Extra Values:** click **No**
-     - **List of Values > Null Display Value:** enter **Select Country -**
+     - **LOV > 追加値の表示:** **いいえ** をクリック
+     - **LOV > ヌル値の表示:** **国を選択 -** と入力
 
     ![](images/set-item.png " ")
+
     ![](images/set-item2.png " ")
 
-## Task 2: Add a Dynamic Action
-In order for the chart to be refreshed when a country is selected from the new item a Dynamic Action must be defined.
+## タスク2: ダイナミックアクションを追加する
 
-1. In the Rendering tree (left pane), right click on **P3_COUNTRY**, select **Create Dynamic Action**.
+新しいアイテムから国が選択されたときにチャートを更新するには、ダイナミックアクションを定義する必要があります。
 
-    ![](images/go-da.png " ")
+1. レンダリングツリー(左パネル)で、**P3_COUNTRY** を右クリックし、**ダイナミックアクションの作成**を選択します。
 
-2. In the Property Editor (right pane), for Identification > Name, enter **Refresh Chart**.
+   ![](images/go-da.png " ")
 
-    ![](images/name-da.png " ")
+2. プロパティエディタ(右パネル)で、識別 > 名前に **チャートの更新** と入力します。
 
-3. In the Rendering tree (left pane), under Dynamic Actions > True, click **Show**.
+   ![](images/name-da.png " ")
+   
+3. レンダリングツリー(左パネル)で、ダイナミックアクション > Trueの下の**表示**をクリックします。
 
-    In the Property Editor (right pane), enter the following.
+   プロパティエディタ(右パネル)に以下を入力します。
 
-    - **Identification > Action:** select **Refresh**
-    - **Affected Elements > Selection Type:** select **Region**
-    - **Affected Elements > Region:** select **Country Chart**
+   - **識別 > アクション:** **更新**を選択
+   - **影響を受ける要素 > 選択タイプ:** **リージョン**を選択
+   - **影響を受ける要素 > リージョン:** **Country Chart**を選択
 
-    ![](images/set-action.png " ")
+   ![](images/set-action.png " ")
+   
+## タスク3: チャートを更新する
 
-## Task 3: Update the Chart
-Currently, all three chart series have the country hard-coded. To ensure the value from the item can be used it must be set in session state. Rather than doing this in each series you can set it once for the chart. Once the item is in session state then it can be utilized in the where condition within each chart series.
+現在、3つのチャートシリーズすべてに国がハードコーディングされています。アイテムの値を使用できるようにするには、セッションステートに設定する必要があります。各シリーズごとにこれを行うのではなく、チャートに対して一度設定できます。アイテムがセッションステートになったら、各チャートシリーズのwhere条件で利用できます。
 
-1. In the Rendering tree (left pane), under Content Body, click **Country Chart**.
+1. レンダリングツリー(左パネル)のコンテンツボディの下で、**Country Chart**をクリックします。
 
-    In the Property Editor (right pane), for Source > Page Items to Submit, select **P3\_COUNTRY**.
+   プロパティエディタ(右パネル)のソース > 提出するページアイテムで、**P3_COUNTRY**を選択します。
 
-    ![](images/set-chart.png " ")
+   ![](images/set-chart.png " ")
+   
+2. レンダリングツリー(左パネル)のシリーズの下で、**Dollar Exchange Rate**をクリックします。
 
-2. In the Rendering tree (left pane), under Series, click **Dollar Exchange Rate**.
+   プロパティエディタ(右パネル)のソース > SQLクエリで、**'AUS'**を**:P3_COUNTRY**に置換します。
 
-    In the Property Editor (right pane), for Source > SQL Query, replace **'AUS'** with **:P3\_COUNTRY**.
+   ![](images/set-series.png " ")
 
-    ![](images/set-series.png " ")
+3. レンダリングツリー(左パネル)のシリーズの下で、**Relative Exchange Rate**をクリックします。
+   プロパティエディタ(右パネル)のソース > SQLクエリで、**'AUS'**を**:P3_COUNTRY**に置換します。
+   
+4. レンダリングツリー(左パネル)のシリーズの下で、**Percentage Difference**をクリックします。
+   プロパティエディタ(右パネル)のソース > SQLクエリで、**'AUS'**を**:P3_COUNTRY**に置換します。
+   
+## タスク4: チャートページを改善する
 
-3. In the Rendering tree (left pane), under Series, click **Relative Exchange Rate**.
-    In the Property Editor (right pane), for Source > SQL Query, replace **'AUS'** with :**P3\_COUNTRY**.
+1. ページデザイナーで、ツールバーの**保存して実行**をクリックします。
 
-4. In the Rendering tree (left pane), under Series, click **Percentage Difference**.
-    In the Property Editor (right pane), for Source > SQL Query, replace **'AUS'** with :**P3\_COUNTRY**.
+2. ランタイム環境で、異なる国を選択します。
 
-## Task 4: Improve the Chart Page
+   ![](images/runtime.png " ")
+   
+3. ランタイム環境を確認すると、リージョン名が非表示になる必要があります。これはライブテンプレートオプションを使用してランタイム環境から行うことができます。
 
-1. In Page Designer, within the Toolbar, click **Save and Run**.
-2. In the Runtime environment, select different Countries.
+   ランタイム環境で、開発者ツールバーの**クイック編集**をクリックします。
+   マウスを上に動かして、チャートの周りに青いアウトラインが表示されるまで移動します。
+   チャートリージョンの右上隅にある**レンチ**アイコンをクリックします。
 
-    ![](images/runtime.png " ")
+   ![](images/quick-edit.png " ")
+   
+4. ライブテンプレートオプションのダイアログで、ヘッダーを**非表示だがアクセス可能**に選択します。
+   *注: エンドユーザーが支援技術を使用している場合、リージョン名がアナウンスされます。*
+   
+   **保存**をクリックします。
+   
+   ![](images/live-options.png " ")
+   
+5. ランタイム環境で、異なる国を選択します。
 
-3. Reviewing the runtime environment the region name should be hidden. This can be done from the runtime environment using Live Template Options.
+   ![](images/final-runtime.png " ")
+   
+## **まとめ**
 
-    In the runtime environment, within the Developer Toolbar, click **Quick Edit**.
-    Move the mouse up until a blue outline surrounds the chart.
-    Click the **Wrench** in the top right corner of the chart region.
+これでLab 6とワークショップは完了です。このラボでは、アイテムの作成、ダイナミックアクションの定義、ユーザー入力フィールドに基づくリージョンの更新方法を学びました。
 
-    ![](images/quick-edit.png " ")
 
-4. In the Live Templates Options dialog, for Header, select **Hidden but accessible**.  
-    *Note: If an end user is using assistive technology then the region name will be announced.*
+## 謝辞
 
-    Click **Save**.
-
-    ![](images/live-options.png " ")
-
-5. In the Runtime environment, select different Countries.
-
-    ![](images/final-runtime.png " ")
-
-## **Summary**
-This completes Lab 6 and the workshop. In this lab you learned how to create items, define Dynamic Actions, and refresh regions based on user input fields.
-
-## **Learn More** - Useful Links
-
-- [APEX on Autonomous](https://apex.oracle.com/autonomous)
-- [APEX Collateral](https://apex.oracle.com)
-- [Tutorials](https://apex.oracle.com/en/learn/tutorials)
-- [Community](https://apex.oracle.com/community)
-- [External Site + Slack](http://apex.world)
-
-## **Acknowledgements**
-
- - **Author** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
- - **Last Updated By/Date** - Salim Hlayel, Principle Product Manager, November 2020
+ - **作成者/投稿者** -  Salim Hlayel, Principle Product Manager
+ - **投稿者** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
+ - **最終更新日** - Salim Hlayel, Principle Product Manager, November 2020
 

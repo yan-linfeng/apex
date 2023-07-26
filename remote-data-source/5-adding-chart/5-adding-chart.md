@@ -1,48 +1,48 @@
-# Adding a Chart
+# チャートの追加
 
-## Introduction
-In this lab, you will learn how to add a chart page to the application.
+## はじめに
+このラボでは、アプリケーションにチャートページを追加する方法を学びます。
 
-Estimated Time: 5 minutes
+所要時間: 5分
 
-### Background Information
-The Big Mac Index includes data for countries over the last 20 years. Therefore, to better visualize trends in a country's exchange rate over time it would be highly beneficial to create a chart that is country specific.
+### 背景情報
+ビッグマックインデックスには、過去20年間の各国のデータが含まれています。したがって、時間の経過とともに各国の為替レートの傾向をより視覚的に表すために、国ごとのチャートを作成することが非常に有益です。
 
-Initially you will create a chart that displays the Dollar Exchange Rate for Australia (COUNTRY_ISO = 'AUS'). Then you will add additional data series.
+はじめに、オーストラリア(COUNTRY_ISO = 'AUS')のドル為替レートを表示するチャートを作成します。次に、追加のデータシリーズを追加します。
 
-## Task 1: Create a New Page
+## タスク1: 新しいページの作成 
 
-1. From the runtime environment, in The Developer Toolbar (bottom of the screen), click **Application ###**.
+1. ランタイム環境で、画面下部の**デベロッパーツールバー**をクリックし、**アプリケーション###**をクリックします。
 
-    ![](images/developer-toolbar.png " ")
+   ![](images/developer-toolbar.png " ")
 
-2. From the Application Home Page, click **Create Page**.
+2. アプリケーションホームページで、**ページの作成**をクリックします。
 
-    In the Create a Page dialog, for Page Type, click **Chart**.  
+   ページの作成ダイアログで、ページタイプの場合、**チャート**をクリックします。
 
-    ![](images/set-page-type.png " ")
+   ![](images/set-page-type.png " ")
 
-3. In the Create Chart dialog, for Chart Type, click **Line**.
+3. チャートの作成ダイアログで、チャートタイプの場合、**折れ線**をクリックします。
 
-    ![](images/set-chart-type.png " ")
+   ![](images/set-chart-type.png " ")
+   
+4. ページとリージョンの属性ダイアログで、次の項目を入力します。
+   - **ページ名:** **Country Chart**と入力
+   - **パンくず:** **パンくず**を選択
+   
+   **次へ**をクリックします。
 
-4. In the Page and Region Attributes dialog, enter the following.
-    - **Page Name:** enter **Country Chart**
-    - **Breadcrumb:** select **Breadcrumb**
+   ![](images/set-name.png " ")
+   
+5. ナビゲーションメニューダイアログで、ナビゲーション設定の場合、**新しいナビゲーションエントリーの作成** をクリックします。
 
-    Click **Next**.
+   **次へ**をクリックします。
 
-    ![](images/set-name.png " ")
+   ![](images/set-navigation.png " ")
 
-5. In the Navigation Menu dialog, for Navigation Preference, click **Create a new navigation entry**.
-
-    Click **Next**.
-
-    ![](images/set-navigation.png " ")
-
-6. In the Source dialog, enter the following.
-    - **Source Type:** click **SQL Query**
-    - **SQL Query:** cut and paste the following.
+6. ソースダイアログで、次の項目を入力します。
+   - **ソースタイプ:** **SQLクエリ**をクリック
+   - **SQLクエリ:** 次のSQLをコピー&ペースト
 
         ```
         <copy>select entry_date
@@ -51,77 +51,78 @@ Initially you will create a chart that displays the Dollar Exchange Rate for Aus
         where country_iso = 'AUS'
         order by entry_date</copy>
         ```
-    Click **Next**.
+   **次へ**をクリックします。
 
-    ![](images/set-source.png " ")
+   ![](images/set-source.png " ")
+   
+7. 列マッピングダイアログで、次の項目を入力します。
+   - **ラベル列:** **ENTRY_DATE**を選択
+   - **値列:** **DOLLAR_EXCHANGE_RATE**を選択
+   
+   **作成**をクリックします。
 
-7. In the Column Mapping dialog, enter the following.
-    - **Label Column:** select **ENTRY_DATE**
-    - **Value Column:** select **DOLLAR\_EXCHANGE\_RATE**
+   ![](images/set-columns.png " ")
+   
+8. ページデザイナーツールバーで、**保存して実行**をクリックします。
 
-    Click **Create**.
+   ![](images/runtime.png " ")
+   
+## タスク2: チャートの属性を調整する
+最初のチャートの外観からわかるように、まだ調整の余地があります。属性を更新することで改善できます。
+   
+1. ランタイム環境で、画面下部のデベロッパーツールバーから、**クイック編集**をクリックします。
+   チャート領域の上にマウスを置くと、青い枠で囲まれます。チャートをクリックします。
 
-    ![](images/set-columns.png " ")
+   ![](images/quick-edit.png " ")
+   
+   または、APEXアプリケーションビルダータブまたはウィンドウに戻り、ページ4に移動します。
+   
+2. ページデザイナー内で、レンダリングツリー(左パネル)の**Country Chart**の下にある**属性**をクリックします。
 
-8. In the Page Designer toolbar, click **Save and Run**.
+   プロパティエディタ(右パネル)に次の項目を入力します。
+   
+   - **設定 > 時間軸の種類:** **混合周波数**を選択
+   - **凡例 > 表示:** **はい**をクリック
 
-    ![](images/runtime.png " ")
+   ![](images/set-attributes.png " ")
 
-## Task 2: Adjust the Chart Attributes
-As can be seen by the appearance of the first cut of the chart, there is work to be done. Updating some attributes will help.
+## タスク3: チャートのデータシリーズを更新する
 
-1. From the runtime environment, in the Developer Toolbar (bottom of the screen), click **Quick Edit**.
-    Hover over the chart region until it is surrounded by a blue box. Click the Chart.  
+既存のチャートライン(データシリーズ)を更新し、さらにデータシリーズを追加しましょう。
 
-    ![](images/quick-edit.png " ")
+1. ページデザイナーで、レンダリングツリー(左パネル)の**Country Chart**の下の**Series 1**をクリックします。
 
-    Alternatively, navigate back to the APEX Application Builder tab or window, and then navigate to Page 4.
+   プロパティエディタ(右パネル)に次の項目を入力します。
 
-2. Within Page Designer, in the Rendering tree (left pane), under **Country Chart**, click **Attributes**.
+   - **識別 > 名前:** **Dollar Exchange Rate**と入力
+   - **ラベル > 表示:** **いいえ**をクリック
 
-    In the Property Editor (right pane), enter the following.
+   ![](images/set-series1.png " ")
 
-    - **Settings > Time Axis Type:** select **Mixed Frequency**
-    - **Legend > Show:** click **Yes**  
+   - **軸 > y**を選択
+   - **値 > 小数点以下の桁数**に**1**を入力すると、チャートのラベルに読みやすい小数点値が表示されます。
 
-    ![](images/set-attributes.png " ")
+   ![](images/set-y-axis.png " ")
 
-## Task 3: Update the Chart Series
-Time to update the existing chart line (series), and add a few more data series.
+2. 次の2つのデータシリーズは最初のものと非常に似ているため、既存のデータシリーズを複製するのが最も簡単です。
 
-1. Within Page Designer, in the Rendering tree (left pane), under **Country Chart**, click **Series 1**.
+   レンダリングツリー(左パネル)の**Country Chart**の下で、**Dollar Exchange Rate**を右クリックし、**複製**をクリックします。
 
-    In the Property Editor (right pane), enter the following.
+   ![](images/duplicate-series.png " ")   
 
-    - **Identification > Name:** enter **Dollar Exchange Rate**
-    - **Label > Show:** click **No**  
+3. 上記の手順を繰り返して、3番目のデータシリーズを作成します。
+   *注: 現在、Dollar Exchange Rate、Dollar Exchange Rate_1、Dollar Exchange Rate_2 または Dollar Exchange Rate_1_1の3つのデータシリーズがあるはずです。3番目のデータシリーズの作成に使用したデータシリーズによって異なります。*
+   
+4. 2番目のチャートライン(データシリーズ)は、相対為替レートを表示します。
 
-    ![](images/set-series1.png " ")
+   レンダリングツリー(左パネル)の**Country Chart**の下で、2番目のデータシリーズをクリックします。
+   プロパティエディタ(右パネル)に次の項目を入力します。
+   
+   - **識別 > 名前:** **Relative Exchange Rate**と入力
+   - **ソース > SQLクエリ:** 次のSQLをコピー&ペースト
 
-    - Select **Axes > y**
-    - **Value > Decimal Places** enter **1**, this will allow the labels on the chart to have decimal values that are more readable.
-
-    ![](images/set-y-axis.png " ")
-
-2. The next two series are very similar to the first, so it is easiest to just duplicate the existing series.
-
-    In the Rendering tree (left pane), under **Country Chart**, right-click **Dollar Exchange Rate**, click **Duplicate**.
-
-    ![](images/duplicate-series.png " ")
-
-3. Repeat the step above to create a third series.
-    *Note: You should now have Dollar Exchange Rate, Dollar Exchange Rate\_1, and Dollar Exchange Rate\_2 or Dollar Exchange Rate\_1\_1, depending on which series you duplicated to create the third series.*
-
-4. The second chart line (series) is going to display the Relative Exchange Rate.
-
-    In the Rendering tree (left pane), under **Country Chart**, click the second series.    
-    In the Property Editor (right pane), enter the following.
-
-    - **Identification > Name:** enter **Relative Exchange Rate**
-    - **Source > SQL Query:** copy and paste the following.
-
-        ```
-        <copy>select entry_date
+    ```
+    <copy>select entry_date
         , (local_price / (select local_price from big_mac_index u
                           where u.entry_date = l.entry_date
                           and u.country_iso = 'USA'
@@ -130,20 +131,21 @@ Time to update the existing chart line (series), and add a few more data series.
         from BIG_MAC_INDEX l
         where country_iso = 'AUS'
         order by entry_date</copy>
-        ```
-    - **Column Mapping > Value:** select **RELATIVE\_EXCHANGE_RATE**  
+    ```
 
-    ![](images/set-series2.png " ")
+   - **列マッピング > 値:** **RELATIVE_EXCHANGE_RATE** を選択
 
-5. The third chart line (series) is going to display the Percentage Difference between the currency and the US currency.
+   ![](images/set-series2.png " ")
 
-    In the Rendering tree (left pane), under **Country Chart**, click the third series.    
-    In the Property Editor (right pane), enter the following.
+5. 3番目のチャートライン(データシリーズ)は、通貨と米ドルとのパーセンテージ差を表示します。
 
-    - **Identification > Name:** enter **Percentage Difference (Y2)**
-    - **Source > SQL Query:** cut and paste the following:
+   レンダリングツリー(左パネル)の**Country Chart**の下で、3番目のデータシリーズをクリックします。
+   プロパティエディタ(右パネル)に次の項目を入力します。
 
-        ```
+   - **識別 > 名前:** **Percentage Difference (Y2)**と入力
+   - **ソース > SQLクエリ:** 次のSQLを切り取り&ペースト:
+
+   ```
         <copy>select entry_date
         , ((  local_price / (select local_price from big_mac_index u
                              where u.entry_date = l.entry_date
@@ -155,25 +157,26 @@ Time to update the existing chart line (series), and add a few more data series.
         from BIG_MAC_INDEX l
         where country_iso = 'AUS'
         order by entry_date</copy>
-        ```
+    ```
 
-    - **Column Mapping > Value:** select **PERCENTAGE_DIFFERENCE**
-    - **Appearance > Assigned To Y2 Axis:** check **Yes**  
+   - **列マッピング > 値:** **PERCENTAGE_DIFFERENCE**を選択
+   - **表示 > Y2軸に割り当て:** **はい**をチェック
 
-    ![](images/set-series3.png " ")
+   ![](images/set-series3.png " ")
 
-    *Note: If you do not check ‘Assigned to Y2 Axis’ then the chart will not display well, and not look like the following page.*
+   *注: 「Y2軸に割り当て」にチェックしないと、チャートは適切に表示されず、次のページのようには見えません。*
 
-6. In Page Designer, within the Toolbar, click **Save and Run**.
+6. ページデザイナーで、ツールバーの**保存して実行**をクリックします。
 
-    ![](images/final-runtime.png " ")
+   ![](images/final-runtime.png " ")
+   
+## **まとめ**
 
-## **Summary**
-This completes Lab 5. In this lab you learnt how to create and modify a chart adding multiple series. [Click here to navigate to Lab 6](?lab=lab-6-adding-chart-criteria)
+これでLab 5は完了です。このLabでは、複数のデータシリーズを追加してチャートを作成および変更する方法を学びました。[次のLab 6に進むにはここをクリック](?lab=lab-6-adding-chart-criteria)
 
-## **Acknowledgements**
+## 謝辞
 
- - **Author** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
- - **Last Updated By/Date** - Salim Hlayel, Principle Product Manager, November 2020
+ - **作成者/投稿者** -  Salim Hlayel, Principle Product Manager
+ - **投稿者** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
+ - **最終更新日** - Salim Hlayel, Principle Product Manager, November 2020
 

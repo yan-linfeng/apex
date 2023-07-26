@@ -1,45 +1,44 @@
-# Improving the Report
+# レポートの改善
 
-## Introduction
-In this lab, you will learn how to manipulate an Interactive Report to improve the data displayed and make it easier for users to analyze the data.
+## はじめに
+このラボでは、インタラクティブレポートを操作して、表示されるデータを改善し、ユーザーがデータを解析しやすくする方法を学びます。
 
-Estimated Time: 15 minutes
+所要時間: 15分  
 
-### Background Information
-Now you have data loaded into the BIG\_MAC\_INDEX table you can start reviewing the local price of a McDonalds Big Mac and the exchange rate with the US Dollar.
+### 背景情報
+BIG_MAC_INDEXテーブルにデータがロードされたので、マクドナルドのビッグマックの現地価格と米ドルとの為替レートを確認できるようになりました。 
 
-For any given country, if you divide the Local Price of a Big Mac by the Local Price of a Big Mac in the US, for the same time period, you can calculate the relative exchange rates between the countries based on the Big Mac prices.
+どの国についても、その国のビッグマックの現地価格を、同じ期間の米国のビッグマックの現地価格で割ることで、ビッグマックの価格に基づいて両国間の相対的な為替レートを計算できます。
 
-If you then subtract the Dollar Exchange Rate from the relative exchange rate, and divide by the Dollar Exchange Rate, then you can determine if the currency is overvalued (positive) or undervalued (negative), against the US Dollar.
+その後、ドル換算レートから相対的な為替レートを引き、ドル換算レートで割ると、米ドルに対して通貨が過大評価されているか(プラス)、過小評価されているか(マイナス)を判断できます。
 
-While this is not an exact determination of if a currency is overvalued or undervalued against the US Dollar, it is a good approximation using a product which is generally available in most
-countries.
+これは米ドルに対する通貨の過大評価や過小評価を正確に判断するものではありませんが、ほとんどの国で入手できる製品を用いたかなりの近似値となります。
 
-## Task 1: Update the Report Query
-When the application was generated it utilized the standard table columns. By converting it to a SQL Query and updating the SQL you can include the relative exchange rate to make it easier for people to review the data.
+## タスク1: レポートクエリを更新する
+アプリケーションの生成時には標準のテーブル列が利用されていました。SQLクエリに変換し、SQLを更新することで、相対的な為替レートを含めることができ、人々がデータを確認しやすくなります。
 
-1. From Object Browser, in the APEX Builder Toolbar, click **App Builder**, and then select **Database Applications**.  
+1. オブジェクトブラウザーから、APEXビルダーのツールバーで、**アプリケーションビルダー**をクリックし、**データベースアプリケーション**を選択します。
 
     ![](images/go-apps.png " ")
 
-2. In the list of applications, click **Global Exchange**.
+2. アプリケーションリストで、**Global Exchange**をクリックします。 
 
     ![](images/go-global-exchange.png " ")
 
-3. From the app home page, click **2 – Mac Index**, which will take you to Page Designer and load Page 2, the report page.
+3. アプリのホームページから、**2 – Macインデックス**をクリックすると、ページデザイナーがロードされ、レポートページであるページ2に移動します。
 
-    ![](images/go-page2.png " ")
+    ![](images/go-page2.png " ")  
 
-4. Within Page Designer, in the Rendering tree (left pane), under Content Body, click **Big Mac Indexes** (This is the report region).
+4. ページデザイナー内で、レンダリングツリー(左側のペイン)の、コンテンツ本文の下の**ビッグマックインデックス**(これがレポート領域です)をクリックします。
 
     ![](images/big-mac-index.png " ")
 
-    In the Property Editor (right pane), enter the following.
-    - **Source > Type:** select **SQL Query**
-    - **Source - SQL Query:** click the **Code Editor** icon, and cut and paste the following.
+    プロパティエディタ(右側のペイン)に次の内容を入力します。
+    - **ソース > タイプ:** **SQLクエリ** を選択
+    - **ソース - SQLクエリ:** **コードエディター**アイコンをクリックし、以下をカット&ペーストします。
 
-        ```
-        <copy>select  ID,
+    ```
+    <copy>select  ID,
                 COUNTRY_NAME,
                 COUNTRY_ISO,
                 CURRENCY_CODE,
@@ -51,100 +50,102 @@ When the application was generated it utilized the standard table columns. By co
                                 and u.country_iso = 'USA'
                                )
                 ) relative_exchange_rate
-        from BIG_MAC_INDEX l</copy>
-        ```
+    from BIG_MAC_INDEX l</copy>
+    ```
 
-    Click **Validate** – Validation Successful will be displayed.   
-    Click **OK**.
+    **検証**をクリック - 検証成功が表示されます。
+    **OK**をクリックします。
 
     ![](images/set-report.png " ")
 
-    *Note: The gdp\_dollar column was removed as it is not needed. The inner select is used to get the US price for the same date, in order to calculate the relative exchange rate.*
+    *注: gdp_dollar列は不要なので削除しました。内側の選択は、相対的な為替レートを計算するために、同じ日付の米国の価格を取得するために使用されています。*
 
-## Task 2: Update the Report Columns
-Individual report columns need a better format mask to properly display the data.
+## タスク2: レポート列を更新する
+個々のレポート列には、データを適切に表示するためのより良い書式マスクが必要です。
 
-1. In the Rendering tree (left pane), click **Columns**.
-    Within the list of columns, click **LOCAL_PRICE**.
+1. レンダリングツリー(左側のペイン)で、**列**をクリックします。
+   列のリスト内で、**LOCAL_PRICE**をクリックします。
 
-    In the Property Editor (right pane), click the select icon for Appearance > Format Mask.
-    In the Pick Format Mask dialog, select **5,234.10**.
+   プロパティエディタ(右側のペイン)で、表示 > 書式マスクの選択アイコンをクリックします。
+   書式マスクのピックダイアログで、**5,234.10**を選択します。
 
-    ![](images/set-format.png " ")
+   ![](images/set-format.png " ")
 
-2. In the Rendering tree (left pane), within the list of columns, click **DOLLAR\_EXCHANGE_RATE**.
+2. レンダリングツリー(左側のペイン)で、列のリスト内の**DOLLAR_EXCHANGE_RATE**をクリックします。
 
-    In the Property Editor (right pane), click the select icon for Appearance > Format Mask.
-    In the Pick Format Mask dialog, select **5,234.1000**.
+   プロパティエディタ(右側のペイン)で、表示 > 書式マスクの選択アイコンをクリックします。
+   書式マスクのピックダイアログで、**5,234.1000**を選択します。
 
-3. In the Rendering tree (left pane), within the list of columns, click **RELATIVE\_EXCHANGE_RATE**.
+3. レンダリングツリー(左側のペイン)で、列のリスト内の**RELATIVE_EXCHANGE_RATE**をクリックします。
 
-    In the Property Editor (right pane), click the select icon for Appearance > Format Mask.
-    In the Pick Format Mask dialog, select **5,234.1000**.
+   プロパティエディタ(右側のペイン)で、表示 > 書式マスクの選択アイコンをクリックします。
+   書式マスクのピックダイアログで、**5,234.1000**を選択します。
 
 
-## Task 3: Remove Data Entry Components
-Given the data is obtained from an external source (The Economist REST API) users of the application should not update or delete existing records, and should not create new records.
+## タスク3: データ入力コンポーネントを削除する
+データは外部ソース(エコノミストのREST API)から取得されるため、アプリケーションのユーザーは既存のレコードを更新や削除したり、新しいレコードを作成したりできないはずです。
 
-1. Remove the edit icon so end users cannot update or delete records.
+1. 編集アイコンを削除して、エンドユーザーがレコードを更新や削除できないようにします。
 
-    In the Rendering tree (left pane), under Columns, click **Attributes**.
-    In the Property Editor (right pane), for Link > Link Column, select **Exclude Link Column**.
+   レンダリングツリー(左側のペイン)で、列の下の**属性**をクリックします。
+   プロパティエディタ(右側のペイン)で、リンク > リンク列について、**リンク列を除外**を選択します。
 
-    ![](images/remove-edit.png " ")
+   ![](images/remove-edit.png " ")
 
-2. Remove the Create button so end users cannot add new records.
+2. 作成ボタンを削除して、エンドユーザーが新しいレコードを追加できないようにします。
 
-    In the Rendering tree (left pane), under Region Buttons, right-click **CREATE**, and select **Delete (Del)**.
+   レンダリングツリー(左側のペイン)で、領域ボタンの下の**作成**を右クリックし、**削除(Del)**を選択します。
 
-    ![](images/del-create.png " ")
+   ![](images/del-create.png " ")
 
-3. It is best, but not mandatory, to remove the Big Mac Index form page altogether.     
-    Before moving to Page 3 it is necessary to save the changes you made on Page 2.
+3. ビッグマックインデックスのフォームページ全体を削除するのがベストですが、必須ではありません。
+   ページ3に移動する前に、ページ2で行った変更を保存する必要があります。
 
-    In the Page Designer toolbar, with Page 2 selected, click **Save**.     
-    In the Page Designer toolbar, use the page selector, or down arrow, to navigate to **Page 3 - Big Mac Index**.
+   ページデザイナーのツールバーで、ページ2を選択した状態で、**保存**をクリックします。
+   ページデザイナーのツールバーで、ページセレクターまたは下矢印を使用して、**ページ3 - ビッグマックインデックス**に移動します。
 
-    ![](images/go-page3.png " ")
+   ![](images/go-page3.png " ")
 
-4. On Page 3: Big Mac Index, in the Page Designer toolbar, click **Utilities** (wrench), and then select **Delete Page**.
+4. ページ3: ビッグマックインデックスで、ページデザイナーのツールバーで**ユーティリティ**(レンチ)をクリックし、**ページの削除**を選択します。
 
-    ![](images/del-page.png " ")
+   ![](images/del-page.png " ")
 
-5. On the Confirm Page Delete page, click **Permanently Delete Page**.
+5. 確認ページの削除ページで、**ページの完全削除**をクリックします。
 
-    *Note: Page Designer will return to displaying Page 1: Home.*
+   *注: ページデザイナーはページ1: ホームの表示に戻ります。*
 
-## Task 4: Resequence the Report Columns
-To resequence the order in which the columns are displayed you need to run the report, and then rearrange the column order in the runtime environment.
+## タスク4: レポート列の並べ替え
+列の表示順序を変更するには、レポートを実行して、ランタイム環境で列の順序を再配置する必要があります。
 
-1. In the Page Designer Toolbar, click **Save and Run**.
+1. ページデザイナーのツールバーで、**保存して実行**をクリックします。
 
-    ![](images/save-and-run.png " ")
+   ![](images/save-and-run.png " ")
 
-2. In the runtime environment, click **Actions**, then click **Columns**.
+2. ランタイム環境で、**アクション**をクリックし、次に**列**をクリックします。
 
-    ![](images/go-columns.png " ")
+   ![](images/go-columns.png " ")
 
-3. In the Select Columns Dialog, select **Entry Date**, and then click **Top**.
+3. 列の選択ダイアログで、**エントリ日**を選択し、**トップ**をクリックします。
 
-    Click **Apply**.
+   **適用**をクリックします。
 
-    ![](images/move-columns.png " ")
+   ![](images/move-columns.png " ")
 
-## Task 5: Add a Computation
-Rather than adding an additional column to the SQL Query for the region, it is also possible to define computational columns from the runtime environment.
+   
+## タスク5: 計算を追加する
 
-The report contains the Dollar Exchange Rate and Relative Exchange Rate columns. If you subtract the Dollar Exchange Rate from the Relative Exchange Rate and then divide that by the Dollar Exchange Rate, you can calculate the valuation of the currency. It is best to display this as a percentage by multiplying the result by 100.
+リージョンのSQLクエリに列を追加する代わりに、ランタイム環境から計算列を定義することもできます。
 
-1. In the runtime environment, click **Actions**, select **Data**, then click **Compute**.
+このレポートには、ドルの為替レートと相対的な為替レートの列があります。ドルの為替レートから相対的な為替レートを差し引いて、それをドルの為替レートで割ると、通貨の評価を計算できます。結果に100をかけてパーセンテージで表示するのが最適です。
 
-    ![](images/go-compute.png " ")
+1. ランタイム環境で、**アクション**をクリックし、**データ**を選択して、**計算**をクリックします。
 
-2. In the Compute dialog, enter the following.
-    - **Column Label:** enter **Difference %**
-    - **Format Mask:** select **5,234.10**
-    - **Computation Expression:** enter the following.
+   ![](images/go-compute.png " ")
+
+2. 計算ダイアログで、次の内容を入力します。
+   - **列ラベル:** **Difference %** と入力
+   - **書式マスク:** **5,234.10** を選択
+   - **計算式:** 次の内容を入力します。
 
     ```
     <copy>
@@ -152,33 +153,33 @@ The report contains the Dollar Exchange Rate and Relative Exchange Rate columns.
     </copy>
     ```
 
-    Click **Apply**.
+   **適用**をクリックします。
 
-    ![](images/set-compute.png " ")
+   ![](images/set-compute.png " ")
 
-    *Note: F references Dollar Exchange Rate and I references Relative Exchange Rate as listed under Columns*
+   *注: Fは列の下にリストされているドル為替レートを参照し、Iは相対的な為替レートを参照しています*
 
-## Task 6: Save the Report
-Currently the changes you have made in the runtime environment can only be seen by you. Further, if you were to log out of the runtime environment and log back in your changes would be lost. In order for everyone to see the revised report you need to save the report as the "Primary" report.
+## タスク6: レポートを保存する
+現在、ランタイム環境で行った変更はあなたにしか見えません。さらに、ランタイム環境からログアウトして再ログインした場合、変更は失われます。修正されたレポートをすべての人が確認できるようにするには、レポートを「プライマリ」レポートとして保存する必要があります。
 
-1. In the runtime environment, click **Actions**, select **Report**, then click **Save Report**.
+1. ランタイム環境で、**アクション**をクリックし、**レポート**を選択して、**レポートの保存**をクリックします。
 
-    ![](images/go-save.png " ")
+   ![](images/go-save.png " ")
 
-2.  In the Save Report dialog, for Save (Only displayed for developers), select **As Default Report Settings**.
+2. レポートの保存ダイアログで、保存(開発者にのみ表示)の場合、**デフォルトのレポート設定として**を選択します。
 
-    ![](images/go-default.png " ")
+   ![](images/go-default.png " ")
+   
+3. デフォルトレポートの保存ダイアログで、**適用**をクリックします。
 
-3. In the Save Default Report dialog, click **Apply**.     
+   ![](images/set-default.png " ")
 
-    ![](images/set-default.png " ")
+## **まとめ**
+これでラボ4は完了です。このラボでは、SQLクエリをレポートの基礎として利用する方法、列の表示方法を改善する方法、不要なページ要素を削除する方法、レポートレイアウトを操作する方法、そしてそれをすべての人が利用できるように保存する方法を学びました。[ここをクリックしてラボ5に移動](?lab=lab-5-adding-chart)
 
-## **Summary**
-This completes Lab 4. In this lab you learnt how to utilize a SQL query as the basis for a report, how to improve how columns are displayed, remove unwanted page elements, manipulate the report layout, and then save it for everyone to utilize. [Click here to navigate to Lab 5](?lab=lab-5-adding-chart)
+## 謝辞
 
-## **Acknowledgements**
-
- - **Author** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
- - **Last Updated By/Date** - Salim Hlayel, Principle Product Manager, November 2020
+ - **作成者/投稿者** -  Salim Hlayel, Principle Product Manager
+ - **投稿者** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
+ - **最終更新日** - Salim Hlayel, Principle Product Manager, November 2020
 

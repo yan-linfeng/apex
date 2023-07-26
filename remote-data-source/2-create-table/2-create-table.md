@@ -1,26 +1,26 @@
-# Creating the Table
+# テーブルの作成
 
-## Introduction
+## はじめに
 
-In this lab, you will learn how to create a table by defining the data structures in Quick SQL.
+このラボでは、Quick SQLでデータ構造を定義することによりテーブルを作成する方法を学びます。
 
-Estimated Time: 10 minutes
+所要時間: 10分  
 
-## Task 1: Open Quick SQL
-1. Log into your workspace.
-2. Click **SQL Workshop**.
-3. Click **SQL Scripts**.
+## タスク1: Quick SQLを開く
+1. ワークスペースにログインします。  
+2. **SQLワークショップ**をクリックします。
+3. **SQLスクリプト**をクリックします。
 
     ![](images/go-sql-scripts.png " ")
 
-4. Click **Quick SQL**.
+4. **Quick SQL**をクリックします。
 
     ![](images/go-quick-sql.png " ")
 
-## Task 2: Enter Shorthand for Tables
-Quick SQL provides an easy way to generate the SQL required to create a relational data model from an indented text document. This tool is designed to reduce the time and effort required to create SQL tables, triggers, and index structures.
+## タスク2: テーブルの省略形を入力する
+Quick SQLでは、インデントされたテキストドキュメントからリレーショナルデータモデルのSQLを生成する簡単な方法を提供します。このツールは、SQLテーブル、トリガー、インデックス構造を作成するために必要な時間と労力を削減することを目的としています。
 
-1. In Quick SQL (left pane), enter the following.
+1. Quick SQL(左パネル)に以下を入力します。
 
     ```
     <copy>big_mac_index  
@@ -33,81 +33,82 @@ Quick SQL provides an easy way to generate the SQL required to create a relation
       entry_date</copy>
     ```
 
-    *Note: By indenting the country\_name and subsequent rows, it is indicating that these are columns for the table, big\_mac\_index, defined in the first row.*
+    *注意: country_nameやその後の行をインデントすることで、これらが最初の行で定義されたテーブルbig_mac_indexの列であることを示しています。*
 
-    Click **Generate SQL**.
+    **SQLの生成**をクリックします。
 
     ![](images/enter-table.png " ")
 
-## Task 3: Implement the Script
-At this stage you have created a SQL statement. However, you first need to save the statement as a script file and then run the script. This will create the database object you defined.
+## タスク3: スクリプトを実装する
+この段階では、SQLステートメントを作成しました。ただし、最初にステートメントをスクリプトファイルとして保存し、その後スクリプトを実行する必要があります。これにより、定義したデータベースオブジェクトが作成されます。
 
-1. In the SQL (right pane) toolbar, click **Save SQL Script**.
-2. In the Save Script dialog, for Script Name, enter **remote**.   
-    Click **Save Script**.
+1. SQL(右パネル)のツールバーで、**SQLスクリプトの保存**をクリックします。  
+2. スクリプトの保存ダイアログで、スクリプト名に**remote**を入力します。  
+**スクリプトの保存**をクリックします。
 
     ![](images/save-script.png " ")
 
-3. In the SQL (right pane) toolbar, click **Review and Run**. The script will be displayed in the **Script Editor**, within SQL Scripts.
+3. SQL(右パネル)のツールバーで、**レビューと実行**をクリックします。スクリプトは、SQLスクリプト内の**スクリプトエディター**に表示されます。
 
     ![](images/review-script.png " ")
 
-    Click **Run**.
+**実行**をクリックします。
 
     ![](images/run-script.png " ")
 
-4. On the Run Script page, click **Run Now**.  
-5. The Script Results page will be displayed listing the statements processed, successful, and with errors.
+4. スクリプトの実行ページで、**今すぐ実行**をクリックします。
+5. スクリプト結果ページに処理されたステートメント、成功したステートメント、エラーのあるステートメントがリストされます。
 
     ![](images/results.png " ")
 
-    *Note: If you do not see 1 statements processed then return to Quick SQL and click Generate SQL, reimplement the Setting, resave the script and then run it again. If you still do not see 1 successful, then review the errors displayed in Feedback within the results.*
+    *注意: 処理されたステートメントが1ではない場合は、Quick SQLに戻り、SQLの生成をクリックし、設定を再度実装して、スクリプトを再保存し、再実行してください。それでも成功したステートメントが1ではない場合は、結果のフィードバック内のエラーを確認してください。*
 
-## Task 4: Create the Application
-Now that you have created the table you can quickly create an application with a report and form.
+## タスク4: アプリケーションを作成する
 
-1. Click **Create App**.
+テーブルを作成したので、レポートとフォームを含むアプリケーションをすぐに作成できます。
+
+1. **アプリの作成**をクリックします。
 
     ![](images/go-create-app.png " ")
 
-    *Note: If you are back on SQL Scripts, and don’t see the “Create App” button perform the following steps.*   
-    *1. Within the Results column, click “1” for the script you just ran.*  
-    *2. Under View Results, click the magnifying glass.*
-    *The results page shown above should now be displayed again.*
+    *注意: SQLスクリプトに戻っていて、「アプリの作成」ボタンが表示されない場合は、次の手順を実行してください。*
+    *1. 結果列で、たった今実行したスクリプトの「1」をクリックします。*
+    *2. 結果の表示で、拡大鏡をクリックします。*
+    上記の結果ページが再び表示されるはずです。
 
-2. In the Create App from Script dialog, click **Create Application**.
+2. スクリプトからのアプリ作成ダイアログで、**アプリケーションの作成**をクリックします。
 
     ![](images/create-application.png " ")
 
-3. In the Create an Application page, enter the following.
-    - **Name:** enter **Global Exchange**
-    - **Features:** click **Check All**
+3. アプリケーションの作成ページで、次の項目を入力します。
+    - **名前:** **Global Exchange**と入力します
+    - **機能:** **すべてチェック** をクリックします
 
-    At the bottom of the page, click **Create Application**.
+   ページの下部で、**アプリケーションの作成**をクリックします。
 
-    ![](images/set-create-app.png " ")
+    ![](images/set-create-app.png " ")  
 
-4. Your new application will be displayed in Page Designer.
-5. Click **Run Application**.
+4. 新しいアプリケーションがページデザイナーに表示されます。
+5. **アプリケーションの実行**をクリックします。
 
     ![](images/run-app.png " ")
 
-6. In the runtime environment, on the login page, enter your credentials.
+6. ランタイム環境のログインページで資格情報を入力します。
 
-    ![](images/login.png " ")
+    ![](images/login.png " ")  
 
-7. Play around with your new application.
+7. 新しいアプリケーションを操作してみてください。
 
     ![](images/runtime-app.png " ")
 
-    *Note: When you click on Mac Index there will be no data displayed. You don't want to manually enter in data as the table will be populated in the next lab.*
+    *注意: Macインデックスをクリックしてもデータが表示されません。次のラボでテーブルにデータを入力するので、手動でデータを入力する必要はありません。*
 
-## **Summary**
-This completes Lab 2. You now know how to utilize Quick SQL to build a simple table and create an application on top of it. [Click here to navigate to Lab 3](?lab=lab-3-populating-table)
+## **まとめ**
+これでラボ2は完了です。Quick SQLを利用してシンプルなテーブルを構築し、その上にアプリケーションを作成する方法がわかりました。[次のラボに進むにはここをクリック](?lab=lab-3-populating-table)
 
-## **Acknowledgements**
+## 謝辞
 
- - **Author** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
- - **Last Updated By/Date** - Salim Hlayel, Principle Product Manager, November 2020
+ - **作成者/投稿者** -  Salim Hlayel, Principle Product Manager
+ - **投稿者** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
+ - **最終更新日** - Salim Hlayel, Principle Product Manager, November 2020
 

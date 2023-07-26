@@ -1,32 +1,32 @@
-# Populating the Table
+# テーブルにデータを入力する
 
-## Introduction
+## はじめに
 
-In this lab, you will learn how to insert data into a table from a REST API.
+このラボでは、REST APIを利用してテーブルにデータを挿入する方法を学びます。
 
-Estimated Time: 5 minutes
+所要時間: 5分  
 
-### Background Information
+### 背景情報
 
-The **apex\_data\_parser** is a PL/SQL package which provides an easy interface to parse files from various file formats, including comma-delimited (.csv). The parser is implemented as a table function - so the developer accesses parser results like a table. Therefore, the parser can utilize INSERT ... SELECT statements to insert rows directly into a table from the specified file.
+**apex_data_parser** はPL/SQLパッケージで、コンマ区切り(.csv)を含むさまざまなファイル形式からファイルを簡単に解析するインターフェースを提供します。このパーサーはテーブル関数として実装されているため、開発者はテーブルのようにパーサーの結果にアクセスできます。したがって、パーサーは指定されたファイルから直接行をテーブルに挿入するために INSERT ... SELECT ステートメントを利用できます。
 
-The **apex\_web\_service.make\_rest\_request\_b** is a PL/SQL function which invokes a RESTful style Web service and returns the results in a BLOB. Utilizing this function within apex\_data\_parser will allow you to load data from a REST API directly into your table.
+**apex_web_service.make_rest_request_b** はPL/SQL関数で、RESTfulスタイルのWebサービスを呼び出し、結果をBLOBで返します。この関数を apex_data_parser 内で利用することにより、REST API から直接データをテーブルに読み込むことができます。
 
-## Task 1: Create a Script
+## タスク1: スクリプトを作成する
 
-Rather than running a one-off SQL statement to load the data, writing a SQL Script enables the SQL statement to be run repeatedly.
+一度限りのSQLステートメントではなく、SQLスクリプトを記述することで、SQLステートメントを繰り返し実行できます。
 
-The Big Mac Data is refreshed every 6 months. Therefore, this script can be used twice a year to keep the data current.
+ビッグマックデータは6か月ごとに更新されます。したがって、このスクリプトを1年に2回利用することで、データを最新の状態に保つことができます。
 
-1. From the runtime environment, in the Developer Toolbar (bottom of screen), click **Home**.
+1. ランタイム環境から、デベロッパーツールバー(画面下部)の**ホーム**をクリックします。
 ![](images/go-home.png)
-2. Click **SQL Workshop**, and then select **SQL Scripts**.
+2. **SQLワークショップ**をクリックし、**SQLスクリプト**を選択します。 
 ![](images/go-sql-scripts.png)
-3. In the SQL Script page toolbar, click **Create**.
+3. SQLスクリプトページのツールバーで、**作成**をクリックします。
 ![](images/create-script.png)
-4. In the Script Editor page, enter the following.
-    * **Script Name:** enter **Populate BIG\_MAC\_INDEX**
-    * Copy and paste the following.
+4. スクリプトエディターページで、以下を入力します。
+    * **スクリプト名:** **BIG_MAC_INDEXに入力**と入力します  
+    * 以下をコピー&ペーストします。
 
     ```
     <copy>-- Remove current data
@@ -48,37 +48,37 @@ The Big Mac Data is refreshed every 6 months. Therefore, this script can be used
     where local_price = 0;</copy>    
     ```
 
-5. Click **Run**.
+5. **実行**をクリックします。
 ![](images/set-script.png)
-6. On the Run Script page, click **Run Now**.
-7. The Script Results page will be displayed listing the statements processed, successful, and with errors.
-In November 2020, Results should show **1658 row(s) inserted** and **1 row(s) deleted**(your number of rows inserted/deleted may differ depending on the date you run the script).
+6. スクリプトの実行ページで、**今すぐ実行**をクリックします。
+7. スクリプト結果ページに、処理されたステートメント、成功したステートメント、エラーのあるステートメントがリストされます。  
+2020年11月の結果では、**1658行挿入済み**および**1行削除済み**が表示されるはずです(スクリプトを実行する日によって、挿入/削除された行数が異なる場合があります)。
 ![](images/script-results.png)
-*Note: If you do not see 3 statements processed successfully then double check your table definition and the script to populate the table.*
+*注意: 3つのステートメントが正常に処理されたことが表示されない場合は、テーブル定義とテーブル入力のスクリプトを確認してください。*
 
-## Task 2: Review the Data
+## タスク2: データを確認する
 
-There are several ways to review the data.
+データを確認する方法はいくつかあります。
 
-1. Navigate to the runtime environment tab or window.
-2. In the application menu click **Mac Index**.
-On the report, click **Entry Date**, and click **Sort Ascending**, to see the latest data.
+1. ランタイム環境のタブまたはウィンドウに移動します。
+2. アプリケーションメニューから**Macインデックス**をクリックします。  
+レポート上で**入力日**をクリックし、**昇順に並べ替え**をクリックすると、最新のデータが表示されます。
 ![](images/runtime.png)
-*Note: Many of the Dollar Exchange Rate values simply show 1.*
-3. In the APEX Builder tab or window, click **SQL Workshop**, and then select **Object Browser**.
+*注意: ドル換算レートの値の多くは単に1と表示されています。*
+3. APEXビルダーのタブまたはウィンドウで、**SQL ワークショップ**をクリックし、**オブジェクトブラウザー**を選択します。
 ![](images/go-object-browser.png)
-4. In Object Browser, within the list of Tables, click **BIG\_MAC\_INDEX**.
-In the middle pane, click **Data**.
+4. オブジェクトブラウザー内のテーブルリストで、**BIG_MAC_INDEX** をクリックします。  
+中央のペインで、**データ**をクリックします。
 ![](images/review-data.png)
-Note: Review the decimal places on the DOLLAR\_EXCHANGE\_RATE column. In the next lab you will ensure the data displays properly.
+注意: DOLLAR_EXCHANGE_RATE列の小数点以下の桁数を確認してください。次のラボで、データが適切に表示されるようにします。
 
-## **Summary**
+## **まとめ**
 
-This completes Lab 3. You now know how to utilize **apex\_data\_parser** and **apex\_web\_service.make\_rest\_request\_b** to populate a table in the Oracle database based on a REST endpoint. [Click here to navigate to Lab 4](?lab=lab-4-improving-report)
+これでラボ3は完了です。**apex_data_parser** と **apex_web_service.make_rest_request_b** を利用して、RESTエンドポイントに基づいてOracleデータベース内のテーブルにデータを入力する方法がわかりました。[次のラボに進むにはここをクリック](?lab=lab-4-improving-report)
 
-## **Acknowledgements**
+## 謝辞
 
-* **Author** \- Salim Hlayel\, Principle Product Manager
-* **Contributors** \- Jaden McElvey\, Technical Lead \- Oracle LiveLabs Intern
-* **Last Updated By/Date** \- Madhusudhan Rao, Apr 20220
+ - **作成者/投稿者** -  Salim Hlayel, Principle Product Manager
+ - **投稿者** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
+ - **最終更新日** - Madhusudhan Rao, Apr 2022
 

@@ -1,52 +1,50 @@
-# Introduction
+# はじめに
 
-## Workshop Overview
-This workshop utilizes Quick SQL to build a table in your local database. Then you will load the new table with data from a REST API call to a comma delimited file (.csv). Now you have the table with lots of great data, it is time to build an APEX application on top of it and then improve the application with an updated report, and a user driven chart.
+## ワークショップの概要
+このワークショップでは、Quick SQLを使ってローカル・データベースにテーブルを構築します。次に、コンマ区切りファイル(.csv)へのREST API呼び出しから新しいテーブルにデータをロードします。これでたくさんのデータを持つテーブルができたので、その上にAPEXアプリケーションを構築し、レポートとユーザー駆動のチャートを追加してアプリケーションを改善します。
 
-The data used is the Big Mac Index from the Economist, which uses the price of McDonald’s Big Mac as the benchmark to measure the purchasing power parity between currencies.   
-*Note: this data is only updated every six months*
+使用するデータはエコノミストのビッグマック指数で、マクドナルドのビッグマックの価格を基準にして通貨間の購買力平価を測定するために使用されます。
+*注意:このデータは6ヶ月に1度しか更新されません*
 
-Estimated Time: 50 minutes
+所要時間: 50分
 
-### Objectives
+### 目的
 
-* Obtain a free development environment
-* Define and populate a table from a REST endpoint
-* Create an application on the new data
-* Refine the application
+* RESTエンドポイントからテーブルを定義および入力
+* 新しいデータ上にアプリケーションを作成
+* アプリケーションの改善
 
-*Note: This lab assumes you are using Oracle APEX 20.2.*
+*注意:このラボはOracle APEX 20.2を使用していることを前提としています。*
 
-### Labs
+### ラボ
 
-| # | Module | Est. Time |
-| --- | --- | --- |
-| 1 | [Create an Oracle APEX Workspace](?lab=lab-1-create-oracle-apex-workspace) | 5 minutes |
-| 2 | [Creating the Table](?lab=lab-2-creating-table) | 10 minutes |
-| 3 | [Populating the Table](?lab=lab-3-populating-table) | 5 minutes |
-| 4 | [Improving the Report](?lab=lab-4-improving-report) | 15 minutes |
-| 5 | [Adding a Chart](?lab=lab-5-adding-chart) | 5 minutes |
-| 6 | [Adding Chart Criteria](?lab=lab-6-adding-chart-criteria) | 5 minutes |
+| # | モジュール | 所要時間 |
+| --- | --- | --- | 
+| 1 | [テーブルの作成](?lab=lab-2-creating-table) | 10分 |
+| 2 | [テーブルへのデータ入力](?lab=lab-3-populating-table) | 5分 |  
+| 3 | [レポートの改善](?lab=lab-4-improving-report) | 15分 |
+| 4 | [チャートの追加](?lab=lab-5-adding-chart) | 5分 |
+| 5 | [チャート基準の追加](?lab=lab-6-adding-chart-criteria) | 5分 |
 
-### **Let's Get Started!**
+### **はじめましょう!**  
 
-If the menu is not displayed, you can open by clicking the menu button (![Menu icon](./images/menu-button.png)) at the top of the page.
+メニューが表示されない場合は、ページの上部にあるメニューボタン(![メニューアイコン](./images/menu-button.png))をクリックして開くことができます。
 
-## Downloads
+## ダウンロード
 
-[Click here](files/remotedatasource-app.sql) to download the completed application.
+[ここをクリック](files/remotedatasource-app.sql)して完成したアプリケーションをダウンロードします。
 
-## Learn More - Useful Links
+## さらに詳しく - 役立つリンク
 
 - [APEX on Autonomous](https://apex.oracle.com/autonomous)
-- [APEX Collateral](https://apex.oracle.com)
-- [Tutorials](https://apex.oracle.com/en/learn/tutorials)
-- [Community](https://apex.oracle.com/community)
-- [External Site + Slack](http://apex.world)
+- [APEX コラテラル](https://apex.oracle.com) 
+- [チュートリアル](https://apex.oracle.com/en/learn/tutorials) 
+- [コミュニティ](https://apex.oracle.com/community)
+- [外部サイト + Slack](http://apex.world)
 
-## **Acknowledgements**
+## 謝辞
 
- - **Author** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
- - **Last Updated By/Date** - Salim Hlayel, Principle Product Manager, November 2020
+ - **作成者/投稿者** -  Salim Hlayel, Principle Product Manager
+ - **投稿者** - Jaden McElvey, Technical Lead - Oracle LiveLabs Intern
+ - **最終更新日** - Salim Hlayel, Principle Product Manager, November 2020
 
