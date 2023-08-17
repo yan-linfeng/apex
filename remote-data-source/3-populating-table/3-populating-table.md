@@ -32,25 +32,25 @@
    * **スクリプト名:** **Populate BIG\_MAC\_INDEX**と入力します  
    * 以下のコードをコピー&ペーストします。
 
-   ```
-    <copy>-- Remove current data
-    delete big_mac_index;
+      ```
+      <copy>-- Remove current data
+      delete big_mac_index;
 
-    -- Load data from The Economist (csv) REST API
-    insert into big_mac_index
-    (country_name, country_iso, currency_code, local_price, dollar_exchange_rate, gdp_dollar, entry_date)
-    select col001, col002, col003, col004, col005, col006, to_date(col007,'YYYY-MM-DD')
-    from table(apex_data_parser.parse
-    (  p_content => apex_web_service.make_rest_request_b
-        ('https://raw.githubusercontent.com/TheEconomist/big-mac-data/master/source-data/big-mac-source-data.csv', 'GET')
-      , p_file_name => 'big-mac-source-data.csv'
-      , p_skip_rows => 1
-    ));
+      -- Load data from The Economist (csv) REST API
+      insert into big_mac_index
+      (country_name, country_iso, currency_code, local_price, dollar_exchange_rate, gdp_dollar, entry_date)
+      select col001, col002, col003, col004, col005, col006, to_date(col007,'YYYY-MM-DD')
+      from table(apex_data_parser.parse
+      (  p_content => apex_web_service.make_rest_request_b
+         ('https://raw.githubusercontent.com/TheEconomist/big-mac-data/master/source-data/big-mac-source-data.csv', 'GET')
+         , p_file_name => 'big-mac-source-data.csv'
+         , p_skip_rows => 1
+      ));
 
-    -- Delete bad data (rows with no price)
-    delete big_mac_index
-    where local_price = 0;</copy>    
-    ```
+      -- Delete bad data (rows with no price)
+      delete big_mac_index
+      where local_price = 0;</copy>    
+      ```
 
 5. **実行**をクリックします。
    
@@ -85,7 +85,7 @@
 
    ![](images/review-data.png)
    
-   注意: DOLLAR_EXCHANGE_RATE列の小数点以下の桁数を確認してください。次のラボで、データが適切に表示されるようにします。
+   注意: DOLLAR\_EXCHANGE\_RATE列の小数点以下の桁数を確認してください。次のラボで、データが適切に表示されるようにします。
 
 ## **まとめ**
 
