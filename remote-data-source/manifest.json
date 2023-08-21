@@ -7,23 +7,27 @@
       "filename": "0-workshop-intro-and-setup/0-workshop-intro-and-setup.md"
     },
     {
-      "title": "ラボ1: テーブルの作成",
+      "title": "ラボ1: APEX Workspace のサインアップ",
+      "filename": "../rest-data-source/1-sign-up-apex/1-sign-up-apex.md"
+    },
+    {
+      "title": "ラボ2: テーブルの作成",
       "filename": "2-create-table/2-create-table.md"
     },
     {
-      "title": "ラボ2: テーブルへのデータ入力",
+      "title": "ラボ3: テーブルへのデータ入力",
       "filename": "3-populating-table/3-populating-table.md"
     },
     {
-      "title": "ラボ3: レポートの改善",
+      "title": "ラボ4: レポートの改善",
       "filename": "4-improving-report/4-improving-report.md"
     },
     {
-      "title": "ラボ4: チャートの追加",
+      "title": "ラボ5: チャートの追加",
       "filename": "5-adding-chart/5-adding-chart.md"
     },
     {
-      "title": "ラボ5: チャート基準の追加",
+      "title": "ラボ6: チャートの更新条件の追加",
       "filename": "6-adding-chart-criteria/6-adding-chart-criteria.md"
     },
     {
