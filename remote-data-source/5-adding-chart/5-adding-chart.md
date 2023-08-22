@@ -6,7 +6,7 @@
 所要時間: 5分
 
 ### 背景情報
-Big Mac Indexには、過去20年間の各国のデータが含まれています。したがって、時間の経過とともに各国の為替レートの傾向をより視覚的に表すために、国ごとのチャートを作成することが非常に有益です。
+Big Mac Indexには、過去20年間の各国のデータが含まれています。したがって、時間の経過とともに各国の為替レートの傾向をより視覚的に表すために、国ごとのチャートを作成すると便利です。
 
 最初に、オーストラリア(COUNTRY_ISO = 'AUS')のドル為替レートを表示するチャートを作成します。次に、その他のデータ・シリーズを追加します。
 
@@ -31,20 +31,21 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    - **ソース・タイプ:** **SQL問合せ**をクリック
    - **SQL SELECT文を入力:** 次のSQLをコピー&ペースト
 
-        ```
-        <copy>select entry_date
-        , dollar_exchange_rate
-        from big_mac_index l
-        where country_iso = 'AUS'
-        order by entry_date</copy>
-        ```
+      ```
+      <copy>select entry_date
+      , dollar_exchange_rate
+      from big_mac_index l
+      where country_iso = 'AUS'
+      order by entry_date</copy>
+      ```
+
    **次 >** をクリックします。
 
    ![](images/set-source.png " ")
    
 5. 「チャートの作成」ダイアログで、次の項目を入力します。
-   - **ラベル列:** **ENTRY_DATE**を選択
-   - **値列:** **DOLLAR_EXCHANGE_RATE**を選択
+   - **ラベル列:** **ENTRY\_DATE**を選択
+   - **値列:** **DOLLAR\_EXCHANGE\_RATE**を選択
    
    **ページの作成**をクリックします。
 
@@ -89,12 +90,12 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    - **識別 > 名前:** **Dollar Exchange Rate**と入力
    - **ラベル > 表示:** スイッチをオフにする
 
-   ![](images/set-series1.png " ")
+      ![](images/set-series1.png " ")
 
    - **軸 > y**を選択
    - **値 > 小数点**に**1**を入力すると、チャートのラベルに読みやすい小数点値が表示されます。
 
-   ![](images/set-y-axis.png " ")
+      ![](images/set-y-axis.png " ")
 
 2. 次の2つのデータシリーズは最初のものと非常に似ているため、既存のデータシリーズを複製するのが最も簡単です。
 
@@ -103,7 +104,7 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    ![](images/duplicate-series.png " ")   
 
 3. 上記の手順を繰り返して、3番目のデータシリーズを作成します。  
-   *注意: これで、3番目のシリーズを作成するためにコピーしたシリーズに応じて、Dollar Exchange Rate、Dollar Exchange Rate_1、Dollar Exchange Rate_2 または Dollar Exchange Rate_1_1の3つのデータシリーズがあるはずです。*
+   *注意: これで、3番目のシリーズを作成するためにコピーしたシリーズに応じて、Dollar Exchange Rate、Dollar Exchange Rate\_1、Dollar Exchange Rate\_2 または Dollar Exchange Rate\_1\_1の3つのデータシリーズがあるはずです。*
    
 4. 2番目のチャートライン(データシリーズ)は、相対為替レートを表示します。
 
@@ -113,45 +114,45 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    - **識別 > 名前:** **Relative Exchange Rate**と入力
    - **ソース > SQL問合せ:** 次のSQLをコピー&ペースト
 
-    ```
-    <copy>select entry_date
-        , (local_price / (select local_price from big_mac_index u
-                          where u.entry_date = l.entry_date
-                          and u.country_iso = 'USA'
-                         )
-          ) relative_exchange_rate
-        from BIG_MAC_INDEX l
-        where country_iso = 'AUS'
-        order by entry_date</copy>
-    ```
+      ```
+      <copy>select entry_date
+         , (local_price / (select local_price from big_mac_index u
+                           where u.entry_date = l.entry_date
+                           and u.country_iso = 'USA'
+                           )
+            ) relative_exchange_rate
+         from BIG_MAC_INDEX l
+         where country_iso = 'AUS'
+         order by entry_date</copy>
+      ```
 
-   - **列マッピング > 値:** **RELATIVE_EXCHANGE_RATE** を選択
+   - **列マッピング > 値:** **RELATIVE\_EXCHANGE\_RATE** を選択
 
    ![](images/set-series2.png " ")
 
 5. 3番目のチャートライン(データシリーズ)は、通貨と米ドルとのパーセンテージ差を表示します。
 
-   レンダリング・ツリー(左パネル)の**Country Chart**の下で、3番目のデータシリーズをクリックします。  
+   レンダリング・ツリー(左パネル)の**Country Chart**の下で、3番目のデータ・シリーズをクリックします。  
    プロパティ・エディタ(右パネル)に次の項目を入力します。
 
    - **識別 > 名前:** **Percentage Difference (Y2)**と入力
    - **ソース > SQL問合せ:** 次のSQLをコピー&ペースト:
 
-   ```
-        <copy>select entry_date
-        , ((  local_price / (select local_price from big_mac_index u
-                             where u.entry_date = l.entry_date
-                             and u.country_iso = 'USA'
-                            )
-            - dollar_exchange_rate
-           ) * 100 / dollar_exchange_rate
-          ) percentage_difference
-        from BIG_MAC_INDEX l
-        where country_iso = 'AUS'
-        order by entry_date</copy>
-    ```
+      ```
+         <copy>select entry_date
+         , ((  local_price / (select local_price from big_mac_index u
+                              where u.entry_date = l.entry_date
+                              and u.country_iso = 'USA'
+                              )
+               - dollar_exchange_rate
+            ) * 100 / dollar_exchange_rate
+            ) percentage_difference
+         from BIG_MAC_INDEX l
+         where country_iso = 'AUS'
+         order by entry_date</copy>
+      ```
 
-   - **列マッピング > 値:** **PERCENTAGE_DIFFERENCE**を選択
+   - **列マッピング > 値:** **PERCENTAGE\_DIFFERENCE**を選択
    - **外観 > Y2軸に割当て:** **はい**をチェック
 
    ![](images/set-series3.png " ")

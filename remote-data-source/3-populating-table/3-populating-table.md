@@ -8,7 +8,7 @@
 
 ### 背景情報
 
-**apex\_data\_parser** はPL/SQLパッケージで、コンマ区切り(.csv)を含むさまざまな形式からファイルを簡単に解析するインターフェースを提供します。このパーサーはテーブル関数として実装されているため、開発者はテーブルのようにパーサーの結果にアクセスできます。したがって、指定されたファイルから行をテーブルに直接挿入するために、パーサーとINSERT ... SELECT ステートメントを利用できます。
+**apex\_data\_parser** はPL/SQLパッケージで、コンマ区切り(.csv)を含むさまざまな形式からファイルを簡単に解析するインターフェースを提供します。このパーサーはテーブル関数として実装されているため、開発者はテーブルのようにパーサーの結果にアクセスできます。したがって、指定されたファイルから行をテーブルに直接挿入するために、INSERT ... SELECT ステートメント内にパーサーの結果を利用できます。
 
 **apex\_web\_service.make\_rest\_request\_b** はPL/SQL関数で、RESTfulスタイルのWebサービスを呼び出し、結果をBLOBで返します。この関数をapex\_data\_parser内で利用することにより、REST APIから直接データをテーブルに読み込むことができます。
 
@@ -32,25 +32,25 @@
    * **スクリプト名:** **Populate BIG\_MAC\_INDEX**と入力します  
    * 以下のコードをコピー&ペーストします。
 
-      ```
-      <copy>-- Remove current data
-      delete big_mac_index;
+   ```
+   <copy>-- Remove current data
+   delete big_mac_index;
 
-      -- Load data from The Economist (csv) REST API
-      insert into big_mac_index
-      (country_name, country_iso, currency_code, local_price, dollar_exchange_rate, gdp_dollar, entry_date)
-      select col001, col002, col003, col004, col005, col006, to_date(col007,'YYYY-MM-DD')
-      from table(apex_data_parser.parse
-      (  p_content => apex_web_service.make_rest_request_b
-         ('https://raw.githubusercontent.com/TheEconomist/big-mac-data/master/source-data/big-mac-source-data.csv', 'GET')
-         , p_file_name => 'big-mac-source-data.csv'
-         , p_skip_rows => 1
-      ));
+   -- Load data from The Economist (csv) REST API
+   insert into big_mac_index
+   (country_name, country_iso, currency_code, local_price, dollar_exchange_rate, gdp_dollar, entry_date)
+   select col001, col002, col003, col004, col005, col006, to_date(col007,'YYYY-MM-DD')
+   from table(apex_data_parser.parse
+   (  p_content => apex_web_service.make_rest_request_b
+      ('https://raw.githubusercontent.com/TheEconomist/big-mac-data/master/source-data/big-mac-source-data.csv', 'GET')
+      , p_file_name => 'big-mac-source-data.csv'
+      , p_skip_rows => 1
+   ));
 
-      -- Delete bad data (rows with no price)
-      delete big_mac_index
-      where local_price = 0;</copy>    
-      ```
+   -- Delete bad data (rows with no price)
+   delete big_mac_index
+   where local_price = 0;</copy>    
+   ```
 
 5. **実行**をクリックします。
    
@@ -69,7 +69,7 @@
 
 ## タスク2: データを確認する
 
-データを確認する方法はいくつかあります。
+データを確認する方法はいくつかあります。ランタイム環境と開発環境の両方で確認できます。
 
 1. ランタイム環境のタブまたはウィンドウに移動します。
 2. アプリケーション・メニューから**Mac Index**をクリックします。    
