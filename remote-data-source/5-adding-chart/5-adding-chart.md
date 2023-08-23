@@ -84,9 +84,9 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
 
 1. ページ・デザイナで、レンダリング・ツリー(左パネル)の**Country Chart**の下の**シリーズ1**をクリックします。
 
-   ![](images/series1.png " ")
+      ![](images/series1.png " ")
 
-   プロパティ・エディタ(右パネル)に次の項目を入力します。
+      プロパティ・エディタ(右パネル)に次の項目を入力します。
 
       - **識別 > 名前:** **Dollar Exchange Rate**と入力
       - **ラベル > 表示:** スイッチをオフにする
@@ -109,23 +109,23 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    
 4. 2番目のチャートライン(データシリーズ)は、相対為替レートを表示します。
 
-   レンダリング・ツリー(左パネル)の**Country Chart**の下で、2番目のデータシリーズをクリックします。  
-   プロパティ・エディタ(右パネル)に次の項目を入力します。
+      レンダリング・ツリー(左パネル)の**Country Chart**の下で、2番目のデータシリーズをクリックします。  
+      プロパティ・エディタ(右パネル)に次の項目を入力します。
    
       - **識別 > 名前:** **Relative Exchange Rate**と入力
       - **ソース > SQL問合せ:** 次のSQLをコピー&ペースト
 
-      ```
-      <copy>select entry_date
-         , (local_price / (select local_price from big_mac_index u
-                           where u.entry_date = l.entry_date
-                           and u.country_iso = 'USA'
-                           )
-            ) relative_exchange_rate
-         from BIG_MAC_INDEX l
-         where country_iso = 'AUS'
-         order by entry_date</copy>
-      ```
+         ```
+         <copy>select entry_date
+            , (local_price / (select local_price from big_mac_index u
+                              where u.entry_date = l.entry_date
+                              and u.country_iso = 'USA'
+                              )
+               ) relative_exchange_rate
+            from BIG_MAC_INDEX l
+            where country_iso = 'AUS'
+            order by entry_date</copy>
+         ```
 
       - **列マッピング > 値:** **RELATIVE\_EXCHANGE\_RATE** を選択
 
@@ -133,25 +133,25 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
 
 5. 3番目のチャートライン(データシリーズ)は、通貨と米ドルとのパーセンテージ差を表示します。
 
-   レンダリング・ツリー(左パネル)の**Country Chart**の下で、3番目のデータ・シリーズをクリックします。  
-   プロパティ・エディタ(右パネル)に次の項目を入力します。
+      レンダリング・ツリー(左パネル)の**Country Chart**の下で、3番目のデータ・シリーズをクリックします。  
+      プロパティ・エディタ(右パネル)に次の項目を入力します。
 
       - **識別 > 名前:** **Percentage Difference (Y2)**と入力
       - **ソース > SQL問合せ:** 次のSQLをコピー&ペースト:
 
-      ```
-         <copy>select entry_date
-         , ((  local_price / (select local_price from big_mac_index u
-                              where u.entry_date = l.entry_date
-                              and u.country_iso = 'USA'
-                              )
-               - dollar_exchange_rate
-            ) * 100 / dollar_exchange_rate
-            ) percentage_difference
-         from BIG_MAC_INDEX l
-         where country_iso = 'AUS'
-         order by entry_date</copy>
-      ```
+         ```
+            <copy>select entry_date
+            , ((  local_price / (select local_price from big_mac_index u
+                                 where u.entry_date = l.entry_date
+                                 and u.country_iso = 'USA'
+                                 )
+                  - dollar_exchange_rate
+               ) * 100 / dollar_exchange_rate
+               ) percentage_difference
+            from BIG_MAC_INDEX l
+            where country_iso = 'AUS'
+            order by entry_date</copy>
+         ```
 
       - **列マッピング > 値:** **PERCENTAGE\_DIFFERENCE**を選択
       - **外観 > Y2軸に割当て:** **はい**をチェック
