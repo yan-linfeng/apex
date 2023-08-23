@@ -48,9 +48,9 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    - **ラベル列:** **ENTRY\_DATE**を選択
    - **値列:** **DOLLAR\_EXCHANGE\_RATE**を選択
    
-   **ページの作成**をクリックします。
+      **ページの作成**をクリックします。
 
-   ![](images/set-columns.png " ")
+      ![](images/set-columns.png " ")
    
 6. ページ・デザイナから、右上の**保存して実行**ボタンをクリックします。
    
