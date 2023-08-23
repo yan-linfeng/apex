@@ -31,19 +31,20 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    - **ソース・タイプ:** **SQL問合せ**をクリック
    - **SQL SELECT文を入力:** 次のSQLをコピー&ペースト
 
-      ```
-      <copy>select entry_date
-      , dollar_exchange_rate
-      from big_mac_index l
-      where country_iso = 'AUS'
-      order by entry_date</copy>
-      ```
+   ```
+   <copy>select entry_date
+   , dollar_exchange_rate
+   from big_mac_index l
+   where country_iso = 'AUS'
+   order by entry_date</copy>
+   ```
 
    **次 >** をクリックします。
 
    ![](images/set-source.png " ")
    
 5. 「チャートの作成」ダイアログで、次の項目を入力します。
+   
    - **ラベル列:** **ENTRY\_DATE**を選択
    - **値列:** **DOLLAR\_EXCHANGE\_RATE**を選択
    
@@ -90,12 +91,12 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    - **識別 > 名前:** **Dollar Exchange Rate**と入力
    - **ラベル > 表示:** スイッチをオフにする
 
-      ![](images/set-series1.png " ")
+   ![](images/set-series1.png " ")
 
    - **軸 > y**を選択
    - **値 > 小数点**に**1**を入力すると、チャートのラベルに読みやすい小数点値が表示されます。
 
-      ![](images/set-y-axis.png " ")
+   ![](images/set-y-axis.png " ")
 
 2. 次の2つのデータシリーズは最初のものと非常に似ているため、既存のデータシリーズを複製するのが最も簡単です。
 
@@ -114,17 +115,17 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    - **識別 > 名前:** **Relative Exchange Rate**と入力
    - **ソース > SQL問合せ:** 次のSQLをコピー&ペースト
 
-      ```
-      <copy>select entry_date
-         , (local_price / (select local_price from big_mac_index u
-                           where u.entry_date = l.entry_date
-                           and u.country_iso = 'USA'
-                           )
-            ) relative_exchange_rate
-         from BIG_MAC_INDEX l
-         where country_iso = 'AUS'
-         order by entry_date</copy>
-      ```
+   ```
+   <copy>select entry_date
+      , (local_price / (select local_price from big_mac_index u
+                        where u.entry_date = l.entry_date
+                        and u.country_iso = 'USA'
+                        )
+         ) relative_exchange_rate
+      from BIG_MAC_INDEX l
+      where country_iso = 'AUS'
+      order by entry_date</copy>
+   ```
 
    - **列マッピング > 値:** **RELATIVE\_EXCHANGE\_RATE** を選択
 
@@ -138,19 +139,19 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    - **識別 > 名前:** **Percentage Difference (Y2)**と入力
    - **ソース > SQL問合せ:** 次のSQLをコピー&ペースト:
 
-      ```
-         <copy>select entry_date
-         , ((  local_price / (select local_price from big_mac_index u
-                              where u.entry_date = l.entry_date
-                              and u.country_iso = 'USA'
-                              )
-               - dollar_exchange_rate
-            ) * 100 / dollar_exchange_rate
-            ) percentage_difference
-         from BIG_MAC_INDEX l
-         where country_iso = 'AUS'
-         order by entry_date</copy>
-      ```
+   ```
+      <copy>select entry_date
+      , ((  local_price / (select local_price from big_mac_index u
+                           where u.entry_date = l.entry_date
+                           and u.country_iso = 'USA'
+                           )
+            - dollar_exchange_rate
+         ) * 100 / dollar_exchange_rate
+         ) percentage_difference
+      from BIG_MAC_INDEX l
+      where country_iso = 'AUS'
+      order by entry_date</copy>
+   ```
 
    - **列マッピング > 値:** **PERCENTAGE\_DIFFERENCE**を選択
    - **外観 > Y2軸に割当て:** **はい**をチェック
