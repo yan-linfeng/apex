@@ -27,21 +27,22 @@ Big Mac Indexには、過去20年間の各国のデータが含まれていま�
    ![](images/set-chart-type.png " ")
    
 4. 「チャートの作成」ダイアログで、次の項目を入力します。
-   - **名前:** **Country Chart**と入力
-   - **ソース・タイプ:** **SQL問合せ**をクリック
-   - **SQL SELECT文を入力:** 次のSQLをコピー&ペースト
+   
+      - **名前:** **Country Chart**と入力
+      - **ソース・タイプ:** **SQL問合せ**をクリック
+      - **SQL SELECT文を入力:** 次のSQLをコピー&ペースト
 
-   ```
-   <copy>select entry_date
-   , dollar_exchange_rate
-   from big_mac_index l
-   where country_iso = 'AUS'
-   order by entry_date</copy>
-   ```
+      ```
+      <copy>select entry_date
+      , dollar_exchange_rate
+      from big_mac_index l
+      where country_iso = 'AUS'
+      order by entry_date</copy>
+      ```
 
-   **次 >** をクリックします。
+      **次 >** をクリックします。
 
-   ![](images/set-source.png " ")
+      ![](images/set-source.png " ")
    
 5. 「チャートの作成」ダイアログで、次の項目を入力します。
    
