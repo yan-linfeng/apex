@@ -1,32 +1,32 @@
-# JavaScript Basics
+# JavaScriptの基本
 
-## Introduction
+## はじめに
 
-In this lab, you will start working with the basics of JavaScript, including variables, operators, and functions - all from the console in your browser's developer tools.
+このラボでは、JavaScriptの基本、変数、演算子、および関数を含む、ブラウザの開発者ツールのコンソールから作業を開始します。
 
-This lab is based on <a href="https://developers.google.com/web/tools/chrome-devtools/" target="\_blank">Google Chrome's DevTools</a>, so use that browser if possible. You may use a different browser if you wish, but you will need to adapt the instructions that follow as needed.
+このラボは<a href="https://developers.google.com/web/tools/chrome-devtools/" target="\_blank">Google ChromeのDevTools</a>を基にしていますので、可能であればそのブラウザを使用してください。他のブラウザを使用しても構いませんが、後続の指示を必要に応じて調整する必要があります。
 
-Play the video below to learn about this lab.
+このラボについて学ぶために、以下のビデオを再生してください。
 
 [](youtube:02thxqv-m_c)
 
- <a href="https://www.slideshare.net/DanielMcGhan/module-1-javascript-basics" target="\_blank">Click here</a> to view the slides.
+ <a href="https://www.slideshare.net/DanielMcGhan/module-1-javascript-basics" target="\_blank">こちらをクリック</a> してスライドを表示してください。
 
-## Task 1: Using the browser's console
+## タスク1：ブラウザのコンソールを使用する
 
-In this part, you will learn how to declare variables and work with different operators in your web browser's console.
+このパートでは、ウェブブラウザのコンソールで変数を宣言し、さまざまな演算子を使用する方法を学びます。
 
-1.  In Chrome, press **Command+Option+J** (Mac) or **Control+Shift+J** (Windows/Linux) to open the DevTools Console tab.
+1. Chromeでは、DevToolsコンソールタブを開くために**Command+Option+J**（Mac）または**Control+Shift+J**（Windows/Linux）を押します。
 
     ![](images/open-console.png)
 
-2.  The developer tools window can be docked to the browser in different ways or completely undocked. Take a moment to practice resizing and changing the position of the developer tools window using the customization menu.
+2. 開発者ツールウィンドウは、ブラウザに異なる方法でドッキングしたり、完全にドッキング解除したりできます。カスタマイズメニューを使用して、開発者ツールウィンドウのサイズ変更と位置変更を練習してください。
 
-    Go to the next step when you have the developer tools window positioned as you like it.
+    開発者ツールウィンドウを好みの位置に配置するまで、次のステップに進んでください。
 
     ![](images/devtools-dock-side.png)
 
-3.  Type the following code into the **Console** tab. Try typing it out, rather than copy-pasting it. Note that pressing **Enter** will execute the code in the console. Use **Shift+Enter** to add new lines.
+3. 次のコードを**コンソール**タブに入力します。コピーせずに入力してみてください。注意：**Enter**を押すとコンソールでコードが実行されます。新しい行を追加するには**Shift+Enter**を使用します。
 
     ```
     <copy>
@@ -37,13 +37,13 @@ In this part, you will learn how to declare variables and work with different op
     </copy>
     ```
 
-4.  Press **Enter** to execute the code entered in the previous step. You should see the number `3` output to the console.
+4. 前のステップで入力したコードを実行するために**Enter**キーを押します。コンソールに数値 `3` が出力されるはずです。
 
     ![](images/repl-output.png)
 
-    As you can see, the console is an implementation of a Read-Eval-Print-Loop (REPL). It reads your code, executes it, prints the output from the last expression, and then returns control to you to do it all over again.
+    ご覧の通り、コンソールはRead-Eval-Print-Loop（REPL）の実装です。コードを読み取り、実行し、最後の式からの出力を表示し、その後、すべてを繰り返すために制御を返します。
 
-5.  Press the **Up Arrow** to load the previously executed block of code. Note that the **Up Arrow** and **Down Arrow** can be used to cycle through the console's execution history. Modify the code so that it appears as follows.
+5. **上向き矢印**を押して、以前に実行したコードブロックを読み込みます。**上向き矢印**と**下向き矢印**は、コンソールの実行履歴をサイクルするために使用できます。コードを次のように変更します。
 
     ```
     <copy>
@@ -55,27 +55,27 @@ In this part, you will learn how to declare variables and work with different op
     </copy>
     ```
 
-6.  Press **Enter** to execute the code. You should see output like the following in the console.
+6. コードを実行するために**Enter**キーを押します。コンソールに以下のような出力が表示されるはずです。
 
     ![](images/console-log-output.png)
 
-    As you can see, the `console.log` method provides a means of getting output from JavaScript code. This can be useful for simple debugging.
+    ご覧の通り、`console.log` メソッドはJavaScriptコードから出力を取得する手段を提供します。これはシンプルなデバッグに役立ちます。
 
-    `undefined` is shown at the end because the last statement (a call to `console.log`) did not return a value. It's as though it returned `undefined`.
+    `undefined` は、最後のステートメント（`console.log` の呼び出し）が値を返さなかったために表示されます。まるで`undefined` を返したかのようです。
 
-7.  Return to the console and begin typing the name of one of the variables declared in the previous code (e.g. `var1`). You should see an autocomplete popup window that shows the names of both variables.
+7. コンソールに戻り、前のコードで宣言された変数の名前を入力し始めます（例：`var1`）。変数の名前が表示されるオートコンプリートポップアップウィンドウが表示されるはずです。
 
     ![](images/auto-complete.png)
 
-    Note that if you type the full name of a variable and press **Enter**, the value of the variable will be displayed in the console.
+    変数の完全な名前を入力して**Enter**キーを押すと、変数の値がコンソールに表示されることに注意してください。
 
-8.  Refresh the web page and try typing the name of a variable again. They will not show up because each time a page is loaded in the browser, it gets its own new JavaScript context.
+8. ウェブページをリフレッシュして、変数の名前を再度入力してみてください。各ページがブラウザでロードされるたびに、それぞれ新しいJavaScriptコンテキストを取得するため、変数は表示されなくなります。
 
-## Task 2: Variables, data types, and operators
+## タスク2：変数、データ型、および演算子
 
-Now that you have a basic working knowledge of the console, it's time to get your hands dirty working with JavaScript.
+コンソールの基本的な操作についての知識が身についたので、JavaScriptを実際に活用してみましょう。
 
-1.  Enter the following code in the console. Then use the declarations as a guide to add four new variables, one of each type. Press **Enter** and use the console to see the values of the variables.
+1. コンソールに以下のコードを入力します。次に、宣言をガイドにして、各種類の変数を1つずつ追加します。**Enter**キーを押し、変数の値をコンソールで確認します。
 
     ```
     <copy>
@@ -86,20 +86,20 @@ Now that you have a basic working knowledge of the console, it's time to get you
     </copy>
     ```
 
-2.  Add on to the code from the previous step by writing statements that use the following operators. Choose at least 2 operators from each of the 4 types for a minimum of 8 statements.
+2. 前のステップのコードに、以下の演算子を使用する文を追加します。各タイプから少なくとも2つの演算子を選択し、合計8つの文を追加します。
 
-    | Operator Type | Operators |
+    | 演算子のタイプ | 演算子 |
     | --- | --- |
-    | Assignment | `=`, `+=`, `-=`, `*=`, `/=`, `%=` |
-    | Arithmetic | `+`, `-`, `*`, `/`, `%`, `++`, `--` |
-    | Comparison | `==`, `===`, `!=`, `!==`, `>`, `<`, `>=`, `<=` |
-    | Logical | `&&`, `||`, `!` |
+    | 代入 | `=`, `+=`, `-=`, `*=`, `/=`, `%=` |
+    | 算術 | `+`, `-`, `*`, `/`, `%`, `++`, `--` |
+    | 比較 | `==`, `===`, `!=`, `!==`, `>`, `<`, `>=`, `<=` |
+    | 論理 | `&&`, `||`, `!` |
 
-## Task 3: Conditionals and loops
+## タスク3: 条件とループ
 
-Programming wouldn't be possible without conditionals and loops. The basic `if` statement and `for` loop are all you really need to get going with JavaScript.
+条件とループなしではプログラミングは不可能です。基本的な`if`ステートメントと`for`ループがJavaScriptを使い始めるために本当に必要です。
 
-1.  Add on to the code from the previous part by writing an `if` statement of your choosing. Use the following code as a guide.
+1. 前の部分のコードに、自分で選んだ`if`ステートメントを書き加えます。以下のコードをガイドとして使用してください。
 
     ```
     <copy>
@@ -109,9 +109,9 @@ Programming wouldn't be possible without conditionals and loops. The basic `if` 
     </copy>
     ```
 
-    Run your code to test it as needed. For extra practice, write an `if-then-else` statement.
+    必要に応じてコードを実行してテストします。さらに練習するために、`if-then-else`ステートメントを書いてみてください。
 
-2.  Add on to the code from the previous step by writing a loop that displays the values in the array you declared in Step 1. Use the following code as a guide.
+2. 前のステップのコードに、Step 1で宣言した配列の値を表示するループを書き加えます。以下のコードをガイドとして使用してください。
 
     ```
     <copy>
@@ -121,13 +121,13 @@ Programming wouldn't be possible without conditionals and loops. The basic `if` 
     </copy>
     ```
 
-    Run your code to test it as needed.
+    必要に応じてコードを実行してテストします。
 
-## Task 4: Objects and functions
+## タスク4: オブジェクトと関数
 
-Objects and functions are used to compose and organize code in JavaScript. It's important to have a basic understanding of how they work before moving on to more complex topics.
+オブジェクトと関数はJavaScriptでコードを構成し、組織化するために使用されます。より複雑なトピックに移る前に、それらがどのように機能するかの基本的な理解を持つことが重要です。
 
-1.  Enter the following code into the console and execute it.
+1. 以下のコードをコンソールに入力し、実行します。
 
     ```
     <copy>
@@ -142,18 +142,20 @@ Objects and functions are used to compose and organize code in JavaScript. It's 
     </copy>
     ```
 
-2.  Using the console, type and execute code that sets the values of the `first` and `last` attributes of the `person` variable.
+2. コンソールを使用して、`person`変数の`first`および`last`属性の値を設定するコードを入力し、実行します。
 
-3.  Using the console, type and execute code that invokes the `sayHello` function while passing it the `person` variable.
+3. コンソールを使用して、`person`変数を引数として渡しながら`sayHello`関数を呼び出すコードを入力し、実行します。
 
-4. If time permits, consider making the following enhancements:
+4. 時間が許す場合、次の改良を考えてみてください：
 
-    * Add a new function named `sayHello2` that accepts an array of people and loops over them to say hello to each one.
-    * Update `sayHello2` so that if a person's first or last name is an empty string (`''`), `null`, or `undefined`, it does not say hello.
+    * 人々の配列を受け入れ、それぞれに挨拶する新しい関数「sayHello2」を追加します。
+    * 「sayHello2」を更新して、人々のファーストネームまたはラストネームが空の文字列（`''`）、`null`、または`undefined`の場合、挨拶をしないようにします。
 
-## **Summary**
 
-This completes Lab 1. At this point, you should be getting comfortable working with the console and some of JavaScript's core concepts. Please proceed to Lab 2.
+## **まとめ**
+
+これでラボ1が完了しました。この時点で、コンソールとJavaScriptの基本的な概念に慣れてきたはずです。次に、ラボ2に進んでください。
+
 
 ## **Acknowledgements**
  - **Author** -  Dan McGhan, Database Product Management
