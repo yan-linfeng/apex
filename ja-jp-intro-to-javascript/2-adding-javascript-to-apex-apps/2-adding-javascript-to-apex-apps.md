@@ -1,112 +1,113 @@
-# Adding JavaScript to APEX Apps
+# APEXアプリにJavaScriptを追加する
 
-## Introduction
+## はじめに
 
-Up to this point, you have been working with JavaScript outside of APEX. In this lab, you will learn the most common ways to add JavaScript to APEX applications. The options include Dynamic Actions, Dynamic Actions with JavaScript hooks, page- and component-level attributes, and application files.
+ここまでは、APEX外でJavaScriptを使用してきました。このラボでは、APEXアプリケーションにJavaScriptを追加する最も一般的な方法を学びます。オプションには、ダイナミックアクション、JavaScriptフックを備えたダイナミックアクション、ページおよびコンポーネントレベルの属性、およびアプリケーションファイルが含まれます。
 
-Think of these options as a progression, with each one requiring more knowledge of JavaScript, APEX's JavaScript APIs, and web development in general. New APEX developers should start by learning Dynamic Actions and progress to subsequent options only when they are ready and the application requirements cannot be satisfied without a more advanced approach. Generally speaking, the more declarative the solution, the easier it will be to implement and maintain.
+これらのオプションをプログレッションと考え、それぞれがJavaScript、APEXのJavaScript API、およびWeb開発全般に関するより多くの知識を必要とするものと考えてみてください。新しいAPEX開発者は、Dynamic Actionsを学び、アプリケーションの要件がより高度なアプローチなしでは満たされない場合にのみ、後続のオプションに進むことを検討すべきです。一般的に、ソリューションが宣言的であればあるほど、実装および保守が容易になります。
 
-Play the video below to learn about for this lab.
+このラボについての詳細を学ぶために、以下のビデオを再生してください。
 
 [](youtube:-l6E5LuNU3U)
 
-<a href="https://www.slideshare.net/DanielMcGhan/module-2-adding-javascript-to-apex-apps" target="\_blank">Click here</a> to view the slides.
+<a href="https://www.slideshare.net/DanielMcGhan/module-2-adding-javascript-to-apex-apps" target="\_blank">ここをクリック</a> してスライドを表示します。
 
-## Task 1: Using Dynamic Actions
+## タスク1: ダイナミックアクションの使用
 
-Dynamic Actions are the easiest way to add JavaScript to an application in APEX. Often times, they can be completely declarative (no code needed). In this step, you will create a Dynamic Action that hides and shows page components based on the value of an item.
+Dynamic Actionsは、APEXアプリケーションにJavaScriptを追加する最も簡単な方法です。ほとんどの場合、完全に宣言的であることがあります（コードは不要）。このステップでは、アイテムの値に基づいてページコンポーネントを非表示および表示するDynamic Actionを作成します。
 
-1.  Log in to your APEX Workspace. If you created the Workspace using the instructions in the introduction to this lab, then the **Workspace** and **Username** will be `DEMO` and the **Password** will be `SecretPassw0rd`.
+1. APEXワークスペースにログインします。このラボの導入手順でワークスペースを作成した場合、**Workspace**と**Username**は`DEMO`で、**Password**は`SecretPassw0rd`になります。
 
     ![](images/workspace-login.png)
 
-2.  Navigate to the **App Gallery** and install the **Sample Database Application**.
+2. **App Gallery**に移動し、**Sample Database Application**をインストールします。
 
     ![](images/sample-database-application.png)
 
-3.  Run the app and navigate to the **Products** page. Click the **Name** of a product, such as **Bag**. You should see a form like the following.
+3. アプリケーションを実行し、**Products**ページに移動します。製品の**Name**をクリックします（たとえば**Bag**）。次のようなフォームが表示されるはずです。
 
     ![](images/product-details.png)
 
-    At the moment, the **Product Image** item and the region that displays the image are both visible when the **Product Available** item is set to **No**. In the subsequent steps, you will implement a Dynamic Action that hides the image item and related region when **Product Available** item is set to **No**.
+    現時点では、**Product Available**アイテムが**No**に設定されている場合に、**Product Image**アイテムと画像を表示する領域の両方が表示されています。次のステップでは、**Product Available**アイテムが**No**に設定された場合に画像アイテムと関連する領域を非表示にするDynamic Actionを実装します。
 
-4.  Navigate to the Page Designer for page 6, the Product Details page, in the sample app. In the Rendering pane on the left, right-click the item named **P6\_PRODUCT\_AVAIL** and select **Create Dynamic Action**.
+4. サンプルアプリ内のページ6、製品詳細ページのPage Designerに移動します。左側のレンダリングペインで、**P6\_PRODUCT\_AVAIL**というアイテムを右クリックし、**Create Dynamic Action**を選択します。
 
     ![](images/create-dynamic-action.png)
 
-5.  In the properties pane on the right, set **Name** to **P6\_PRODUCT\_AVAIL changed**. Notice that the selections for **Event**, **Selection Type**, and **Item(s)** are all correct because the action was created by right-clicking **P6\_PRODUCT\_AVAIL**. Open the **Event** select list to view all of the other events available before continuing.
+5. 右側のプロパティペインで、**Name**を**P6\_PRODUCT\_AVAIL changed**に設定します。**Event**、**Selection Type**、および**Item(s)**の選択肢がすべて正しいことに注意してください。このアクションは**P6\_PRODUCT\_AVAIL**を右クリックして作成されたためです。続行する前に、**Event**の選択リストを開いて利用可能な他のイベントをすべて表示します。
 
     ![](images/dynamic-action-name.png)
 
-6.  To create the opportunity to have both true and false actions, you will need to define a client-side condition. In the **Client-side Condition** section, set **Type** to **Item = Value**, **Item** to **P6\_PRODUCT\_AVAIL** (should be the default), and **Value** to **Y**.
+6. trueおよびfalseのアクションを両方持つ機会を作成するには、クライアントサイドの条件を定義する必要があります。**Client-side Condition**セクションで、**Type**を**Item = Value**、**Item**を**P6\_PRODUCT\_AVAIL**（デフォルトであるはず）、**Value**を**Y**に設定します。
 
     ![](images/client-side-condition.png)
 
-7.  Select the **Show** action in the left pane. This was the default action created, but it happens to be the one needed for the requirement.
+7. 左側のペインで**Show**アクションを選択します。これはデフォルトで作成されたアクションですが、要件に合ったものです。
 
     ![](images/select-show.png)
 
-8.  In the right pane, set **Selection Type** to **Item(s)** and **Item(s)** to **P6\_PRODUCT\_IMAGE**.
+8. 右側のペインで、**Selection Type**を**Item(s)**に設定し、**Item(s)**を**P6\_PRODUCT\_IMAGE**に設定します。
 
     ![](images/affected-elements.png)
 
-    This will ensure the image item is shown correctly, but you need to account for the region too. You'll do that next.
+    これにより、画像アイテムが正しく表示されるようになりますが、領域についても考慮する必要があります。次に進みましょう。
 
-9.  Right-click the **Show** action in the left pane and select **Duplicate**.
+9. 左側のペインで**Show**アクションを右クリックし、**Duplicate**を選択します。
 
     ![](images/duplicate-action.png)
 
-10. In the properties pane on the right, set **Selection Type** to **Region** and **Region** to **..Product Image**.
+10. 右側のプロパティペインで、**Selection Type**を**Region**に設定し、**Region**を**..Product Image**に設定します。
 
     ![](images/affected-elements-2.png)
 
-11. At this point, the Show actions are configured correctly, but the Hide actions still need to be created. Since Hide is the opposite of Show, APEX makes this very easy. Select both Show actions in the left pane, then right-click either action and select **Create Opposite Action**.
+11. この時点で、Showアクションは正しく構成されていますが、Hideアクションはまだ作成されていません。HideはShowの反対ですので、APEXはこれを非常に簡単に行います。左側のペインでShowアクションを2つ選択し、どちらかのアクションを右クリックし、**Create Opposite Action**を選択します。
 
     ![](images/create-opposite-action.png)
 
-    You should see two new Hide actions appear under the False branch in the Dynamic Action. Best of all, they are already configured with the settings from the previous actions.
+    新しいHideアクションがDynamic ActionのFalseブランチに2つ表示されるはずです。何よりも、前のアクションの設定で既に構成されています。
 
-12. Save your changes and then return to the runtime application. Close the form page and re-open it by clicking on a product again. Now, the image item and region should be hidden or shown based on the value of **Product Available**. With Dynamic Actions, you can do all of that without writing a single line of JavaScript code!
+12. 変更を保存し、ランタイムアプリケーションに戻ります。フォームページを閉じて、製品をクリックして再度開きます。今度は、**Product Available**の値に基づいて画像アイテムと領域が非表示または表示されるはずです。Dynamic Actionsを使用すると、JavaScriptコードを一行も書かずにすべてを行うことができます！
 
     ![](images/product-details-2.png)
 
-## Task 2: Using Dynamic Actions with JavaScript hooks
 
-The Dynamic Action framework provides various JavaScript hooks, or features that are geared toward developers that know a little JavaScript. These features can make the framework much more powerful and flexible.
+## タスク2: JavaScriptフックを使用したダイナミックアクション
 
-In this step, you will use these features in the Dynamic Action you created in the previous step. The end result will be the same, but you will have a better idea of the JavaScript hooks available to you when needed.
+Dynamic Actionフレームワークは、少しJavaScriptを知っている開発者向けのさまざまなJavaScriptフックまたは機能を提供します。これらの機能は、フレームワークをより強力かつ柔軟にすることができます。
 
-1.  Return to the Page Designer for page 6 and select the Dynamic Action created in the previous step.
+このステップでは、前のステップで作成したDynamic Actionでこれらの機能を使用します。最終的な結果は同じですが、必要に応じて利用できるJavaScriptフックについての理解が深まります。
+
+1. 前のステップで作成したDynamic Actionを選択するため、ページ6のPage Designerに戻ります。
 
     ![](images/select-dynamic-action.png)
 
-2.  In the **When** section of the right pane, set **Event** to **Custom**, **Custom Event** to **change**, **Selection Type** to **jQuery Selector**, and **jQuery Selector** to **#P6\_PRODUCT\_AVAIL**.
+2. 右側の**When**セクションで、**Event**を**Custom**、**Custom Event**を**change**、**Selection Type**を**jQuery Selector**、および**jQuery Selector**を**#P6\_PRODUCT\_AVAIL**に設定します。
 
     ![](images/when-javascript.png)
 
-    These settings are the same as the declarative ones. You will learn more about events, jQuery, and jQuery selectors in the next lab.
+    これらの設定は宣言的な設定と同じです。次のラボでイベント、jQuery、およびjQueryセレクタについて詳しく学びます。
 
-3.  In the **Client-side Condition** section, set **Type** to **JavaScript Expression** and **JavaScript Expression** to this code: `$v(this.triggeringElement.id) === 'Y'`
+3. **Client-side Condition**セクションで、**Type**を**JavaScript Expression**、**JavaScript Expression**を以下のコードに設定します： `$v(this.triggeringElement.id) === 'Y'`
 
     ![](images/client-side-condition-javascript.png)
 
-    `$v` is a function provided by the [JavaScript APIs for APEX](https://apex.oracle.com/jsapi). It returns the value of an item. The id property of the item is obtained dynamically so that if its name changes, the expression doesn't need to be updated.
+    `$v`は[JavaScript APIs for APEX](https://apex.oracle.com/jsapi)で提供される関数です。これはアイテムの値を返します。アイテムのidプロパティは動的に取得されるため、名前が変更されても式を更新する必要はありません。
 
-4.  Before modifying the actions, you need to set a region property to provide a consistent id for a Product Image region. In the left pane, select the **Product Image** region.
+4. アクションを変更する前に、一貫したIDを提供するためのリージョンプロパティを設定する必要があります。左側のペインで**Product Image**リージョンを選択します。
 
     ![](images/product-image.png)
 
-5.  In the right pane, set **Static ID** to **product-image-reg**.
+5. 右側のペインで、**Static ID**を**product-image-reg**に設定します。
 
     ![](images/static-id.png)
 
-6.  In the left pane, select the **Dynamic Action** tab. This is required because the Dynamic Action is no longer linked directly to the item as it was when using the declarative selector.
+6. 左側のペインで**Dynamic Action**タブを選択します。これは、デクラレーティブなセレクタを使用した場合とは異なり、Dynamic Actionがアイテムに直接リンクされないため必要です。
 
-    Right-click and **Delete** one of the **Show** actions. Then select the remaining **Show** action.
+    1つの**Show**アクションを右クリックして**Delete**します。その後、残りの**Show**アクションを選択します。
 
     ![](images/select-show-2.png)
 
-7.  In the right pane, set **Action** to **Execute JavaScript** and put the following code in the **Code** attribute.
+7. 右側のペインで**Action**を**Execute JavaScript**に設定し、次のコードを**Code**属性に配置します。
 
     ```
     <copy>
@@ -117,20 +118,19 @@ In this step, you will use these features in the Dynamic Action you created in t
     </copy>
     ```
 
-
-    That code uses DOM traversal and manipulation methods that will be explained in the next lab. The action should appear as follows.
+    このコードは、次のラボで説明されるDOMトラバーサルと操作メソッドを使用しています。アクションは次のように表示されます。
 
     ![](images/show-javascript.png)
 
-8.  Set the **Fire on Initialization** attribute to **On**.
+8. **Fire on Initialization**属性を**On**に設定します。
 
     ![](images/fire-on-init.png)
 
-9.  In the left pane, select the **Dynamic Action** tab. Right-click and **Delete** one of the **Hide** actions. Then select the remaining **Hide** action.
+9. 左側のペインで**Dynamic Action**タブを選択します。**Hide**アクションを1つ削除してから、残りの**Hide**アクションを選択します。
 
     ![](images/select-hide.png)
 
-10. In the right pane, set **Action** to **Execute JavaScript** and put the following code in the **Code** attribute.
+10. 右側のペインで**Action**を**Execute JavaScript**に設定し、次のコードを**Code**属性に配置します。
 
     ```
     <copy>
@@ -141,26 +141,26 @@ In this step, you will use these features in the Dynamic Action you created in t
     </copy>
     ```
 
-
-   The action should appear as follows.
+    アクションは次のように表示されます。
 
     ![](images/show-javascript-2.png)
 
-11. Set the **Fire on Initialization** attribute to **On**.
+11. **Fire on Initialization**属性を**On**に設定します。
 
     ![](images/fire-on-init-2.png)
 
-12. Save your changes and re-open the form page. Everything should work exactly as before. Hopefully you will agree that the declarative options are much simpler than using the JavaScript hooks. However, when you need the flexibility they provide, you will be glad the hooks are there!
+12. 変更内容を保存し、フォームページを再度開きます。すべてが以前と同じように動作するはずです。宣言的なオプションはJavaScriptフックを使用するよりもはるかに簡単だと思いますが、提供する柔軟性が必要な場合、フックがあることを喜ぶでしょう！
 
-## Task 3: Using Page and Component level attributes
 
-In addition to Dynamic Actions, there are various attributes at the page and component level that are made for JavaScript. In this step, you will learn where those attributes are and how they are used.
+## タスク3: ページおよびコンポーネントレベルの属性の使用
 
-1.  Return to the Page Designer for page 1, the home page, and select the root element in the tree under the rendering tab.
+Dynamic Actionsに加えて、JavaScript用に設計されたさまざまなページおよびコンポーネントレベルの属性があります。このステップでは、これらの属性がどこにあるか、およびどのように使用されるかを学びます。
+
+1. ホームページであるページ1のPage Designerに戻り、レンダリングタブのツリーでルート要素を選択します。
 
     ![](images/root-tree-node.png)
 
-2.  In the right pane, scroll down through the properties until you find the **JavaScript** section. Put the following function in the **Function and Global Variable Declaration** property.
+2. 右側のペインで、**JavaScript**セクションを見つけるまでプロパティをスクロールし、次の関数を**Function and Global Variable Declaration**プロパティに配置します。
 
     ```
     <copy>
@@ -170,9 +170,9 @@ In addition to Dynamic Actions, there are various attributes at the page and com
     </copy>
     ```
 
-    The code in that property executes in the global scope - before the DOM load event and APEX components are initialized.
+    このプロパティ内のコードはグローバルスコープで実行され、DOMのロードイベントとAPEXコンポーネントの初期化の前に実行されます。
 
-    Next, add this code to the **Execute when Page Loads** property:
+    次に、次のコードを**Execute when Page Loads**プロパティに追加します。
 
     ```
     <copy>
@@ -180,21 +180,21 @@ In addition to Dynamic Actions, there are various attributes at the page and com
     </copy>
     ```
 
-    Code in that property executes in a function scope - after the DOM load event and APEX components have been initialized.
+    このプロパティ内のコードは、関数スコープで実行され、DOMのロードイベントとAPEXコンポーネントの初期化後に実行されます。
 
-    The settings should look as follows.
+    設定は次のようになります。
 
     ![](images/javascript-page-properties.png)
 
-3.  Save your changes and run the home page with the browser console open. You should see a message when the `doWork` function is invoked. While this simple example doesn't do anything functional, you will learn more about the types of things you can do in the next lab.
+3. 変更内容を保存し、ブラウザのコンソールを開いた状態でホームページを実行します。`doWork`関数が呼び出されるとメッセージが表示されるはずです。この単純な例では機能的なことは何も行いませんが、次のラボでできることの種類について詳しく学びます。
 
     ![](images/console-open.png)
 
-4.  Navigate to **Reports** > **Sales by Category**. Currently, colors assigned to categories in the chart are randomly selected. You will add JavaScript code that explicitly sets the colors to different shades of green.
+4. **Reports** > **Sales by Category**に移動します。現在、グラフのカテゴリに割り当てられた色はランダムに選択されています。これに対して、異なる緑色の色を明示的に設定するJavaScriptコードを追加します。
 
     ![](images/sales-by-category.png)
 
-5.  Navigate to the Page Designer for page 16 and select the **Sales by Category** region. Click **Attributes** tab on the Property Editor on the right side of the Page Designer. Scroll down through the properties until you come to **JavaScript Initialization Code**, then copy the following function to that field.
+5. ページ16のPage Designerに移動し、**Sales by Category**リージョンを選択します。右側のProperty Editorの**Attributes**タブをクリックします。プロパティをスクロールし、**JavaScript Initialization Code**に次の関数をコピーします。
 
     ```
     <copy>
@@ -204,32 +204,30 @@ In addition to Dynamic Actions, there are various attributes at the page and com
         data.series[1].color = '#9DC183';
         data.series[2].color = '#708238';
 
-
-
-            return data;
+        return data;
       };
       return options;
     }
     </copy>
     ```
 
-    This anonymous function accepts an options object and modifies it by adding a `dataFilter` function. The `dataFilter` function gives each series in the chart an explicit color.
+    この匿名関数はオプションオブジェクトを受け取り、それに`dataFilter`関数を追加して、チャートの各シリーズに明示的な色を設定します。
 
     ![](images/sales-by-category-2.png)
 
-6.  Save your changes and rerun the page. You should see the same chart but with green colors now.
+6. 変更内容を保存し、ページを再実行します。チャートは以前と同じように緑色でスタイリングされているはずです。
 
     ![](images/sales-by-category-3.png)
 
-## Task 4: Using Static Files
+## タスク4: 静的ファイルの使用
 
-In the last step, you added JavaScript code directly to page and component level attributes. For performance and reusability reasons, it can be beneficial to move JavaScript code to Static Files instead. While you don't have enough JavaScript code in the Sample Database Application to realize those benefits, in this step, you will move the code added previously to Static Files to see how it's done.
+前のステップでは、JavaScriptコードを直接ページおよびコンポーネントレベルの属性に追加しました。パフォーマンスおよび再利用性の観点から、JavaScriptコードを静的ファイルに移動することは有益です。サンプルデータベースアプリケーションに十分なJavaScriptコードが含まれていないため、このステップでは、以前に追加したコードを静的ファイルに移動して、その方法を確認します。
 
-1.  The following code contains the `doWork` function that's being invoked on the home page and the function that's styling the colors of the Sales by Category chart. The only change to the second function is that it now has a name (it was an anonymous function before).
+1. 以下のコードには、ホームページで呼び出されている`doWork`関数と、Sales by Categoryチャートの色をスタイリングしている関数が含まれています。2番目の関数の唯一の変更点は、関数に名前が付いていることです（以前は匿名関数でした）。
 
-    **Click** <a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/sample-db-app.js" download="sample-db-app.js" target="\_blank">here</a> and use the **Save File** dialog box to download the Javascript file for this lab `sample-db-app.js` to your local computer.
+    **ここをクリック**<a href="https://objectstorage.us-ashburn-1.oraclecloud.com/p/LNAcA6wNFvhkvHGPcWIbKlyGkicSOVCIgWLIu6t7W2BQfwq2NSLCsXpTL9wVzjuP/n/c4u04/b/livelabsfiles/o/developer-library/sample-db-app.js" download="sample-db-app.js" target="\_blank">ここ</a>をクリックして、このラボ用のJavaScriptファイル`sample-db-app.js`をダウンロードして、ローカルコンピュータに保存します。
 
-   Or you can save the code in a new file on your computer named **sample-db-app.js**.
+    または、コードをローカルコンピュータに**sample-db-app.js**という名前の新しいファイルとして保存できます。
 
     ```
     <copy>
@@ -251,31 +249,32 @@ In the last step, you added JavaScript code directly to page and component level
     </copy>
     ```
 
-2.  Navigate to the **Shared Components** > **Static Application Files**. Click **Upload File**, use the **File(s)** item to pick the **sample-db-app.js** file created in the previous step, and then click **Upload**. Note the string in the **Reference** column for the newly uploaded file: **#APP_IMAGES#sample-db-app.js**. You will make use of that in the proceeding steps.
+2. **Shared Components** > **Static Application Files**に移動します。**Upload File**をクリックし、**File(s)**アイテムを使用して前のステップで作成した**sample-db-app.js**ファイルを選択し、**Upload**をクリックします。新しくアップロードされたファイルの**Reference**列にある文字列に注意してください：**#APP_IMAGES#sample-db-app.js**。次の手順でこれを使用します。
 
     ![](images/uploaded-file.png)
 
-3.  Navigate to the Page Designer for page 16 and drill down on the **Attributes** of the **Sales by Category** region. Replace the value in **JavaScript Initialization Code** with just: `styleSalesByCatChart`
+3. ページ16のPage Designerに移動し、**Sales by Category**リージョンの**Attributes**にドリルダウンします。右側のProperty Editorの**JavaScript Initialization Code**の値を`styleSalesByCatChart`に置き換えます。
 
     ![](images/sales-by-category-4.png)
 
-    Note that the function does not have parenthesis on the end. That makes it a reference to the function declared in the file rather than an invocation of the function. APEX will invoke the function at the appropriate time.
+    関数の末尾に括弧がないことに注意してください。これにより、関数の呼び出しではなく、ファイルで宣言された関数への参照になります。APEXは適切なタイミングで関数を呼び出します。
 
-4.  Select the page-level attributes (root node under the rendering tab) and put the following file reference in the **File URL(s)** item in the **JavaScript** section: **#APP_IMAGES#sample-db-app.js**
+4. ページレベルの属性（レンダリングタブのルートノード）を選択し、**JavaScript**セクションの**File URL(s)**アイテムに次のファイル参照を入力します：**#APP_IMAGES#sample-db-app.js**
 
     ![](images/javascript-file-reference.png)
 
-5.  Save your changes and run the page. The chart should be styled with shades of green as before, only now the responsible JavaScript is defined in the static file. If the function were generic enough, it could be used elsewhere in the application.
+5. 変更内容を保存し、ページを実行します。チャートは以前と同じように緑色でスタイリングされているはずです。関数が十分に一般的であれば、アプリケーション内の他の場所でも使用できるでしょう。
 
-6.  Navigate to the Page Designer for page 1 and drill down on the page level attributes. Clear the value in the **Function and Global Variable Declaration** field and add the following file reference in the File URL(s) item in the JavaScript section: **#APP_IMAGES#sample-db-app.js**
+6. ページ1のPage Designerに移動し、ページレベルの属性にドリルダウンします。**Function and Global Variable Declaration**フィールドの値をクリアし、**File URL(s)**アイテムのJavaScriptセクションに次のファイル参照を追加します：**#APP_IMAGES#sample-db-app.js**
 
     ![](images/javascript-file-reference-2.png)
 
-7.  Save your changes and run the page. You should see the same message from the `doWork` function as before, only now the function is defined in the static file.
+7. 変更内容を保存し、ページを実行します。関数は以前と同じメッセージが表示されるはずですが、関数は静的ファイルに定義されています。
 
-## **Summary**
+## **まとめ**
 
-This completes Lab 2. At this point, you should have a solid understanding of the options available for adding JavaScript to APEX applications. Please proceed to Lab 3.
+これでラボ2が完了しました。この時点で、APEXアプリケーションにJavaScriptを追加するための利用可能なオプションについてしっかりと理解しているはずです。次に、ラボ3に進んでください。
+
 
 ## **Acknowledgements**
  - **Author** -  Dan McGhan, Database Product Management
