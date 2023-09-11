@@ -276,8 +276,8 @@ Dynamic Actionsに加えて、JavaScript用に設計されたさまざまなペ�
 これでラボ2が完了しました。この時点で、APEXアプリケーションにJavaScriptを追加するための利用可能なオプションについてしっかりと理解しているはずです。次に、ラボ3に進んでください。
 
 
-## **Acknowledgements**
- - **Author** -  Dan McGhan, Database Product Management
- - **Contributors** - Arabella Yao, Jeffrey Malcolm Jr, Robert Ruppel, LiveLabs QA
- - **Last Updated By/Date** - Arabella Yao, Product Manager Intern, Database Management, July 2020
+## **謝辞**
+ - **著者** -  Dan McGhan, Database Product Management
+ - **寄稿者** - Arabella Yao, Jeffrey Malcolm Jr, Robert Ruppel, LiveLabs QA
+ - **最終更新者/日付** - Arabella Yao, Product Manager Intern, Database Management, July 2020
 

@@ -157,7 +157,7 @@
 これでラボ1が完了しました。この時点で、コンソールとJavaScriptの基本的な概念に慣れてきたはずです。次に、ラボ2に進んでください。
 
 
-## **Acknowledgements**
- - **Author** -  Dan McGhan, Database Product Management
- - **Contributors** - Arabella Yao, Jeffrey Malcolm Jr, Robert Ruppel, LiveLabs QA
- - **Last Updated By/Date** - Jeffrey Malcolm Jr, LiveLabs QA, June 2020
+## **謝辞**
+ - **著者** -  Dan McGhan, Database Product Management
+ - **寄稿者** - Arabella Yao, Jeffrey Malcolm Jr, Robert Ruppel, LiveLabs QA
+ - **最終更新者/日付** - Jeffrey Malcolm Jr, LiveLabs QA, June 2020
