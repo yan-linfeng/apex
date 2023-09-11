@@ -3,12 +3,12 @@
   "help": "livelabs-help-db_us@oracle.com",
 	"tutorials": [
     {
-      "title": "Introduction",
+      "title": "紹介",
       "filename": "0-workshop-intro-and-setup/0-workshop-intro-and-setup.md"
     },
     {
-      "title": "Sign up for an APEX Workspace",
-      "filename": "../common/1-sign-up-apex/1-sign-up-apex.md"
+      "title": "APEX Workspaceのサインアップ",
+      "filename": "./sign-up-apex/1-sign-up-apex.md"
     },
     {
       "title": "Lab 1: JavaScript Basics",
