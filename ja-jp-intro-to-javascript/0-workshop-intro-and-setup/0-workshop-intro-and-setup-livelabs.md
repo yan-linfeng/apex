@@ -1,33 +1,33 @@
-# Introduction
+# 紹介
 
-Welcome to the Introduction to JavaScript for APEX Developers hands-on lab on LiveLabs.
+LiveLabsの「APEX開発者のためのJavaScript入門」ハンズオンラボへようこそ。
 
-## Workshop Overview
+## ワークショップ概要
 
-For developers that know SQL and PL/SQL, no other framework is as empowering as Oracle Application Express (APEX). But at the end of the day, APEX creates web apps, and it's JavaScript that programs the web. Over the years, JavaScript's role in APEX apps has increased, both for the creators of APEX and the developers using it - a trend that will continue in the years to come.
+SQLとPL/SQLを知っている開発者にとって、Oracle Application Express（APEX）ほどエンパワーメントされたフレームワークはありません。しかし、最終的にはAPEXはウェブアプリケーションを作成し、ウェブをプログラムするのはJavaScriptです。年月を経るにつれ、JavaScriptの役割はAPEXアプリケーションで増加し、APEXのクリエーターとそれを使用する開発者の両方にとって、今後も続くトレンドとなります。
 
-APEX developers only need to know a little bit of JavaScript to have a significant impact, and that's what this hands-on lab is all about! You'll start by learning some of the basics of JavaScript, then learn how to add JavaScript to APEX apps, and finally, you will learn to use jQuery to work with the DOM.
+APEX開発者は、重要な影響を与えるために少しのJavaScriptしか知る必要はありません。それがこのハンズオンラボの目的です！まず、JavaScriptの基本を学び、次にAPEXアプリケーションにJavaScriptを追加する方法を学び、最後にDOMと連携するためにjQueryを使用する方法を学びます。
 
-Before continuing to the first lab, follow the steps below to create an APEX workspace using the LiveLabs environment created for you.
+最初のラボに進む前に、以下の手順に従って、LiveLabsの環境を使用してAPEXワークスペースを作成してください。
 
-Estimated Time: 160 minutes
+所要時間：160分
 
-*Note: This lab assumes you are using Oracle APEX 20.2.*
+*注意: このラボはOracle APEX 20.2を使用していることを前提としています。*
 
-### Labs
+### ラボ
 
-| # | Lab | Est. Time |
+| # | ラボ | 推定時間 |
 | --- | --- | --- |
-|   | [Create an APEX Workspace](?lab=create-apex-workspace) | 5 minutes |
-| 1 | [JavaScript Basics](?lab=lab-1-javascript-basics) | 20 minutes |
-| 2 | [Adding JavaScript to APEX Apps](?lab=lab-2-adding-javascript-apex-apps) | 60 minutes |
-| 3 | [Working with jQuery and the DOM](?lab=lab-3-working-dom-jquery) | 60 minutes |
+|   | [APEXワークスペースの作成](?lab=create-apex-workspace) | 5分 |
+| 1 | [JavaScriptの基本](?lab=lab-1-javascript-basics) | 20分 |
+| 2 | [APEXアプリケーションへのJavaScriptの追加](?lab=lab-2-adding-javascript-apex-apps) | 60分 |
+| 3 | [jQueryとDOMの操作](?lab=lab-3-working-dom-jquery) | 60分 |
 
-### **Let's Get Started!**
+### **始めましょう！**
 
-If the menu is not displayed, you can open by clicking the menu button (![Menu icon](./images/menu-button.png)) at the top of the page.
+メニューが表示されていない場合、ページの上部にあるメニューボタンをクリックして開くことができます (![メニューアイコン](./images/menu-button.png))。
 
-## Learn More - Useful Links
+## さらに詳しく - 役立つリンク
 
 - [APEX on Autonomous](https://apex.oracle.com/autonomous)
 - [APEX Collateral](https://apex.oracle.com)
@@ -35,8 +35,8 @@ If the menu is not displayed, you can open by clicking the menu button (![Menu i
 - [Community](https://apex.oracle.com/community)
 - [External Site + Slack](http://apex.world)
 
-## Acknowledgements
+## 謝辞
 
- - **Author/Contributors** -  Salim Hlayel, Principle Product Manager
- - **Contributors** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
- - **Last Updated By/Date** - Salim Hlayel, Principle Product Manager, November 2020
+ - **著者** -  Salim Hlayel, Principle Product Manager
+ - **寄稿者** - Oracle LiveLabs Team (Arabella Yao, Product Manager Intern | Jaden McElvey, Technical Lead | Jeffrey Malcolm Jr, Intern)
+ - **最終更新者/日付** - Salim Hlayel, Principle Product Manager, November 2020
