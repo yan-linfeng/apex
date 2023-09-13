@@ -11,15 +11,15 @@
       "filename": "./sign-up-apex/1-sign-up-apex.md"
     },
     {
-      "title": "Lab 1: JavaScript Basics",
+      "title": "ラボ1: JavaScriptの基礎",
       "filename": "1-javascript-basics/1-javascript-basics.md"
     },
     {
-      "title": "Lab 2: Adding JavaScript to APEX Apps",
+      "title": "ラボ2: APEXアプリにJavaScriptを追加する",
       "filename": "2-adding-javascript-to-apex-apps/2-adding-javascript-to-apex-apps.md"
     },
     {
-      "title": "Lab 3: Working with the DOM and jQuery",
+      "title": "ラボ3: DOMとjQueryの操作",
       "filename": "3-working-with-the-dom-and-jquery/3-working-with-the-dom-and-jquery.md"
     },
     {
