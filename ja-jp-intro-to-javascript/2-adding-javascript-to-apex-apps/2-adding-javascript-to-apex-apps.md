@@ -79,33 +79,33 @@
 
 1. ページ6のページデザイナーに戻り、前のステップで作成したダイナミックアクションを選択します。
 
-   ![](images/select-dynamic-action.png)
+    ![](images/select-dynamic-action.png)
 
 2. 右パネルの**When**セクションで、**Event**を**Custom**に、**Custom Event**を**change**に、**Selection Type**を**jQuery Selector**に、**jQuery Selector**を**#P6_PRODUCT_AVAIL**に設定します。
 
-   ![](images/when-javascript.png)
+    ![](images/when-javascript.png)
 
-   これらの設定は、宣言型の設定と同じです。 次のラボで、イベント、jQuery、jQueryセレクターの詳細を学習します。
+    これらの設定は、宣言型の設定と同じです。 次のラボで、イベント、jQuery、jQueryセレクターの詳細を学習します。
 
 3. **Client-side Condition**セクションで、**Type**を**JavaScript Expression**に、**JavaScript Expression**をこのコードに設定します: `$v(this.triggeringElement.id) === 'Y'`
 
-   ![](images/client-side-condition-javascript.png)
+    ![](images/client-side-condition-javascript.png)
 
-   `$v` は [APEX用JavaScript API](https://apex.oracle.com/jsapi) によって提供される関数です。 アイテムの値を返します。 アイテムのidプロパティは動的に取得されるため、名前が変更されても式を更新する必要はありません。
+    `$v` は [APEX用JavaScript API](https://apex.oracle.com/jsapi) によって提供される関数です。 アイテムの値を返します。 アイテムのidプロパティは動的に取得されるため、名前が変更されても式を更新する必要はありません。
 
 4. アクションを変更する前に、リージョンのプロパティを設定して、製品イメージリージョンの一貫したidを提供する必要があります。 左のパネルで、**Product Image**リージョンを選択します。
 
-   ![](images/product-image.png)
+    ![](images/product-image.png)
 
 5. 右のパネルで、**Static ID**を**product-image-reg**に設定します。
 
-   ![](images/static-id.png)
+    ![](images/static-id.png)
 
 6. 左のパネルで、**Dynamic Action**タブを選択します。 これは、宣言型セレクターを使用していたときにアイテムに直接リンクされていなかったために必要です。
 
-   **Show**アクションの1つを右クリックして**Delete**します。 残りの**Show**アクションを選択します。
+    **Show**アクションの1つを右クリックして**Delete**します。 残りの**Show**アクションを選択します。
 
-   ![](images/select-show-2.png)
+    ![](images/select-show-2.png)
 
 7. 右のパネルで、**Action**を**Execute JavaScript**に設定し、次のコードを**Code**属性に入力します。
 
@@ -158,7 +158,7 @@
 
 1. ページ1のページデザイナー、つまりホームページに戻り、レンダリングタブの下のツリー内のルート要素を選択します。
 
-   ![](images/root-tree-node.png)
+    ![](images/root-tree-node.png)
 
 2. 右のパネルで、プロパティをスクロールダウンし、**JavaScript**セクションを見つけます。 次の関数を**Function and Global Variable Declaration**プロパティに入力します。
 
@@ -225,9 +225,9 @@
 
 1. 次のコードには、ホームページで呼び出されている`doWork`関数と、カテゴリ別売上チャートの色付けを行う関数が含まれています。 2番目の関数への唯一の変更は、現在名前が付いていることです(以前は無名関数でした)。
 
-   **このリンクをクリック**して、このラボのJavascriptファイル`sample-db-app.js`をローカルコンピュータにダウンロードしてください。
+    **このリンクをクリック**して、このラボのJavascriptファイル`sample-db-app.js`をローカルコンピュータにダウンロードしてください。
 
-   または、コンピュータ上に**sample-db-app.js**という名前の新しいファイルを作成し、以下のコードを保存することもできます。
+    または、コンピュータ上に**sample-db-app.js**という名前の新しいファイルを作成し、以下のコードを保存することもできます。
 
     ```
     <copy>
@@ -251,23 +251,23 @@
 
 2. **共有コンポーネント** > **静的アプリケーションファイル** に移動します。**ファイルのアップロード**をクリックし、前のステップで作成した **sample-db-app.js** ファイルを **ファイル** 項目で選択して、**アップロード** をクリックします。新しくアップロードされたファイルの **参照** 列の文字列に注意してください:**#APP_IMAGES#sample-db-app.js**。これは次のステップで利用します。
 
-   ![](images/uploaded-file.png)
+    ![](images/uploaded-file.png)
 
 3. ページ16のページデザイナーに移動し、**カテゴリ別売上** リージョンの **属性** をドリルダウンします。**JavaScript Initialization Code** の値を次のように置き換えます:`styleSalesByCatChart`
 
-   ![](images/sales-by-category-4.png)
+    ![](images/sales-by-category-4.png)
 
-   関数の末尾に括弧がないことに注意してください。これにより、関数の呼び出しではなく、ファイルで宣言された関数への参照になります。APEXは適切なタイミングで関数を呼び出します。
+    関数の末尾に括弧がないことに注意してください。これにより、関数の呼び出しではなく、ファイルで宣言された関数への参照になります。APEXは適切なタイミングで関数を呼び出します。
    
 4. ページレベルの属性(レンダリングタブの下のルートノード)を選択し、**JavaScript** セクションの **File URL(s)** 項目に次のファイル参照を入力します:**#APP_IMAGES#sample-db-app.js**
 
-   ![](images/javascript-file-reference.png)
+    ![](images/javascript-file-reference.png)
    
 5. 変更を保存し、ページを実行します。チャートは以前と同じ緑色のグラデーションでスタイル設定されるはずですが、今回はJavaScriptは静的ファイルで定義されています。関数が十分に汎用的であれば、アプリケーションの他の場所でも使用できます。
    
 6. ページ1のページデザイナーに移動し、ページレベルの属性をドリルダウンします。**Function and Global Variable Declaration** フィールドの値をクリアし、**JavaScript** セクションの **File URL(s)** 項目に次のファイル参照を入力します:**#APP_IMAGES#sample-db-app.js**
 
-   ![](images/javascript-file-reference-2.png)
+    ![](images/javascript-file-reference-2.png)
 
 7. 変更を保存し、ページを実行します。以前と同じ `doWork` 関数からのメッセージが表示されるはずですが、今回は関数が静的ファイルで定義されています。
 
