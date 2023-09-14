@@ -20,9 +20,16 @@
 
     ![](images/workspace-login.png)
 
-2. **アプリギャラリー**に移動し、**サンプルデータベースアプリケーション**をインストールしてください。
-
-    ![](images/sample-database-application.png)  
+2. **アプリケーション・ビルダー**に移動し、**Sample Database Application**インポートしてインストールしてください。
+    ![](images/import-sample-database-application-1.png)  
+    ![](images/import-sample-database-application-2.png)  
+    ![](images/import-sample-database-application-3.png)  
+    ![](images/import-sample-database-application-4.png)  
+    ![](images/import-sample-database-application-5.png)  
+    ![](images/import-sample-database-application-6.png)  
+    ![](images/import-sample-database-application-7.png)  
+    ![](images/import-sample-database-application-8.png)  
+    ![](images/import-sample-database-application-9.png)  
 
 3. アプリを実行し、**製品**ページに移動します。 **バッグ**などの製品の**名前**をクリックします。次のようなフォームが表示されます。 
 
@@ -46,13 +53,13 @@
 
     ![](images/select-show.png)
 
-8. 右のパネルで、**選択タイプ**を**アイテム**に、**アイテム**を**P6_PRODUCT_IMAGE**に設定します。
+8.  右のパネルで、**選択タイプ**を**アイテム**に、**アイテム**を**P6_PRODUCT_IMAGE**に設定します。
 
     ![](images/affected-elements.png)
 
     これにより、イメージアイテムが正しく表示されますが、リージョンも考慮する必要があります。次にそれを行います。
 
-9. 左のパネルの**表示**アクションを右クリックし、**複製**を選択します。
+9.  左のパネルの**表示**アクションを右クリックし、**複製**を選択します。
 
     ![](images/duplicate-action.png)
 
