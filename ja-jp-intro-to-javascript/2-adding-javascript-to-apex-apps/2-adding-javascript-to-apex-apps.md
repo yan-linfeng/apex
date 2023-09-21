@@ -21,14 +21,32 @@
     ![](images/workspace-login.png)
 
 2. **アプリケーション・ビルダー**に移動し、**Sample Database Application**インポートしてインストールしてください。
+
+    **アプリケーション・ビルダー**画面で、**インポート**をクリックします。
     ![](images/import-sample-database-application-1.png)  
+
+    **インポートウィザード**画面が表示されます、ここで**ドラッグ・アンド・ドロップ**をクリックします。
     ![](images/import-sample-database-application-2.png)  
+
+    ファイル**SampleDatabaseApplication_Apex_19.2.sql**を選択します。
     ![](images/import-sample-database-application-3.png)  
-    ![](images/import-sample-database-application-4.png)  
+
+    **次へ**をクリックします。
+    ![](images/import-sample-database-application-4.png) 
+
+    **次へ**をクリックします。 
     ![](images/import-sample-database-application-5.png)  
+
+    **アプリケーションのインストール**をクリックします。
     ![](images/import-sample-database-application-6.png)  
-    ![](images/import-sample-database-application-7.png)  
+
+    **次へ**をクリックします。
+    ![](images/import-sample-database-application-7.png) 
+
+    **インストール**をクリックします。 
     ![](images/import-sample-database-application-8.png)  
+
+    **アプリケーションの実行**をクリックして、アプリケーションを実行します。
     ![](images/import-sample-database-application-9.png)  
 
 3. アプリを実行し、**製品**ページに移動します。 **バッグ**などの製品の**名前**をクリックします。次のようなフォームが表示されます。 
