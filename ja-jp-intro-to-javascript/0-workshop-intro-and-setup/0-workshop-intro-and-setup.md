@@ -19,8 +19,8 @@ APEX開発者は、重要な影響を持つために少しのJavaScriptしか知
 | # | ラボ | 推定時間 |
 | --- | --- | --- |
 |   | [APEXワークスペースへのサインアップ](?lab=sign-up-for-apex-workspace) | 5分 |
-| 1 | [JavaScriptの基本](?lab=lab-1-javascript-basics) | 20分 |
-| 2 | [APEXアプリにJavaScriptを追加](?lab=lab-2-adding-javascript-apex-apps) | 60分 |
+| 1 | [JavaScriptの基礎](?lab=lab-1-javascript-basics) | 20分 |
+| 2 | [APEXアプリにJavaScriptを追加する](?lab=lab-2-adding-javascript-apex-apps) | 60分 |
 | 3 | [jQueryとDOMの操作](?lab=lab-3-working-dom-jquery) | 60分 |
 
 ### **始めましょう！**
