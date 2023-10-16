@@ -4,15 +4,15 @@ APEX開発者向けJavaScript入門ハンズオンラボへようこそ。
 
 ## ワークショップ概要
 
-SQLとPL/SQLを知っている開発者にとって、Oracle Application Express（APEX）ほどエンパワーメントされたフレームワークはありません。しかし、最終的にはAPEXはウェブアプリを作成し、ウェブをプログラムするのはJavaScriptです。年月を経るにつれ、JavaScriptはAPEXアプリでの役割が増え、APEXのクリエーターとそれを使用する開発者の両方にとって、今後も続く傾向です。
+SQLとPL/SQLを知っている開発者にとって、Oracle Application Express（APEX）ほど強力なフレームワークはありません。しかし、最終的にはAPEXはウェブアプリを作成し、ウェブをプログラムするのはJavaScriptです。年を経るにつれ、APEXアプリにおけるJavaScriptの役割が増え、APEXの開発者にとって、今後も続く傾向です。
 
-APEX開発者は、重要な影響を持つために少しのJavaScriptしか知る必要はありません。それがこのハンズオンラボの目的です！まず、JavaScriptの基本を学び、次にAPEXアプリにJavaScriptを追加する方法を学び、最後にDOMと連携するためにjQueryの使用方法を学びます。
+APEX開発者は、JavaScriptを少し理解するだけで大きな効果を得ることができます。それがこのハンズオンラボの目的です！まず、JavaScriptの基本を学び、次にAPEXアプリにJavaScriptを追加する方法を学び、最後にDOMと連携するためにjQueryの使用方法を学びます。
 
 最初のラボに進む前に、Oracle Cloudの無料ティアを使用してAPEXワークスペースを作成するための以下の手順に従ってください。すでに使用したいワークスペースがある場合、[最初のラボに進むことができます](?lab=lab-1-javascript-basics)。
 
 所要時間：160分
 
-*注意: このラボではOracle APEX 20.2を使用していることを前提としています。*
+*注意: このラボではOracle APEX 23.1を使用していることを前提としています。*
 
 ### ラボ
 
