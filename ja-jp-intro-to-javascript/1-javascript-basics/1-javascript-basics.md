@@ -215,6 +215,7 @@
 4. 時間が許すなら、次の拡張を検討してください:
 
     * personの配列を受け取る`sayHello2`という新しい関数を追加する。そして、それぞれのpersonに対してHelloと言うためにループを回す。
+        次のコードをコンソールに入力し、実行してください。
         ```
         <copy>
         function sayHello2(persons) {
@@ -224,20 +225,23 @@
         }
 
         persons = [{first: 'Mike', last: 'Tyson'},{first: 'Tomas', last: 'Edison'}];
-
         sayHello2(persons);
-
+        </copy>
+        ```
+        次のコードをコンソールに入力し、実行してください。
+        ```
+        <copy>
         function Person(first,last){
             this.first = first ;
             this.last = last ;
         }
 
         persons = [new Person('Mike','Tyson'),new Person('Tomas','Edison')];
-
         sayHello2(persons);
         </copy>
         ```
     * `sayHello2` を更新して、personの名前や姓が空の文字列(`''`)、`null`、または`undefined`の場合にはHelloと言わないようにする。
+    次のコードをコンソールに入力し、実行してください。
         ```
         <copy>
         function sayHello2(persons) {
