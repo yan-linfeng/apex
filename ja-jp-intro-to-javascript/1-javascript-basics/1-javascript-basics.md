@@ -225,6 +225,7 @@
         }
 
         persons = [{first: 'Mike', last: 'Tyson'},{first: 'Tomas', last: 'Edison'}];
+
         sayHello2(persons);
         </copy>
         ```
@@ -237,16 +238,19 @@
         }
 
         persons = [new Person('Mike','Tyson'),new Person('Tomas','Edison')];
+
         sayHello2(persons);
         </copy>
         ```
+        ご覧のとおり、Personオブジェクトを作成するには 2 つの方法があり、1 つはオブジェクト・リテラルと呼ばれ、もう1つはオブジェクト・コンストラクターと呼ばれます。
+        この二つ方法のの区別について、<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Working_with_objects" target="blank">こちら</a>に参照してください。
     * `sayHello2` を更新して、personの名前や姓が空の文字列(`''`)、`null`、または`undefined`の場合にはHelloと言わないようにする。
     次のコードをコンソールに入力し、実行してください。
         ```
         <copy>
         function sayHello2(persons) {
             for (let i = 0; i < persons.length; i++) {
-                if(persons[i] && persons[i].first && persons[i].last){
+                if(persons[i].first && persons[i].last){
                     console.log('Hi ' + persons[i].first + ' ' + persons[i].last);
                 }
             }
@@ -257,7 +261,7 @@
         sayHello2(persons);
         </copy>
         ```
-
+        こちらFalsy (偽値)を利用して、personの名前判断を行いました。Falsy (偽値)の詳細について、<a href="https://developer.mozilla.org/ja/docs/Glossary/Falsy" target="blank">こちら</a>に参照してください。
 ## **まとめ** 
 
 以上でラボ1は完了です。この時点で、コンソールとJavaScriptのコアコンセプトの扱いに慣れてきたはずです。次のラボ2に進んでください。
