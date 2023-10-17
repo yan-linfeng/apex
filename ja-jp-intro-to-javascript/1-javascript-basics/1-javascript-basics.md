@@ -215,7 +215,44 @@
 4. 時間が許すなら、次の拡張を検討してください:
 
     * personの配列を受け取る`sayHello2`という新しい関数を追加する。そして、それぞれのpersonに対してHelloと言うためにループを回す。
+        ```
+        <copy>
+        function sayHello2(persons) {
+            for (let i = 0; i < persons.length; i++) {
+                console.log('Hi ' + persons[i].first + ' ' + persons[i].last);
+            }
+        }
+
+        persons = [{first: 'Mike', last: 'Tyson'},{first: 'Tomas', last: 'Edison'}];
+
+        sayHello2(persons);
+
+        function Person(first,last){
+            this.first = first ;
+            this.last = last ;
+        }
+
+        persons = [new Person('Mike','Tyson'),new Person('Tomas','Edison')];
+
+        sayHello2(persons);
+        </copy>
+        ```
     * `sayHello2` を更新して、personの名前や姓が空の文字列(`''`)、`null`、または`undefined`の場合にはHelloと言わないようにする。
+        ```
+        <copy>
+        function sayHello2(persons) {
+            for (let i = 0; i < persons.length; i++) {
+                if(persons[i] && persons[i].first && persons[i].last){
+                    console.log('Hi ' + persons[i].first + ' ' + persons[i].last);
+                }
+            }
+        }
+
+        persons = [{first: 'Mike', last: 'Tyson'},{first: 'Tomas', last: 'Edison'},{first:'Anyomous'}];
+
+        sayHello2(persons);
+        </copy>
+        ```
 
 ## **まとめ** 
 
