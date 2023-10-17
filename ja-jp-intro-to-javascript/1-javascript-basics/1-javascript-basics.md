@@ -243,7 +243,7 @@
         </copy>
         ```
         ご覧のとおり、Personオブジェクトを作成するには 2 つの方法があり、1 つはオブジェクト・リテラルと呼ばれ、もう1つはオブジェクト・コンストラクターと呼ばれます。
-        この二つ方法のの区別について、<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Working_with_objects" target="blank">こちら</a>に参照してください。
+        この二つ方法の区別について、<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Working_with_objects" target="blank">こちら</a>に参照してください。
     * `sayHello2` を更新して、personの名前や姓が空の文字列(`''`)、`null`、または`undefined`の場合にはHelloと言わないようにする。
     次のコードをコンソールに入力し、実行してください。
         ```
