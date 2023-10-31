@@ -4,7 +4,7 @@
 	"tutorials": [
       {
         "title": "はじめに",
-        "filename": "sign-up-apex/1-sign-up-apex.md"
+        "filename": "../ja-jp-existing-tables/sign-up-apex/1-sign-up-apex.md"
       },
       {
         "title": "紹介",
