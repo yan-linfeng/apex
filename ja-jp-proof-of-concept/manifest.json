@@ -33,11 +33,6 @@
       {
         "title": "ラボ6: リンクの改善",
         "filename": "improving-links/improving-links.md"
-      },
-      {
-        "title": "Need Help?",
-        "description": "Solutions to Common Problems and Directions for Receiving Live Help",
-        "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
       }
     ]
 }
